@@ -16,7 +16,8 @@ class User(db.Model, UserMixin):
                            default=datetime.utcnow)
     updated_on = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
-    decks = db.relationship('Deck', back_populates='creator')
+    decks = db.relationship(
+        'Deck', back_populates='creator', cascade="all, delete-orphan")
 
     @property
     def password(self):
