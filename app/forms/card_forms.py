@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, TextAreaField
 from wtforms.validators import DataRequired, ValidationError
-from app.models import Card
+from app.models import Card, db
 
 
 def check_length(form, field):
@@ -16,6 +16,14 @@ def check_emoji(form, field):
         field = field.data
         if (len(field) > 3) or (len(field) < 1):
             raise ValidationError('Emoji must be between 1-3 characters')
+
+
+def switch_validation(form, field):
+    deck_id = field.data
+    card = db.session.query(Card).filter(
+        Card.deck_id == form.data['card_id']).first()
+    if card.deck_id == deck_id:
+        raise ValidationError(f"Already in deck {deck_id}")
 
 
 class NewCardForm(FlaskForm):
@@ -40,4 +48,8 @@ class EditCardForm(FlaskForm):
     image_url = StringField(
         'image url', validators=[check_length])
     emoji = StringField('emoji', validators=[check_emoji])
+
+
+class DeckSwitchForm(FlaskForm):
     deck_id = IntegerField('deck id', validators=[DataRequired()])
+    card_id = IntegerField('card id', validators=[DataRequired()])

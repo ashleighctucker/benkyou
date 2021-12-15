@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from app.models import Card, db
-from app.forms import NewCardForm, EditCardForm
+from app.forms import NewCardForm, EditCardForm, DeckSwitchForm
 from .auth_routes import validation_errors_to_error_messages
 
 card_routes = Blueprint('cards', __name__)
@@ -33,9 +33,21 @@ def edit_card(id):
         cardToEdit.example = form.data['example']
         cardToEdit.image_url = form.data['image_url']
         cardToEdit.emoji = form.data['emoji']
-        cardToEdit.deck_id = form.data['deck_id']
         db.session.commit()
         return cardToEdit.to_dict()
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@card_routes.route('/move/<int:id>/', methods=["PUT"])
+def switch_decks(id):
+    form = DeckSwitchForm()
+    cardToMove = Card.query.get(int(id))
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        cardToMove.deck_id = form.data['deck_id']
+        db.session.commit()
+        return cardToMove.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
