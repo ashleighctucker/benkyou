@@ -8,6 +8,8 @@ class Category (db.Model):
     title = db.Column(db.String(256), nullable=False, unique=True)
     color_hex = db.Column(db.String(256), nullable=False, unique=True)
 
+    decks = db.relationship('Deck', back_populates='category')
+
     def to_dict(self):
         return {
             'id': self.id,
