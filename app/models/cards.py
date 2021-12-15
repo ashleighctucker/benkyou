@@ -12,7 +12,7 @@ class Card(db.Model):
     definition = db.Column(db.Text, nullable=False)
     example = db.Column(db.Text)
     image_url = db.Column(db.String(256))
-    emoji = db.Column(db.String(256))
+    emoji = db.Column(db.String(3))
     deck_id = db.Column(db.Integer, db.ForeignKey('decks.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
