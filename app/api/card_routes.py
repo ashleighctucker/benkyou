@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from app.models import Card, db
-from app.forms import NewCardForm
+from app.forms import NewCardForm, EditCardForm
 from .auth_routes import validation_errors_to_error_messages
 
 card_routes = Blueprint('cards', __name__)
@@ -16,5 +16,25 @@ def create_card():
         db.session.add(newCard)
         db.session.commit()
         return newCard.to_dict()
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@card_routes.route('/<int:id>/', methods=["PUT"])
+def edit_card(id):
+    form = EditCardForm()
+    cardToEdit = Card.query.get(int(id))
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        cardToEdit.title = form.data['title']
+        cardToEdit.pronunciation = form.data['pronunciation']
+        cardToEdit.type = form.data['type']
+        cardToEdit.definition = form.data['definition']
+        cardToEdit.example = form.data['example']
+        cardToEdit.image_url = form.data['image_url']
+        cardToEdit.emoji = form.data['emoji']
+        cardToEdit.deck_id = form.data['deck_id']
+        db.session.commit()
+        return cardToEdit.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400

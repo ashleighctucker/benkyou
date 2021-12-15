@@ -29,3 +29,15 @@ class NewCardForm(FlaskForm):
     emoji = StringField('emoji', validators=[check_emoji])
     deck_id = IntegerField('deck id', validators=[DataRequired()])
     user_id = IntegerField('user id', validators=[DataRequired()])
+
+
+class EditCardForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired(), check_length])
+    pronunciation = StringField('pronunciation', validators=[check_length])
+    type = StringField('type', validators=[check_length])
+    definition = TextAreaField('definition', validators=[DataRequired()])
+    example = TextAreaField('example')
+    image_url = StringField(
+        'image url', validators=[check_length])
+    emoji = StringField('emoji', validators=[check_emoji])
+    deck_id = IntegerField('deck id', validators=[DataRequired()])
