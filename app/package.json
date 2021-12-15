@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "owlbot-js": "^2.0.3"
+  }
+}
