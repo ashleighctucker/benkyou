@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Deck, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +17,9 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>/decks/')
+def get_my_decks(id):
+    decks = db.session.query(Deck).filter(Deck.user_id == id).all()
+    return {'decks': [deck.to_dict() for deck in decks]}
