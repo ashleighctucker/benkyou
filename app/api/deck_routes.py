@@ -33,3 +33,14 @@ def edit_deck(id):
         return deckToEdit.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@deck_routes.route('/<int:id>/', methods=["DELETE"])
+def delete_deck(id):
+    deckToDelete = Deck.query.get(int(id))
+    if deckToDelete:
+        db.session.delete(deckToDelete)
+        db.session.commit()
+        return {'message': f"Deck {id} sucessfully deleted."}
+    else:
+        return {'errors': [f"Could not find deck {id} to delete from database"]}, 500
