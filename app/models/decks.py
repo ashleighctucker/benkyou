@@ -20,7 +20,7 @@ class Deck(db.Model):
     creator = db.relationship('User', back_populates='decks')
 
     def to_dict(self):
-        cat = str(self.category.tile)
+        cat = str(self.category.title)
         owner = str(self.creator.user_name)
 
         return {
