@@ -3,7 +3,7 @@ from app.models import Deck, db
 from app.forms import NewDeckForm, EditDeckForm
 from .auth_routes import validation_errors_to_error_messages
 
-deck_routes = Blueprint('dekcs', __name__)
+deck_routes = Blueprint('decks', __name__)
 
 
 @deck_routes.route('/', methods=["POST"])
