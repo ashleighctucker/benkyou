@@ -18,6 +18,8 @@ class Deck(db.Model):
 
     category = db.relationship('Category', back_populates='decks')
     creator = db.relationship('User', back_populates='decks')
+    cards = db.relationship('Card', back_populates='deck',
+                            cascade="all, delete-orphan")
 
     def to_dict(self):
         cat = str(self.category.title)
@@ -30,5 +32,15 @@ class Deck(db.Model):
             'category': cat,
             'creator': owner,
             'created_on': self.created_on,
-            'updated_on': self.updated_on
+            'updated_on': self.updated_on,
+            'cards': {obj.id: {'id': obj.id,
+                               'title': obj.title,
+                               'pronunciation': obj.pronunciation,
+                               'type': obj.type,
+                               'definition': obj.definition,
+                               'example': obj.example,
+                               'image_url': obj.image_url,
+                               'emoji': obj.emoji,
+                               'updated_on': obj.updated_on}
+                      for obj in self.cards}
         }
