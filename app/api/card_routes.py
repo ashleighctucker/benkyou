@@ -38,3 +38,14 @@ def edit_card(id):
         return cardToEdit.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@card_routes.route('/<int:id>/', methods=["DELETE"])
+def delete_card(id):
+    cardtoDelete = Card.query.get(int(id))
+    if cardtoDelete:
+        db.session.delete(cardtoDelete)
+        db.session.commit()
+        return {'message': f"Card {id} sucessfully deleted."}
+    else:
+        return {'errors': [f"Could not find card {id} to delete from database"]}, 500
