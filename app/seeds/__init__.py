@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .categories import seed_categories, undo_categories
 from .decks import seed_decks, undo_decks
 from .cards import seed_cards, undo_cards
+from .deck_lists import seed_deck_lists, undo_deck_lists
 
 
 # Creates a seed group to hold our commands
@@ -17,6 +18,7 @@ def seed():
     seed_categories()
     seed_decks()
     seed_cards()
+    seed_deck_lists()
     # Add other seed functions here
 
 
@@ -27,4 +29,5 @@ def undo():
     undo_categories()
     undo_decks()
     undo_cards()
+    undo_deck_lists()
     # Add other undo functions here
