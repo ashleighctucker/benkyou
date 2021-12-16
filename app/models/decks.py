@@ -1,9 +1,6 @@
 from .db import db
 from datetime import datetime
 
-Added_Decks = db.Table('added_decks', db.metadata, db.Column(
-    "deck_list_id", db.ForeignKey('deck_lists.id'), primary_key=True), db.Column('deck_id', db.ForeignKey('decks.id'),  primary_key=True))
-
 
 class Deck(db.Model):
     __tablename__ = 'decks'
@@ -24,7 +21,9 @@ class Deck(db.Model):
     cards = db.relationship('Card', back_populates='deck',
                             cascade="all, delete-orphan")
     deck_lists = db.relationship(
-        'DeckList', secondary=Added_Decks, back_populates="decks")
+        'DeckList', secondary="added_decks", back_populates="decks")
+    mastered_users = db.relationship(
+        'User', secondary="mastered_decks", back_populates="mastered_decks")
 
     @property
     def category_type(self):
@@ -33,6 +32,20 @@ class Deck(db.Model):
     @property
     def deck_owner(self):
         return self.creator.user_name
+
+    def add_mastered_user(self, user):
+        if user not in self.mastered_users:
+            self.mastered_users.append(user)
+            return self.to_dict()
+        else:
+            return {'errors': f"Deck {self.id} already in mastered by user {user.id}."}
+
+    def remove_mastered_deck(self, user):
+        if user in self.mastered_users:
+            self.mastered_users.remove(user)
+            return self.to_dict()
+        else:
+            return {'errors': f"Could not find {user.id} in mastered list"}
 
     def to_dict(self):
         cat = str(self.category.title)
@@ -72,7 +85,7 @@ class DeckList(db.Model):
     updated_on = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
     creator = db.relationship('User', back_populates='deck_lists')
-    decks = db.relationship("Deck", secondary=Added_Decks,
+    decks = db.relationship("Deck", secondary="added_decks",
                             back_populates="deck_lists")
 
     def add_deck(self, deck):

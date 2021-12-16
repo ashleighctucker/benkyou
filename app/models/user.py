@@ -22,6 +22,8 @@ class User(db.Model, UserMixin):
         'Card', back_populates='creator', cascade="all, delete-orphan")
     deck_lists = db.relationship(
         'DeckList', back_populates='creator',  cascade="all, delete-orphan")
+    mastered_decks = db.relationship(
+        'Deck', secondary="mastered_decks", back_populates='mastered_users')
 
     @property
     def password(self):
