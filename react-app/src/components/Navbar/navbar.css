@@ -1,0 +1,45 @@
+#navbar {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Montserrat', sans-serif;
+  align-items: center;
+}
+
+#nav-logo {
+  background: url('https://easydrawingguides.com/wp-content/uploads/2018/10/Light-10.png');
+  background-size: 70px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin: 0 .5%;
+
+}
+
+#nav-logo-name {
+  font-size: 3.5rem;
+  font-style: italic;
+}
+
+#search-bar {
+  margin: 2% 10% 0% 10%;
+}
+
+#search-nav {
+  color: #FF865E;
+}
+
+#search {
+  display: flex;
+  align-items: center;
+  border: 1px #8a8a8a solid;
+  border-radius: 5px;
+}
+
+#search-input {
+  margin-left: 1%;
+  width: 40rem;
+  height: 1.6rem;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
