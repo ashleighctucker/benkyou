@@ -26,6 +26,14 @@ class Deck(db.Model):
     deck_lists = db.relationship(
         'DeckList', secondary=Added_Decks, back_populates="decks")
 
+    @property
+    def category_type(self):
+        return self.category.title
+
+    @property
+    def deck_owner(self):
+        return self.creator.user_name
+
     def to_dict(self):
         cat = str(self.category.title)
         owner = str(self.creator.user_name)
@@ -67,6 +75,20 @@ class DeckList(db.Model):
     decks = db.relationship("Deck", secondary=Added_Decks,
                             back_populates="deck_lists")
 
+    def add_deck(self, deck):
+        if deck not in self.decks:
+            self.decks.append(deck)
+            return self.to_dict()
+        else:
+            return {'errors': f"Deck {deck.id} already in list"}
+
+    def remove_deck(self, deck):
+        if deck in self.decks:
+            self.decks.remove(deck)
+            return self.to_dict()
+        else:
+            return {'errors': f"Could not find deck {deck.id} in list"}
+
     def to_dict(self):
         owner = str(self.creator.user_name)
 
@@ -77,4 +99,10 @@ class DeckList(db.Model):
             'creator': owner,
             'created_on': self.created_on,
             'updated_on': self.updated_on,
+            'decks': {obj.id: {'id': obj.id,
+                               'title': obj.title,
+                               'cover_photo_url': obj.cover_photo_url,
+                               'category': obj.category_type,
+                               'creator': obj.deck_owner}
+                      for obj in self.decks}
         }
