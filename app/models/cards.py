@@ -34,5 +34,5 @@ class Card(db.Model):
             'example': self.example,
             'image_url': self.image_url,
             'emoji': self.emoji,
-            'updated_on': self.updated_on
+            'deck_id': self.deck_id
         }

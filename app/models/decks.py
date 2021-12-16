@@ -56,6 +56,7 @@ class Deck(db.Model):
             'title': self.title,
             'cover_photo_url': self.cover_photo_url,
             'category': cat,
+            'category_id': self.category_id,
             'creator': owner,
             'created_on': self.created_on,
             'updated_on': self.updated_on,
@@ -67,7 +68,7 @@ class Deck(db.Model):
                                'example': obj.example,
                                'image_url': obj.image_url,
                                'emoji': obj.emoji,
-                               'updated_on': obj.updated_on}
+                               'deck_id': obj.deck_id}
                       for obj in self.cards}
         }
 
@@ -110,12 +111,11 @@ class DeckList(db.Model):
             'title': self.title,
             'cover_photo_url': self.cover_photo_url,
             'creator': owner,
-            'created_on': self.created_on,
-            'updated_on': self.updated_on,
             'decks': {obj.id: {'id': obj.id,
                                'title': obj.title,
                                'cover_photo_url': obj.cover_photo_url,
                                'category': obj.category_type,
+                               'category_id': obj.category_id,
                                'creator': obj.deck_owner}
                       for obj in self.decks}
         }

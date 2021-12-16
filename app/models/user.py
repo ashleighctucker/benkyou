@@ -42,5 +42,6 @@ class User(db.Model, UserMixin):
             'username': self.user_name,
             'email': self.email,
             'first_name': self.first_name,
-            'created_on': self.created_on
+            'created_on': self.created_on,
+            'mastered_decks': [{'deck_id': obj.deck_id, 'created_on': obj.created_on} for obj in self.mastered_decks]
         }
