@@ -24,14 +24,6 @@
             "index": "pypi",
             "version": "==1.6.5"
         },
-        "certifi": {
-            "hashes": [
-                "sha256:78884e7c1d4b00ce3cea67b44566851c4343c120abd683433ce934a68ea58872",
-                "sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569"
-            ],
-            "index": "pypi",
-            "version": "==2021.10.8"
-        },
         "click": {
             "hashes": [
                 "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a",
@@ -249,13 +241,6 @@
             ],
             "index": "pypi",
             "version": "==2.0.1"
-        },
-        "pycurl": {
-            "hashes": [
-                "sha256:5bcef4d988b74b99653602101e17d8401338d596b9234d263c728a0c3df003e8"
-            ],
-            "index": "pypi",
-            "version": "==7.44.1"
         },
         "python-dateutil": {
             "hashes": [
