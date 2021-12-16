@@ -20,6 +20,8 @@ class User(db.Model, UserMixin):
         'Deck', back_populates='creator', cascade="all, delete-orphan")
     cards = db.relationship(
         'Card', back_populates='creator', cascade="all, delete-orphan")
+    deck_lists = db.relationship(
+        'DeckList', back_populates='creator',  cascade="all, delete-orphan")
 
     @property
     def password(self):
