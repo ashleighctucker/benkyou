@@ -9,6 +9,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 
 import { authenticate } from './store/session';
 import { getCategories } from './store/categories';
+import { getMyDecks } from './store/my_decks';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -17,6 +18,9 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate())
+        .then((id) => {
+          if (id) return dispatch(getMyDecks(id));
+        })
         .then(() => dispatch(getCategories()))
         .then(() => setLoaded(true));
     })();
