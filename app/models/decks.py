@@ -33,6 +33,20 @@ class Deck(db.Model):
     def deck_owner(self):
         return self.creator.user_name
 
+    def add_mastered_user(self, user):
+        if user not in self.mastered_users:
+            self.mastered_users.append(user)
+            return self.to_dict()
+        else:
+            return {'errors': f"Deck {self.id} already in mastered by user {user.id}."}
+
+    def remove_mastered_deck(self, user):
+        if user in self.mastered_users:
+            self.mastered_users.remove(user)
+            return self.to_dict()
+        else:
+            return {'errors': f"Could not find {user.id} in mastered list"}
+
     def to_dict(self):
         cat = str(self.category.title)
         owner = str(self.creator.user_name)

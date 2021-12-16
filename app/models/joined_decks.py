@@ -5,14 +5,12 @@ from datetime import datetime
 class MasteredDeck(db.Model):
     __tablename__ = 'mastered_decks'
 
-    id = db.Column(db.Integer, primary_key=True)
     deck_id = db.Column(db.Integer, db.ForeignKey(
         'decks.id'), primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(
         'users.id'), primary_key=True)
     created_on = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
-    updated_on = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
 
 class AddedDeck(db.Model):
@@ -23,4 +21,3 @@ class AddedDeck(db.Model):
         'deck_lists.id'), primary_key=True)
     created_on = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
-    updated_on = db.Column(db.DateTime, onupdate=datetime.utcnow)
