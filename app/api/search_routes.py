@@ -33,4 +33,4 @@ def search(term):
     if len(searchResults) > 0:
         return {'search': [deck.to_dict() for deck in searchResults]}
     else:
-        return {'message': f"No results for {term}."}
+        return {'message': f"No results for {term}."}, 400
