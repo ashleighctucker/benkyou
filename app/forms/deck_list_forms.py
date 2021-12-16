@@ -19,3 +19,8 @@ class NewDeckListForm(FlaskForm):
     user_id = IntegerField('user id', validators=[DataRequired()])
 
 
+class EditDeckListForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired(), check_length])
+    cover_photo_url = StringField(
+        'cover photo', validators=[check_length, URL(
+            require_tld=True, message="Please enter a valid url for the cover photo")])
