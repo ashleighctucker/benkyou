@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
 import SearchBar from './SearchBar';
+import LoginButton from './LoginButton';
 import './navbar.css';
 
 const NavBar = () => {
@@ -11,6 +11,9 @@ const NavBar = () => {
       <div id="nav-logo-name">Manabu</div>
       <div>
         <SearchBar />
+      </div>
+      <div>
+        <LoginButton />
       </div>
     </nav>
   );
