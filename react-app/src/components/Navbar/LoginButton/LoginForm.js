@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../../../store/session';
 import './LoginForm.css';
 
@@ -24,7 +24,6 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-  console.log(errors);
 
   return (
     <form id="login-form" onSubmit={onLogin}>
