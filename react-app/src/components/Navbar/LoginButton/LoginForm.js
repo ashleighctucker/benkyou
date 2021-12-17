@@ -27,12 +27,13 @@ const LoginForm = () => {
 
   return (
     <form className="auth-form" onSubmit={onLogin}>
-      <h2>
+      <h1>
         Log In to <span className="logo-name">Manabu</span>
-      </h2>
+      </h1>
       <div className="form-input-containers">
         <label htmlFor="email">Email</label>
         <input
+          className="form-inputs"
           name="email"
           type="text"
           placeholder="Email"
@@ -44,6 +45,7 @@ const LoginForm = () => {
       <div className="form-input-containers">
         <label htmlFor="password">Password</label>
         <input
+          className="form-inputs"
           name="password"
           type="password"
           placeholder="Password"

@@ -8,6 +8,8 @@ const SignupButton = () => {
   return (
     <>
       <button
+        id="nav-signup"
+        className="nav-buttons"
         onClick={() => {
           setShowSignupModal(true);
         }}

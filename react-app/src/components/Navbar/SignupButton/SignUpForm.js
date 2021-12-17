@@ -46,12 +46,13 @@ const SignUpForm = () => {
 
   return (
     <form className="auth-form" onSubmit={onSignUp}>
-      <h2>
+      <h1>
         Sign Up for <span className="logo-name">Manabu</span>
-      </h2>
+      </h1>
       <div className="form-input-containers">
         <label htmlFor="first_name">First Name</label>
         <input
+          className="form-inputs"
           type="text"
           name="first_name"
           onChange={(e) => setFirstName(e.target.value)}
@@ -62,6 +63,7 @@ const SignUpForm = () => {
       <div className="form-input-containers">
         <label htmlFor="user_name">User Name</label>
         <input
+          className="form-inputs"
           type="text"
           name="user_name"
           onChange={updateUsername}
@@ -72,6 +74,7 @@ const SignUpForm = () => {
       <div className="form-input-containers">
         <label htmlFor="email">Email</label>
         <input
+          className="form-inputs"
           type="text"
           name="email"
           onChange={updateEmail}
@@ -82,6 +85,7 @@ const SignUpForm = () => {
       <div className="form-input-containers">
         <label htmlFor="password">Password</label>
         <input
+          className="form-inputs"
           type="password"
           name="password"
           onChange={updatePassword}
@@ -92,6 +96,7 @@ const SignUpForm = () => {
       <div className="form-input-containers">
         <label htmlFor="repeat_password">Confirm Password</label>
         <input
+          className="form-inputs"
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}

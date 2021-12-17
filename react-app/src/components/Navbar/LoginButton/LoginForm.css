@@ -1,10 +1,10 @@
+/* for auth modals */
 .auth-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 25vw;
+  width: 35vw;
   padding: 5% 0;
-
 }
 
 .logo-name {
@@ -12,14 +12,25 @@
   font-weight: 500;
 }
 
+/* general form containers */
 .form-input-containers {
   display: flex;
   flex-direction: column;
-  width: 15rem;
+  width: 55%;
+  font-size: 1.1rem;
+}
+
+.form-inputs {
+  font-size: 1.1rem;
+  margin: 2% 0;
+  border: none;
+  background-color: #efefef;
+  outline: none;
+  border-bottom: black 1px solid;
 }
 
 .error-display {
-  font-size: .8rem;
+  font-size: .9rem;
   text-align: center;
   height: 1em;
   color: #B0413E;
@@ -32,7 +43,7 @@
   margin: 3%;
 }
 
-
+/* form-submit-buttons */
 .form-sumbit-button {
   color: black;
   text-decoration: none;
@@ -52,7 +63,7 @@
 }
 
 .form-sumbit-button .bg {
-  background: #46ACC2;
+  background: #226F54;
   border-radius: 2px;
   width: 30px;
   height: 2px;
@@ -83,7 +94,7 @@
   content: '';
   height: 2px;
   width: 10px;
-  background: #46ACC2;
+  background: #226F54;
   position: absolute;
   right: -2px;
   -webkit-transition: all 0.3s;
@@ -116,4 +127,29 @@
 
 .form-sumbit-button:hover .bg:after {
   top: 6px;
+}
+
+/* for navbar buttons */
+.nav-buttons {
+  height: 100%;
+  width: 100%;
+  font-size: 1.1rem;
+  border: none;
+}
+
+#nav-signup.nav-buttons {
+  background-color: #226F54;
+  color: #efefef;
+}
+
+#nav-login.nav-buttons {
+  background-color: #FBAF00;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-buttons {
+
+    font-size: 2.5rem;
+
+  }
 }

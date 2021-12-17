@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   font-family: 'Montserrat', sans-serif;
+  background-color: #c2c2c2;
 }
 
 /* logo styles */
@@ -10,44 +11,79 @@
   flex-direction: row;
   align-items: center;
   margin: 0 3%;
+  width: 25%;
 }
 
 #nav-logo {
   background: url('./logo.png');
-  background-size: 4em;
-  height: 4em;
-  width: 4em;
+  background-repeat: no-repeat;
+  background-size: 95%;
+  height: 100%;
+  width: 20%;
   border-radius: 50%;
 }
 
 #nav-logo-name {
-  font-size: 3.5rem;
+  font-size: 350%;
   font-style: italic;
 }
 
 
 /* Search styles */
 #search-bar {
-  margin: 2.5% 10% 0% 10%;
+  background-color: inherit;
+  width: 55%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 #search-nav {
-  color: #46ACC2;
+  color: #226F54;
 }
 
 #search {
+  margin: 0 4% 1.5% 0;
   display: flex;
+  width: 90%;
+  height: 55%;
   align-items: center;
-  border: 1px #8a8a8a solid;
+  border: 1px #1b1b1b solid;
   border-radius: 5px;
 }
 
 #search-input {
   margin-left: 1%;
   font-size: 1.1rem;
-  width: 55rem;
-  height: 1.8rem;
+  width: 100%;
   border: none;
   background-color: transparent;
   outline: none;
+}
+
+#nav-1, #nav-2 {
+  width: 10%;
+}
+
+@media screen and (max-width: 1000px) {
+  #nav-logo {
+    display: none;
+  }
+
+  #logo {
+    width: 50%;
+  }
+
+  #nav-logo-name {
+    font-size: 550%;
+    font-style: italic;
+  }
+
+  #search-bar {
+    display: none;
+  }
+
+  #nav-1, #nav-2 {
+    width: 25%;
+  }
 }

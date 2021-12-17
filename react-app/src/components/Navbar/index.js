@@ -10,19 +10,17 @@ const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
   return (
-    <nav id="navbar">
+    <header id="navbar">
       <div id="logo">
         <div id="nav-logo"></div>
         <div id="nav-logo-name">Manabu</div>
       </div>
-      <div>
-        <SearchBar />
-      </div>
-      <div>
+      <SearchBar />
+      <div id="nav-1">
         {sessionUser ? `Hi, ${sessionUser.first_name}!` : <LoginButton />}
       </div>
-      <div>{sessionUser ? <LogoutButton /> : <SignupButton />}</div>
-    </nav>
+      <div id="nav-2">{sessionUser ? <LogoutButton /> : <SignupButton />}</div>
+    </header>
   );
 };
 
