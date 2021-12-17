@@ -1,14 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../store/session';
+import { logout } from '../../../store/session';
 
 const LogoutButton = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const onLogout = async (e) => {
     await dispatch(logout());
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return (
+    <button id="nav-logout" className="nav-buttons" onClick={onLogout}>
+      Logout
+    </button>
+  );
 };
 
 export default LogoutButton;

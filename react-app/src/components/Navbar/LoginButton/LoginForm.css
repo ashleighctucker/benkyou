@@ -1,0 +1,168 @@
+/* for auth modals */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35vw;
+  padding: 5% 0;
+}
+
+.logo-name {
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* general form containers */
+.form-input-containers {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  font-size: 1.1rem;
+}
+
+.form-inputs {
+  font-size: 1.1rem;
+  margin: 2% 0;
+  border: none;
+  background-color: #efefef;
+  outline: none;
+  border-bottom: black 1px solid;
+}
+
+.error-display {
+  font-size: .9rem;
+  text-align: center;
+  height: 1em;
+  color: #B0413E;
+}
+
+.form-button-containers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+}
+
+/* form-submit-buttons */
+.form-sumbit-button {
+  color: black;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 1.1rem;
+  position: relative;
+  padding: 10px 50px 10px 20px;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: scale(3);
+  -ms-transform: scale(3);
+  transform: scale(1.2);
+  background-color: transparent;
+  border: none;
+}
+
+.form-sumbit-button .bg {
+  background: #226F54;
+  border-radius: 2px;
+  width: 30px;
+  height: 2px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -1px;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.form-sumbit-button:hover {
+  padding-right: 20px;
+  color: #fff;
+}
+
+.form-sumbit-button:hover .bg {
+  height: 100%;
+  width: 100%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.form-sumbit-button .bg:before, .form-sumbit-button .bg:after {
+  content: '';
+  height: 2px;
+  width: 10px;
+  background: #226F54;
+  position: absolute;
+  right: -2px;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.form-sumbit-button .bg:before {
+  bottom: 3px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.form-sumbit-button .bg:after {
+  top: 3px;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.form-sumbit-button:hover .bg:before,
+.form-sumbit-button:hover .bg:after {
+  right: 0;
+}
+
+.form-sumbit-button:hover .bg:before {
+  bottom: 6px;
+}
+
+.form-sumbit-button:hover .bg:after {
+  top: 6px;
+}
+
+/* for navbar buttons */
+.nav-buttons {
+  height: 100%;
+  width: 100%;
+  font-size: 1.1rem;
+  border: none;
+}
+
+#nav-signup.nav-buttons, #nav-logout.nav-buttons {
+  background-color: #226F54;
+  color: #efefef;
+}
+
+#nav-login.nav-buttons {
+  background-color: #FBAF00;
+}
+
+
+
+/* Auth form Media Queries */
+
+@media screen and (max-width: 1000px) {
+  .nav-buttons {
+
+    font-size: 2.5rem;
+
+  }
+
+  .auth-form {
+    width: 80vw;
+    font-size: 2rem;
+  }
+
+  .form-input-containers, .form-inputs, .error-display, .form-sumbit-button {
+    font-size: 2rem;
+  }
+}
