@@ -137,7 +137,7 @@
   border: none;
 }
 
-#nav-signup.nav-buttons {
+#nav-signup.nav-buttons, #nav-logout.nav-buttons {
   background-color: #226F54;
   color: #efefef;
 }
@@ -145,6 +145,10 @@
 #nav-login.nav-buttons {
   background-color: #FBAF00;
 }
+
+
+
+/* Auth form Media Queries */
 
 @media screen and (max-width: 1000px) {
   .nav-buttons {
