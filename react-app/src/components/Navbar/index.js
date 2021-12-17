@@ -11,8 +11,10 @@ const NavBar = () => {
 
   return (
     <nav id="navbar">
-      <div id="nav-logo"></div>
-      <div id="nav-logo-name">Manabu</div>
+      <div id="logo">
+        <div id="nav-logo"></div>
+        <div id="nav-logo-name">Manabu</div>
+      </div>
       <div>
         <SearchBar />
       </div>

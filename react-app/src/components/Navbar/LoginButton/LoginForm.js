@@ -26,7 +26,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form id="login-form" onSubmit={onLogin}>
+    <form className="auth-form" onSubmit={onLogin}>
       <h2>
         Log In to <span className="logo-name">Manabu</span>
       </h2>
@@ -58,7 +58,7 @@ const LoginForm = () => {
           <span class="bg"></span>
         </button>
       </div>
-      <div className="form-redirect">Already have an account?</div>
+      <div className="form-redirect">Don't have an account?</div>
     </form>
   );
 };
