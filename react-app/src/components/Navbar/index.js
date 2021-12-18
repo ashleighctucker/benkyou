@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import SearchBar from './SearchBar';
 import LoginButton from './LoginButton';
-import LogoutButton from './LogoutButton';
+import LogoutButton from './ProfileButton';
 import SignupButton from './SignupButton';
 import './navbar.css';
 
@@ -15,11 +15,11 @@ const NavBar = () => {
         <div id="nav-logo"></div>
         <div id="nav-logo-name">Manabu</div>
       </div>
-      <SearchBar />
       <div id="nav-1">
         {sessionUser ? `Hi, ${sessionUser.first_name}!` : <LoginButton />}
       </div>
       <div id="nav-2">{sessionUser ? <LogoutButton /> : <SignupButton />}</div>
+      <SearchBar />
     </header>
   );
 };

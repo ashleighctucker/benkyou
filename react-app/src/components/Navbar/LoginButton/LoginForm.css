@@ -131,19 +131,33 @@
 
 /* for navbar buttons */
 .nav-buttons {
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 90%;
   font-size: 1.1rem;
   border: none;
+  border-radius: 5px;
 }
 
-#nav-signup.nav-buttons, #nav-logout.nav-buttons {
+#nav-signup.nav-buttons {
   background-color: #226F54;
   color: #efefef;
 }
 
+#nav-profile {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: #36558F;
+  margin: 5% 0;
+}
+
+#profile-logo {
+  font-size: 3rem;
+}
+
 #nav-login.nav-buttons {
-  background-color: #FBAF00;
+  background-color: #36558F;
+  color: #efefef;
 }
 
 
@@ -152,9 +166,7 @@
 
 @media screen and (max-width: 1000px) {
   .nav-buttons {
-
     font-size: 2.5rem;
-
   }
 
   .auth-form {
