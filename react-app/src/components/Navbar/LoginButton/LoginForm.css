@@ -137,13 +137,25 @@
   border: none;
 }
 
-#nav-signup.nav-buttons, #nav-logout.nav-buttons {
+#nav-signup.nav-buttons {
   background-color: #226F54;
   color: #efefef;
 }
 
+#nav-profile.nav-buttons {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: #36558F;
+}
+
+#profile-logo {
+  font-size: 3rem;
+}
+
 #nav-login.nav-buttons {
-  background-color: #FBAF00;
+  background-color: #36558F;
+  color: #efefef;
 }
 
 

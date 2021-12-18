@@ -1,17 +1,19 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { logout } from '../../../store/session';
+import MenuList from './MenuList';
+import FaceTwoToneIcon from '@mui/icons-material/FaceTwoTone';
+import './profile.css';
+import '../LoginButton/LoginForm.css';
 
 const LogoutButton = () => {
-  const dispatch = useDispatch();
-  const onLogout = async (e) => {
-    await dispatch(logout());
-  };
-
   return (
-    <button id="nav-logout" className="nav-buttons" onClick={onLogout}>
-      Logout
-    </button>
+    <div className="dropdown">
+      <div id="nav-profile" className="nav-buttons">
+        <FaceTwoToneIcon id="profile-logo" />
+      </div>
+      <div className="dropdown-content">
+        <MenuList />
+      </div>
+    </div>
   );
 };
 
