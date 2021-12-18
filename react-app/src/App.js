@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 // components
 import NavBar from './components/Navbar';
-import NewDeckForm from './components/NewDeckForm';
+import NewDeckPage from './components/NewDeckPage';
 
 // thunks
 import { authenticate } from './store/session';
@@ -39,7 +39,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/new-deck">
-          <NewDeckForm />
+          <NewDeckPage />
         </Route>
         <Route path="/">
           <h1>Home Page</h1>

@@ -14,7 +14,7 @@ const NewDeckForm = () => {
 
   const [title, setTitle] = useState('');
   const [cover_photo_url, setCoverPhotoUrl] = useState('');
-  const [category_id, setCategoryId] = useState(catList[0].id);
+  const [category_id, setCategoryId] = useState(catList[3].id);
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();

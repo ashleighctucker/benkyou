@@ -35,7 +35,7 @@ export const addNewDeck =
   (title, cover_photo_url, category_id, user_id) => async (dispatch) => {
     if (!cover_photo_url)
       cover_photo_url =
-        'https://www.pikpng.com/pngl/m/104-1048710_png-file-svg-smile-icon-clipart.png';
+        'https://images.unsplash.com/photo-1597423244036-ef5020e83f3c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80';
 
     const response = await fetch('/api/decks/', {
       method: 'POST',
