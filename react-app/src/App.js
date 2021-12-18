@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+// components
 import NavBar from './components/Navbar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
+import NewDeckForm from './components/NewDeckForm';
 
+// thunks
 import { authenticate } from './store/session';
 import { getCategories } from './store/categories';
 import { getMyDecks } from './store/my_decks';
@@ -36,9 +38,12 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path="/new-deck">
+          <NewDeckForm />
+        </Route>
+        <Route path="/">
+          <h1>Home Page</h1>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

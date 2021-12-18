@@ -57,7 +57,7 @@ const LoginForm = () => {
       <div className="form-button-containers">
         <button type="submit" className="form-sumbit-button">
           Log In
-          <span class="bg"></span>
+          <span className="bg"></span>
         </button>
       </div>
       <div className="form-redirect">Don't have an account?</div>

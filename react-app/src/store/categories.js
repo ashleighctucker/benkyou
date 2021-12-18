@@ -30,7 +30,9 @@ const initialState = {};
 export default function categoryReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_CATEGORIES: {
-      return { ...action.list };
+      const normalCategories = {};
+      action.list.forEach((cat) => (normalCategories[cat.id] = cat));
+      return { ...normalCategories };
     }
     default:
       return state;

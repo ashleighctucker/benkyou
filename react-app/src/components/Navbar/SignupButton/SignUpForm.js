@@ -108,7 +108,7 @@ const SignUpForm = () => {
       <div className="form-button-containers">
         <button className="form-sumbit-button" type="submit">
           Sign Up
-          <span class="bg"></span>
+          <span className="bg"></span>
         </button>
       </div>
       <div className="form-redirect">Already have an account?</div>
