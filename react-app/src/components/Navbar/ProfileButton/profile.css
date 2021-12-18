@@ -9,7 +9,7 @@
   position: absolute;
   background-color: #efefef;
   min-width: 20%;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   z-index: 1;
   border-radius: 5px;
 }
@@ -17,17 +17,35 @@
 .dropdown-content a {
   float: none;
   color: black;
-  padding: 12px 16px;
+  padding: 3% 3.5%;
   text-decoration: none;
   display: block;
   text-align: left;
 }
 
-.dropdown-content a:hover {
+.dropdown-content a:hover, .dropdown-content button:hover {
   background-color: #ddd;
+  border-radius: 2px;
 }
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+
+#logout-button {
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 3% 3.5%;
+  font-family: inherit;
+  font-size: inherit;
+  display: flex;
+  align-items: center;
+}
+
+#logout-icon {
+  margin: 0 2%;
+  color: #36558F;
 }
