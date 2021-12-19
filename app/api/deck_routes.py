@@ -6,6 +6,12 @@ from .auth_routes import validation_errors_to_error_messages
 deck_routes = Blueprint('decks', __name__)
 
 
+@deck_routes.route('/<int:id>/')
+def get_full_deck_detail(id):
+    deck = Deck.query.get(int(id))
+    return deck.to_dict()
+
+
 @deck_routes.route('/', methods=["POST"])
 def create_deck():
     form = NewDeckForm()

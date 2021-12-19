@@ -1,10 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+
+// reducers
 import session from './session';
 import categoryReducer from './categories';
 import myDeckReducer from './my_decks';
 import myDeckListReducer from './my_deck_lists';
 import searchReducer from './search';
+import currentDeckReducer from './current_deck';
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +15,7 @@ const rootReducer = combineReducers({
   my_decks: myDeckReducer,
   my_deck_lists: myDeckListReducer,
   search_results: searchReducer,
+  current_deck: currentDeckReducer,
 });
 
 let enhancer;

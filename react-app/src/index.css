@@ -40,7 +40,7 @@ html, body {
 }
 
 /* main page media queries */
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1200px) {
   .content {
     grid-template-rows: 1fr 18fr;
     height: 100%;
