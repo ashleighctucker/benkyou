@@ -12,7 +12,8 @@
   grid-template-areas: 'buff links';
   grid-template-columns: 1fr 7fr;
   background-color: #e4e4e4;
-  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .sidebar-buffer {
@@ -31,10 +32,10 @@
 
 .sidebar-deck {
   display: grid;
-  grid-template-areas: 'pic name';
-  grid-template-columns: 1fr 6fr;
+  grid-template-areas: 'icon name';
+  grid-template-columns: 1fr 7fr;
   align-items: center;
-  height: 5%;
+  min-height: 5%;
   padding: 3%;
 }
 
@@ -44,11 +45,11 @@
   grid-area: name;
 }
 
-.deck-circle {
-  grid-area: pic;
-  border-radius: 50%;
-  height: 80%;
-  width: 80%;
+.deck-icon-container {
+  grid-area: icon;
   margin-right: 3%;
-  background-repeat: no-repeat;
+}
+
+.deck-icon {
+  color: #CB904D;
 }

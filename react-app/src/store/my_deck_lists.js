@@ -30,7 +30,9 @@ const initialState = {};
 export default function myDeckListReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_MY_DECK_LISTS: {
-      return { ...action.list };
+      const normalDeckLists = {};
+      action.list.forEach((list) => (normalDeckLists[list.id] = list));
+      return { ...normalDeckLists };
     }
     default:
       return state;
