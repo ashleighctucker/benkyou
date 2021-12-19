@@ -47,6 +47,15 @@ class Deck(db.Model):
         else:
             return {'errors': f"Could not find {user.id} in mastered list"}
 
+    def simple_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'cover_photo_url': self.cover_photo_url,
+            'category_id': self.category_id,
+            'created_on': self.created_on,
+        }
+
     def to_dict(self):
         cat = str(self.category.title)
         owner = str(self.creator.user_name)
@@ -102,6 +111,13 @@ class DeckList(db.Model):
             return self.to_dict()
         else:
             return {'errors': f"Could not find deck {deck.id} in list"}
+
+    def simple_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'cover_photo_url': self.cover_photo_url,
+        }
 
     def to_dict(self):
         owner = str(self.creator.user_name)

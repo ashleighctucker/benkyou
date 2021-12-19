@@ -1,6 +1,48 @@
-/* TODO Add site wide styles */
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #EFEFEF;
   margin: 0;
+
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.content {
+  display: grid;
+  grid-template-areas: 'nav''main';
+  grid-template-rows: 1fr 10fr;
+}
+
+#nav-grid {
+  grid-area: nav;
+}
+
+/* Give all pages in app this class */
+.main-grid {
+  grid-area: main;
+}
+
+.footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+/* main page media queries */
+@media screen and (max-width: 1400px) {
+  .content {
+    grid-template-rows: 1fr 18fr;
+    height: 100%;
+  }
 }

@@ -1,14 +1,14 @@
 import React from 'react';
 import MenuList from './MenuList';
-import FaceTwoToneIcon from '@mui/icons-material/FaceTwoTone';
-import './profile.css';
-import '../LoginButton/LoginForm.css';
+import MenuIcon from '@mui/icons-material/Menu';
+import './ProfileDropdown.css';
+import '../LoginButtonModal/LoginForm.css';
 
-const ProfileButton = () => {
+const ProfileDropdown = () => {
   return (
     <div className="dropdown">
       <div id="nav-profile">
-        <FaceTwoToneIcon id="profile-logo" />
+        <MenuIcon id="profile-logo" />
       </div>
       <div className="dropdown-content">
         <MenuList />
@@ -17,4 +17,4 @@ const ProfileButton = () => {
   );
 };
 
-export default ProfileButton;
+export default ProfileDropdown;

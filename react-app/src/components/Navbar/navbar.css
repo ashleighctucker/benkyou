@@ -5,7 +5,7 @@
   background-color: #c2c2c2;
 }
 
-/* logo styles */
+/* logo nav styles */
 #logo {
   display: flex;
   flex-direction: row;
@@ -18,18 +18,17 @@
   background: url('./logo.png');
   background-repeat: no-repeat;
   background-size: 95%;
-  height: 100%;
-  width: 20%;
+  height: 80%;
+  width: 15%;
   border-radius: 50%;
 }
 
 #nav-logo-name {
-  font-size: 350%;
+  font-size: 275%;
   font-style: italic;
 }
 
-
-/* Search styles */
+/* Search bar nav styles */
 #search-bar {
   background-color: inherit;
   width: 55%;
@@ -39,7 +38,7 @@
 }
 
 #search-nav {
-  color: #226F54;
+  color: #157A6E;
 }
 
 #search {
@@ -67,28 +66,53 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  font-size: 1.3rem;
+  font-size: 100%;
 }
 
 
+#nav-2 p {
+  width: 100%;
+  word-wrap: break-word;
+}
+
+/* for navbar buttons */
+.nav-buttons {
+  height: 80%;
+  width: 90%;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+#nav-signup.nav-buttons {
+  background-color: #CB904D;
+  color: #efefef;
+}
+
+
+#nav-login.nav-buttons {
+  background-color: #157A6E;
+  color: #efefef;
+}
+
 /* Nav bar media queries */
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1400px) {
   #nav-logo, #search-bar {
     display: none;
   }
 
   #logo {
-    width: 50%;
+    width: 30%;
   }
 
   #nav-logo-name {
-    font-size: 550%;
+    font-size: 250%;
     font-style: italic;
   }
 
   #nav-1, #nav-2 {
-    width: 25%;
-    font-size: 2rem;
+    width: 30%;
+    font-size: 1.5rem;
   }
 }

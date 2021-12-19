@@ -1,3 +1,15 @@
+#profile-logo {
+  font-size: 2.5rem;
+}
+
+#nav-profile {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: #CB904D;
+  margin: 8% 0;
+}
+
 .dropdown {
   height: 100%;
   width: 100%;
@@ -8,7 +20,7 @@
   display: none;
   position: absolute;
   background-color: #efefef;
-  min-width: 20%;
+  min-width: 15%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   z-index: 1;
   border-radius: 5px;
@@ -33,7 +45,6 @@
   display: block;
 }
 
-
 #logout-button {
   border: none;
   width: 100%;
@@ -47,5 +58,5 @@
 
 #logout-icon {
   margin: 0 2%;
-  color: #36558F;
+  color: #CB904D;
 }

@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+// components
 import NavBar from './components/Navbar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
+import Footer from './components/Footer';
+import NewDeckPage from './components/NewDeckPage';
 
+// thunks
 import { authenticate } from './store/session';
 import { getCategories } from './store/categories';
 import { getMyDecks } from './store/my_decks';
@@ -34,12 +37,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-      </Switch>
+      <div className="content">
+        <NavBar id="nav-grid" />
+        <Switch>
+          <Route path="/new-deck">
+            <NewDeckPage className="main-grid" />
+          </Route>
+          <Route path="/">
+            <h1 className="main-grid">Home Page</h1>
+          </Route>
+        </Switch>
+      </div>
+      <Footer className="footer" />
     </BrowserRouter>
   );
 }

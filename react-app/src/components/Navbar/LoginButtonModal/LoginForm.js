@@ -28,7 +28,7 @@ const LoginForm = () => {
   return (
     <form className="auth-form" onSubmit={onLogin}>
       <h1>
-        Log In to <span className="logo-name">Manabu</span>
+        Log In to <span className="logo-name">benkyou</span>
       </h1>
       <div className="form-input-containers">
         <label htmlFor="email">Email</label>
@@ -55,9 +55,9 @@ const LoginForm = () => {
         <p className="error-display">{errors['password']}</p>
       </div>
       <div className="form-button-containers">
-        <button type="submit" className="form-sumbit-button">
+        <button type="submit" className="auth-form-sumbit-button">
           Log In
-          <span class="bg"></span>
+          <span className="bg"></span>
         </button>
       </div>
       <div className="form-redirect">Don't have an account?</div>
