@@ -1,6 +1,6 @@
 import React from 'react';
 import SideBar from '../SideBar';
-import NewDeckForm from '../NewDeckForm';
+import NewDeckForm from './NewDeckForm';
 
 const NewDeckPage = () => {
   return (

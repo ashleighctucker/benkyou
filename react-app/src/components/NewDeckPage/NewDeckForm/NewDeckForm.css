@@ -39,3 +39,17 @@
   left: 0px;
   border-radius: 0px;
 }
+
+.dropdown-content option {
+  float: none;
+  color: black;
+  padding: 3% 3.5%;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content option:hover {
+  background-color: #ddd;
+  border-radius: 2px;
+}

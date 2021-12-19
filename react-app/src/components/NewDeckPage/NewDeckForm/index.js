@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { addNewDeck } from '../../../store/my_decks';
-import './NewDeckForm.css'
+import './NewDeckForm.css';
+import '../../Navbar/ProfileDropdown/';
 
 const NewDeckForm = () => {
   const categories = useSelector((state) => state.categories);
@@ -63,6 +64,7 @@ const NewDeckForm = () => {
       <div className="form-input-containers">
         <label htmlFor="category_id">Category</label>
         <select
+          className="dropdown"
           name="category_id"
           value={category_id}
           onChange={(e) => setCategoryId(e.target.value)}
