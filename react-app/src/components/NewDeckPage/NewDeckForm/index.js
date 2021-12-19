@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { addNewDeck } from '../../store/my_decks';
+import { addNewDeck } from '../../../store/my_decks';
 import './NewDeckForm.css'
 
 const NewDeckForm = () => {

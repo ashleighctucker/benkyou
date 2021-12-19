@@ -1,10 +1,10 @@
 import React from 'react';
 import MenuList from './MenuList';
 import FaceTwoToneIcon from '@mui/icons-material/FaceTwoTone';
-import './profile.css';
-import '../LoginButton/LoginForm.css';
+import './ProfileDropdown.css';
+import '../LoginButtonModal/LoginForm.css';
 
-const ProfileButton = () => {
+const ProfileDropdown = () => {
   return (
     <div className="dropdown">
       <div id="nav-profile">
@@ -17,4 +17,4 @@ const ProfileButton = () => {
   );
 };
 
-export default ProfileButton;
+export default ProfileDropdown;

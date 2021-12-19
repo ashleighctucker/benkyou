@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+
 import { Modal } from '../../../context/Modal';
 import LoginForm from './LoginForm';
 
-const LoginButton = () => {
+const LoginButtonModal = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   return (
@@ -25,4 +26,4 @@ const LoginButton = () => {
   );
 };
 
-export default LoginButton;
+export default LoginButtonModal;

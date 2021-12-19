@@ -55,8 +55,8 @@ const LoginForm = () => {
         <p className="error-display">{errors['password']}</p>
       </div>
       <div className="form-button-containers">
-        <button type="submit" className="form-sumbit-button">
-          Log In 
+        <button type="submit" className="auth-form-sumbit-button">
+          Log In
           <span className="bg"></span>
         </button>
       </div>

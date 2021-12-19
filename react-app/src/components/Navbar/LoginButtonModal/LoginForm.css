@@ -43,15 +43,14 @@
   margin: 3%;
 }
 
-/* form-submit-buttons */
-.form-sumbit-button {
+/* auth-form-submit-buttons, animation */
+.auth-form-sumbit-button {
   color: black;
   text-decoration: none;
   font-family: sans-serif;
   font-size: 1.1rem;
   position: relative;
   padding: 10px 50px 10px 20px;
-
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
@@ -62,7 +61,7 @@
   border: none;
 }
 
-.form-sumbit-button .bg {
+.auth-form-sumbit-button .bg {
   background: #157A6E;
   border-radius: 2px;
   width: 30px;
@@ -77,12 +76,12 @@
   transition: all 0.3s;
 }
 
-.form-sumbit-button:hover {
+.auth-form-sumbit-button:hover {
   padding-right: 20px;
   color: #fff;
 }
 
-.form-sumbit-button:hover .bg {
+.auth-form-sumbit-button:hover .bg {
   height: 100%;
   width: 100%;
   -webkit-transform: translate(0, -50%);
@@ -90,7 +89,7 @@
   transform: translate(0, -50%);
 }
 
-.form-sumbit-button .bg:before, .form-sumbit-button .bg:after {
+.auth-form-sumbit-button .bg:before, .auth-form-sumbit-button .bg:after {
   content: '';
   height: 2px;
   width: 10px;
@@ -102,64 +101,32 @@
   transition: all 0.3s;
 }
 
-.form-sumbit-button .bg:before {
+.auth-form-sumbit-button .bg:before {
   bottom: 3px;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.form-sumbit-button .bg:after {
+.auth-form-sumbit-button .bg:after {
   top: 3px;
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 
-.form-sumbit-button:hover .bg:before,
+.auth-form-sumbit-button:hover .bg:before,
 .form-sumbit-button:hover .bg:after {
   right: 0;
 }
 
-.form-sumbit-button:hover .bg:before {
+.auth-form-sumbit-button:hover .bg:before {
   bottom: 6px;
 }
 
-.form-sumbit-button:hover .bg:after {
+.auth-form-sumbit-button:hover .bg:after {
   top: 6px;
 }
-
-/* for navbar buttons */
-.nav-buttons {
-  height: 80%;
-  width: 90%;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 5px;
-}
-
-#nav-signup.nav-buttons {
-  background-color: #157A6E;
-  color: #efefef;
-}
-
-#nav-profile {
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  color: #36558F;
-  margin: 5% 0;
-}
-
-#profile-logo {
-  font-size: 3rem;
-}
-
-#nav-login.nav-buttons {
-  background-color: #36558F;
-  color: #efefef;
-}
-
 
 
 /* Auth form Media Queries */

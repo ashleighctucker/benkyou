@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../../store/session';
-import '../LoginButton/LoginForm.css';
+import '../LoginButtonModal/LoginForm.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState({});
@@ -106,7 +106,7 @@ const SignUpForm = () => {
         <p className="error-display">{errors['repeat_password']}</p>
       </div>
       <div className="form-button-containers">
-        <button className="form-sumbit-button" type="submit">
+        <button className="auth-form-sumbit-button" type="submit">
           Sign Up
           <span className="bg"></span>
         </button>

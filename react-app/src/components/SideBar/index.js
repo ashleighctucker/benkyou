@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import './Sidebar.css';
+
 const SideBar = () => {
   const my_decks = useSelector((state) => state.my_decks);
 
@@ -38,7 +40,9 @@ const SideBar = () => {
     <div className="side">
       <div id="sidebar-buffer"></div>
       <div id="sidebar">
-        <div>My Decks & Lists</div>{my_decks ? deck_links() : null}</div>
+        <div>My Decks & Lists</div>
+        {my_decks ? deck_links() : null}
+      </div>
     </div>
   );
 };

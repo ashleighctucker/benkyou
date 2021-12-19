@@ -1,9 +1,11 @@
+/* main page grid setup */
 .main-page-grid-container {
   display: grid;
   grid-template-areas: 'side main';
   grid-template-columns: 1fr 4fr;
 }
 
+/* sidebar styles */
 .side {
   grid-area: side;
   display: grid;
@@ -35,7 +37,6 @@
   height: 5%;
   padding: 3%;
 }
-
 
 .sidebar-deck-link {
   text-decoration: none;

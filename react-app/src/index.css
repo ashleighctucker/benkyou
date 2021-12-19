@@ -2,6 +2,11 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #EFEFEF;
   margin: 0;
+
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 html, body {
@@ -24,6 +29,7 @@ html, body {
   grid-area: nav;
 }
 
+/* Give all pages in app this class */
 .main-grid {
   grid-area: main;
 }

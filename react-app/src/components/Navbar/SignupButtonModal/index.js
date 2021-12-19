@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
 import SignUpForm from './SignUpForm';
 
-const SignupButton = () => {
+const SignupButtonModal = () => {
   const [showSignupModal, setShowSignupModal] = useState(false);
 
   return (
@@ -25,4 +25,4 @@ const SignupButton = () => {
   );
 };
 
-export default SignupButton;
+export default SignupButtonModal;

@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+
 import SearchBar from './SearchBar';
-import LoginButton from './LoginButton';
-import LogoutButton from './ProfileButton';
-import SignupButton from './SignupButton';
-import './navbar.css';
+import LoginButtonModal from './LoginButtonModal';
+import ProfileDropdown from './ProfileDropdown';
+import SignupButtonModal from './SignupButtonModal';
+
+import './Navbar.css';
 
 const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -16,9 +18,11 @@ const NavBar = () => {
         <div id="nav-logo-name">勉強 benkyou</div>
       </div>
       <div id="nav-1">
-        {sessionUser ? `Hi, ${sessionUser.first_name}!` : <LoginButton />}
+        {sessionUser ? `Hi, ${sessionUser.first_name}!` : <LoginButtonModal />}
       </div>
-      <div id="nav-2">{sessionUser ? <LogoutButton /> : <SignupButton />}</div>
+      <div id="nav-2">
+        {sessionUser ? <ProfileDropdown /> : <SignupButtonModal />}
+      </div>
       <SearchBar />
     </header>
   );
