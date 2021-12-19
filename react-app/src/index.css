@@ -14,6 +14,20 @@ html, body {
   grid-template-rows: 1fr auto;
 }
 
+.content {
+  display: grid;
+  grid-template-areas: 'nav''main';
+  grid-template-rows: 1fr 10fr;
+}
+
+#nav-grid {
+  grid-area: nav;
+}
+
+.main-grid {
+  grid-area: main;
+}
+
 .footer {
   grid-row-start: 2;
   grid-row-end: 3;

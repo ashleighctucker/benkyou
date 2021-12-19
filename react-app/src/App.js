@@ -37,18 +37,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div clasName="content">
-        <NavBar />
+      <div className="content">
+        <NavBar id="nav-grid" />
         <Switch>
           <Route path="/new-deck">
-            <NewDeckPage />
+            <NewDeckPage className="main-grid" />
           </Route>
           <Route path="/">
-            <h1>Home Page</h1>
+            <h1 className="main-grid">Home Page</h1>
           </Route>
         </Switch>
       </div>
-      <Footer clasName="footer" />
+      <Footer className="footer" />
     </BrowserRouter>
   );
 }
