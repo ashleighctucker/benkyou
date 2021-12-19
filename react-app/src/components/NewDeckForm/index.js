@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { addNewDeck } from '../../store/my_decks';
+import './NewDeckForm.css'
 
 const NewDeckForm = () => {
   const categories = useSelector((state) => state.categories);
@@ -33,7 +34,7 @@ const NewDeckForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="main-form" onSubmit={handleSubmit}>
       <h1>Create a New Study Deck</h1>
       <div className="form-input-containers">
         <label htmlFor="title">Title</label>

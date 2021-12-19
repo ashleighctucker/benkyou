@@ -18,13 +18,13 @@
   background: url('./logo.png');
   background-repeat: no-repeat;
   background-size: 95%;
-  height: 100%;
-  width: 20%;
+  height: 80%;
+  width: 15%;
   border-radius: 50%;
 }
 
 #nav-logo-name {
-  font-size: 350%;
+  font-size: 275%;
   font-style: italic;
 }
 
@@ -39,7 +39,7 @@
 }
 
 #search-nav {
-  color: #226F54;
+  color: #157A6E;
 }
 
 #search {

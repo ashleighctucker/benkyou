@@ -47,7 +47,7 @@ const SignUpForm = () => {
   return (
     <form className="auth-form" onSubmit={onSignUp}>
       <h1>
-        Sign Up for <span className="logo-name">Manabu</span>
+        Sign Up for <span className="logo-name">benkyou</span>
       </h1>
       <div className="form-input-containers">
         <label htmlFor="first_name">First Name</label>

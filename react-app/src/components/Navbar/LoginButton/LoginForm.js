@@ -28,7 +28,7 @@ const LoginForm = () => {
   return (
     <form className="auth-form" onSubmit={onLogin}>
       <h1>
-        Log In to <span className="logo-name">Manabu</span>
+        Log In to <span className="logo-name">benkyou</span>
       </h1>
       <div className="form-input-containers">
         <label htmlFor="email">Email</label>
@@ -56,7 +56,7 @@ const LoginForm = () => {
       </div>
       <div className="form-button-containers">
         <button type="submit" className="form-sumbit-button">
-          Log In
+          Log In 
           <span className="bg"></span>
         </button>
       </div>

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 // components
 import NavBar from './components/Navbar';
+import Footer from './components/Footer';
 import NewDeckPage from './components/NewDeckPage';
 
 // thunks
@@ -36,15 +37,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path="/new-deck">
-          <NewDeckPage />
-        </Route>
-        <Route path="/">
-          <h1>Home Page</h1>
-        </Route>
-      </Switch>
+      <div clasName="content">
+        <NavBar />
+        <Switch>
+          <Route path="/new-deck">
+            <NewDeckPage />
+          </Route>
+          <Route path="/">
+            <h1>Home Page</h1>
+          </Route>
+        </Switch>
+      </div>
+      <Footer clasName="footer" />
     </BrowserRouter>
   );
 }

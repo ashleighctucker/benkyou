@@ -10,6 +10,7 @@
   grid-template-areas: 'buff links';
   grid-template-columns: 1fr 7fr;
   background-color: #e4e4e4;
+  height: 100%;
 }
 
 .sidebar-buffer {
@@ -31,7 +32,7 @@
   grid-template-areas: 'pic name';
   grid-template-columns: 1fr 6fr;
   align-items: center;
-  height: 7%;
+  height: 5%;
   padding: 3%;
 }
 

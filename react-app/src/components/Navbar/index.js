@@ -13,7 +13,7 @@ const NavBar = () => {
     <header id="navbar">
       <div id="logo">
         <div id="nav-logo"></div>
-        <div id="nav-logo-name">Manabu</div>
+        <div id="nav-logo-name">勉強 benkyou</div>
       </div>
       <div id="nav-1">
         {sessionUser ? `Hi, ${sessionUser.first_name}!` : <LoginButton />}
