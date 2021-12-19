@@ -97,22 +97,22 @@
 
 /* Nav bar media queries */
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1400px) {
   #nav-logo, #search-bar {
     display: none;
   }
 
   #logo {
-    width: 50%;
+    width: 30%;
   }
 
   #nav-logo-name {
-    font-size: 550%;
+    font-size: 250%;
     font-style: italic;
   }
 
   #nav-1, #nav-2 {
-    width: 25%;
-    font-size: 2rem;
+    width: 30%;
+    font-size: 1.5rem;
   }
 }

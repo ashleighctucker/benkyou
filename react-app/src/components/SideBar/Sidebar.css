@@ -53,3 +53,14 @@
 .deck-icon {
   color: #CB904D;
 }
+
+/* side bar media queries */
+@media screen and (max-width: 1400px) {
+  .main-page-grid-container {
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .sidebar-deck {
+    min-height: 3.5%;
+  }
+}

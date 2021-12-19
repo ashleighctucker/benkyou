@@ -131,7 +131,7 @@
 
 /* Auth form Media Queries */
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1400px) {
   .nav-buttons {
     font-size: 2.5rem;
   }
