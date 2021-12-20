@@ -6,7 +6,7 @@ const EditDeckModal = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   return (
     <>
-      <button onClick={() => setShowEditModal(true)}>Edit Deck</button>
+      <button onClick={() => setShowEditModal(true)}>Edit Deck Details</button>
       {showEditModal && (
         <Modal onClose={() => setShowEditModal(false)}>
           <EditDeckForm close={() => setShowEditModal(false)} />

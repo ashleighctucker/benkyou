@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 
 import { editDeck } from '../../../../store/my_decks';
+import { getDeck } from '../../../../store/current_deck';
 import './EditDeckForm.css';
 
 const EditDeckForm = ({ close }) => {
@@ -18,7 +19,6 @@ const EditDeckForm = ({ close }) => {
     current_deck.cover_photo_url
   );
   const [category_id, setCategoryId] = useState(current_deck.category_id);
-
 
   const [editImage, setEditImage] = useState(false);
   const [addImage, setAddImage] = useState(false);
@@ -59,6 +59,7 @@ const EditDeckForm = ({ close }) => {
     if (data.errors) {
       return setErrors(data.errors);
     }
+    await dispatch(getDeck(current_deck.id));
     close();
   };
 
@@ -102,6 +103,7 @@ const EditDeckForm = ({ close }) => {
           value={addImage}
           onChange={() => (addImage ? setAddImage(false) : setAddImage(true))}
         />
+        <p className="error-display">{errors['edit_image']}</p>
       </div>
     );
   };
@@ -119,6 +121,7 @@ const EditDeckForm = ({ close }) => {
             editImage ? setEditImage(false) : setEditImage(true)
           }
         />
+        <p className="error-display">{errors['has_image']}</p>
       </div>
     );
   };
@@ -139,7 +142,7 @@ const EditDeckForm = ({ close }) => {
         <p className="error-display">{errors['title']}</p>
       </div>
       {current_deck.has_image ? editDeckCheck() : addDeckCheck()}
-      {editImage ? imageInput() : null}
+      {editImage || addImage ? imageInput() : null}
       <div className="form-input-containers">
         <label htmlFor="category_id">Category</label>
         <select
