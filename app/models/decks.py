@@ -8,6 +8,7 @@ class Deck(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(256), nullable=False)
     cover_photo_url = db.Column(db.String(256))
+    has_image = db.Column(db.Boolean, default=False)
     category_id = db.Column(db.Integer, db.ForeignKey(
         "categories.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(
@@ -63,6 +64,7 @@ class Deck(db.Model):
         return {
             'id': self.id,
             'title': self.title,
+            'has_image': self.has_image,
             'cover_photo_url': self.cover_photo_url,
             'category': cat,
             'category_id': self.category_id,

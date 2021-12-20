@@ -1,0 +1,72 @@
+/* page setup */
+.deck-view-container {
+  display: grid;
+  grid-template-areas: 'deck''cards';
+  grid-template-rows: 1fr 2fr;
+}
+
+/* deck info setup */
+.deck-info-container {
+  grid-area: deck;
+  display: grid;
+  grid-template-areas: 'title cat''by by';
+  grid-template-rows: 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
+}
+
+.deck-title {
+  grid-area: title;
+  font-size: 200%;
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.deck-cover {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  margin-right: 2%;
+}
+
+.deck-category {
+  text-align: center;
+  font-size: 50%;
+}
+
+.deck-buttons {
+  grid-area: cat;
+}
+
+.deck-maker {
+  grid-area: by;
+}
+
+.deck-buttons, .deck-maker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.deck-view-button {
+  border: none;
+  padding: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #c2c2c2;
+  color: #157A6E;
+  margin: 2%;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+/* cards styles */
+.card-list-container {
+  grid-area: cards;
+}

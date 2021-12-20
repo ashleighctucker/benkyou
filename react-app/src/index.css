@@ -22,7 +22,7 @@ html, body {
 .content {
   display: grid;
   grid-template-areas: 'nav''main';
-  grid-template-rows: 1fr 10fr;
+  grid-template-rows: auto 1fr;
 }
 
 #nav-grid {
@@ -40,7 +40,7 @@ html, body {
 }
 
 /* main page media queries */
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1300px) {
   .content {
     grid-template-rows: 1fr 18fr;
     height: 100%;

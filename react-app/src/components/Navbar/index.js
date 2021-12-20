@@ -6,7 +6,7 @@ import LoginButtonModal from './LoginButtonModal';
 import ProfileDropdown from './ProfileDropdown';
 import SignupButtonModal from './SignupButtonModal';
 
-import './Navbar.css';
+import './Navbar.css'
 
 const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);

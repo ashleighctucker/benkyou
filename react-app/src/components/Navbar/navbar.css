@@ -17,15 +17,16 @@
 #nav-logo {
   background: url('./logo.png');
   background-repeat: no-repeat;
-  background-size: 95%;
-  height: 80%;
-  width: 15%;
+  background-size: 100%;
+  height: 4rem;
+  width: 4rem;
   border-radius: 50%;
 }
 
 #nav-logo-name {
   font-size: 275%;
   font-style: italic;
+  white-space: nowrap;
 }
 
 /* Search bar nav styles */
@@ -97,7 +98,7 @@
 
 /* Nav bar media queries */
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1300px) {
   #nav-logo, #search-bar {
     display: none;
   }
