@@ -55,7 +55,6 @@ const EditDeckForm = ({ close }) => {
     formData.append('edit_image', editImage);
     formData.append('add_image', addImage);
     const data = await dispatch(editDeck(formData));
-    
     if (data.errors) {
       return setErrors(data.errors);
     }
