@@ -34,7 +34,6 @@ const getDefs = async () => {
     result = await client.define(words[i]);
     cards[i] = result;
   }
-  console.log(cards);
   return cards;
 };
 getDefs()

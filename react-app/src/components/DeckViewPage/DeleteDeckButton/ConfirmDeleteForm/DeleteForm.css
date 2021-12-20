@@ -1,0 +1,33 @@
+#delete-button {
+  background-color: #c2c2c2;
+  border: none;
+  border-radius: 2px;
+  padding: 2% 4%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  color: #efefef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #B0413E;
+}
+
+#delete-message {
+  color: #B0413E;
+  font-size: 80%;
+  margin: 2% 0;
+}
+
+#cancel-delete {
+  background-color: #c2c2c2;
+  border: none;
+  border-radius: 2px;
+  padding: 2% 2%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  color: #efefef;
+  font-size: 100%;
+  color: #157A6E;
+}

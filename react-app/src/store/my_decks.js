@@ -1,6 +1,7 @@
 const LOAD_MY_DECKS = 'decks/LOAD_MY_DECKS';
 const ADD_DECK = 'decks/ADD_DECK';
 const EDIT_DECK = 'decks/EDIT_DECK';
+const REMOVE_DECK = 'decks/REMOVE_DECK';
 
 const load = (list) => ({
   type: LOAD_MY_DECKS,
@@ -15,6 +16,11 @@ const add = (deck) => ({
 const update = (deck) => ({
   type: EDIT_DECK,
   deck,
+});
+
+const remove = (id) => ({
+  type: REMOVE_DECK,
+  id,
 });
 
 export const getMyDecks = (user_id) => async (dispatch) => {
@@ -57,7 +63,7 @@ export const addNewDeck = (formData) => async (dispatch) => {
 };
 
 export const editDeck = (formData) => async (dispatch) => {
-  console.log('edit');
+  
   const response = await fetch(`/api/decks/${formData.get('deck_id')}/`, {
     method: 'PUT',
     body: formData,
@@ -71,6 +77,19 @@ export const editDeck = (formData) => async (dispatch) => {
     if (data.errors) {
       return data;
     }
+  } else {
+    return ['An error occurred.'];
+  }
+};
+
+export const deleteDeck = (id) => async (dispatch) => {
+  const response = await fetch(`/api/decks/${id}/`, {
+    method: 'DELETE',
+  });
+  if (response.ok) {
+    const message = await response.json();
+    await dispatch(remove(id));
+    return message;
   } else {
     return ['An error occurred.'];
   }
@@ -92,6 +111,11 @@ export default function myDeckReducer(state = initialState, action) {
     case EDIT_DECK: {
       newState = { ...state };
       newState[action.deck.id] = action.deck;
+      return newState;
+    }
+    case REMOVE_DECK: {
+      newState = { ...state };
+      delete newState[action.id];
       return newState;
     }
     default:

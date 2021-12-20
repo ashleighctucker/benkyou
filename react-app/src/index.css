@@ -16,13 +16,13 @@ html, body {
 #root {
   min-height: 100%;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 1fr auto;
 }
 
 .content {
   display: grid;
   grid-template-areas: 'nav''main';
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr;
 }
 
 #nav-grid {

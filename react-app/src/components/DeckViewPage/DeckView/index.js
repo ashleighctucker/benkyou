@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getDeck } from '../../../store/current_deck';
-import EditDeckModal from '../EditDeckModal';
+import EditDeckModal from '../EditDeckButton';
+import DeleteDeckModal from '../DeleteDeckButton';
 import './DeckView.css';
 
 const DeckView = () => {
@@ -45,14 +46,17 @@ const DeckView = () => {
           </div>
         </div>
         <div className="deck-buttons">
-          <EditDeckModal className="deck-view-button" />
-          <button>Add Card</button>
+          <EditDeckModal />
+          <DeleteDeckModal />
         </div>
         <div className="deck-maker">
           <p>
             Created by: {deck.creator} on{'  '}
             {new Date(deck.created_on).toDateString()}
           </p>
+          <div>
+            <button >Add Card</button>
+          </div>
         </div>
       </div>
       <div className="card-list-container"></div>

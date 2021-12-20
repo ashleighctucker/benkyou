@@ -1,12 +1,13 @@
 .modal-buttons {
-  background-color: #5D2E46;
+  background-color: #c2c2c2;
   border: none;
   border-radius: 2px;
-  padding: 3% 5%;
+  padding: 15% 15%;
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
-  color: #efefef;
+  color: #157A6E;
+  white-space: nowrap;
 }
 
 .modal-form {
@@ -14,4 +15,5 @@
   flex-direction: column;
   align-items: center;
   width: 40vw;
+  margin: 5% 0;
 }
