@@ -45,7 +45,7 @@ function App() {
             <NewDeckPage className="main-grid" />
           </Route>
           <Route path="/decks/:deckId">
-            <DeckViewPage />
+            <DeckViewPage className="main-grid" />
           </Route>
           <Route path="/">
             <h1 className="main-grid">Home Page</h1>

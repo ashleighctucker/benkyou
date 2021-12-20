@@ -63,7 +63,6 @@ export const addNewDeck = (formData) => async (dispatch) => {
 };
 
 export const editDeck = (formData) => async (dispatch) => {
-  
   const response = await fetch(`/api/decks/${formData.get('deck_id')}/`, {
     method: 'PUT',
     body: formData,

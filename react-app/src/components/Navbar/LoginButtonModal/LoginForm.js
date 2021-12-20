@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../store/session';
+import { getMyDecks } from '../../../store/my_decks';
 import './LoginForm.css';
 
 const LoginForm = () => {
@@ -12,9 +13,10 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
+    if (data.errors) {
+      setErrors(data.errors);
     }
+    await dispatch(getMyDecks(data));
   };
 
   const updateEmail = (e) => {
