@@ -16,10 +16,13 @@ class NewDeckForm(FlaskForm):
     cover_photo_url = FileField('cover photo')
     category_id = IntegerField('category id', validators=[DataRequired()])
     user_id = IntegerField('user id', validators=[DataRequired()])
-    has_image = BooleanField('has image', validators=[])
+    has_image = BooleanField('has image')
 
 
 class EditDeckForm(FlaskForm):
     title = StringField('title', validators=[DataRequired(), check_length])
-    cover_photo_url = FileField('cover photo',)
+    cover_photo_url = FileField('cover photo')
     category_id = IntegerField('category id', validators=[DataRequired()])
+    has_image = BooleanField('has image')
+    edit_image = BooleanField('edit image')
+    add_image = BooleanField('add image')

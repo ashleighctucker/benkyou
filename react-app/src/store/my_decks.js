@@ -1,5 +1,6 @@
 const LOAD_MY_DECKS = 'decks/LOAD_MY_DECKS';
 const ADD_DECK = 'decks/ADD_DECK';
+const EDIT_DECK = 'decks/EDIT_DECK';
 
 const load = (list) => ({
   type: LOAD_MY_DECKS,
@@ -8,6 +9,11 @@ const load = (list) => ({
 
 const add = (deck) => ({
   type: ADD_DECK,
+  deck,
+});
+
+const update = (deck) => ({
+  type: EDIT_DECK,
   deck,
 });
 
@@ -50,9 +56,30 @@ export const addNewDeck = (formData) => async (dispatch) => {
   }
 };
 
+export const editDeck = (formData) => async (dispatch) => {
+  console.log('edit');
+  const response = await fetch(`/api/decks/${formData.get('deck_id')}/`, {
+    method: 'PUT',
+    body: formData,
+  });
+  if (response.ok) {
+    const deck = await response.json();
+    dispatch(update(deck));
+    return +deck.id;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ['An error occurred.'];
+  }
+};
+
 const initialState = {};
 
 export default function myDeckReducer(state = initialState, action) {
+  let newState;
   switch (action.type) {
     case LOAD_MY_DECKS: {
       const normalDecks = {};
@@ -61,6 +88,11 @@ export default function myDeckReducer(state = initialState, action) {
     }
     case ADD_DECK: {
       return { ...state, [action.deck.id]: action.deck };
+    }
+    case EDIT_DECK: {
+      newState = { ...state };
+      newState[action.deck.id] = action.deck;
+      return newState;
     }
     default:
       return state;

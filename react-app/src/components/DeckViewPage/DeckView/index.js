@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getDeck } from '../../../store/current_deck';
+import EditDeckModal from '../EditDeckModal';
 import './DeckView.css';
 
 const DeckView = () => {
@@ -22,10 +23,30 @@ const DeckView = () => {
     <div className="deck-view-container">
       <div className="deck-info-container">
         <div className="deck-title">
-          <p>{deck.title}</p>
+          {deck.has_image ? (
+            <div
+              className="deck-cover"
+              style={{
+                backgroundImage: `url(${deck.cover_photo_url})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+              }}
+            />
+          ) : null}
+          <div>
+            {deck.title}
+            <p className="deck-category">
+              Category:
+              <span style={{ color: `#${deckCat?.color_hex}` }}>
+                {'  '}
+                {deck.category}
+              </span>
+            </p>
+          </div>
         </div>
-        <div className="deck-cat">
-          <p> Category: <span style={{ color: `#${deckCat?.color_hex}` }}>{deck.category}</span></p>
+        <div className="deck-buttons">
+          <EditDeckModal className="deck-view-button" />
+          <button>Add Card</button>
         </div>
         <div className="deck-maker">
           <p>

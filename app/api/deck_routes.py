@@ -34,15 +34,13 @@ def create_deck():
         upload = upload_file_to_s3(image)
 
         if "url" not in upload:
-            # if the dictionary doesn't have a url key
-            # it means that there was an error when we tried to upload
-            # so we send back that error message
             return upload, 400
 
         url = upload["url"]
+
     if form.validate_on_submit():
         newDeck = Deck(title=form.data['title'], cover_photo_url=url,
-                       category_id=form.data['category_id'], user_id=form.data['user_id'])
+                       category_id=form.data['category_id'], user_id=form.data['user_id'], has_image=form.data['has_image'])
         db.session.add(newDeck)
         db.session.commit()
         return newDeck.to_dict()
@@ -55,10 +53,32 @@ def edit_deck(id):
     form = EditDeckForm()
     deckToEdit = Deck.query.get(int(id))
     form['csrf_token'].data = request.cookies['csrf_token']
+    url = 'No Photo'
+
+    if form.data['edit_image'] or form.data['add_image']:
+        if "cover_photo_url" not in form.data:
+            return {"errors": "image required"}, 400
+
+        image = form.data["cover_photo_url"]
+
+        if not allowed_file(image.filename):
+            return {"errors": "file type not permitted"}, 400
+
+        image.filename = get_unique_filename(image.filename)
+
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload["url"]
     if form.validate_on_submit():
         deckToEdit.title = form.data['title']
-        deckToEdit.cover_photo_url = form.data['cover_photo_url']
+        if form.data['edit_image'] or form.data['add_image']:
+            deckToEdit.cover_photo_url = url
         deckToEdit.category_id = form.data['category_id']
+        if form.data['edit_image'] or form.data['add_image']:
+            deckToEdit.has_image = True
         db.session.commit()
         return deckToEdit.to_dict()
     else:
