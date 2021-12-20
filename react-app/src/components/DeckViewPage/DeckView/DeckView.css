@@ -1,0 +1,36 @@
+.deck-view-container {
+  display: grid;
+  grid-template-areas: 'deck''cards';
+  grid-template-rows: 1fr 3fr;
+}
+
+.deck-info-container {
+  grid-area: deck;
+  display: grid;
+  grid-template-areas: 'title cat''by by';
+  grid-template-rows: 2fr 1fr;
+
+}
+
+.card-list-container {
+  grid-area: cards;
+}
+
+.deck-title {
+  grid-area: title;
+  font-size: 200%;
+}
+
+.deck-cat {
+  grid-area: cat;
+}
+
+.deck-maker {
+  grid-area: by;
+}
+
+.deck-cat, .deck-title, .deck-maker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 
 import { addNewDeck } from '../../../store/my_decks';
 import './NewDeckForm.css';
@@ -17,21 +18,71 @@ const NewDeckForm = () => {
   const [title, setTitle] = useState('');
   const [cover_photo_url, setCoverPhotoUrl] = useState('');
   const [category_id, setCategoryId] = useState(catList[3].id);
+  const [has_image, setHasImage] = useState(false);
+
+  const [old_url, setOldUrl] = useState('');
+  const [imgPreview, setImgPreview] = useState('');
+  const [oldImgPreview, setOldImgPreview] = useState('');
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const setImage = (e) => {
+    let file = e.target.files[0];
+    setCoverPhotoUrl(e.target.files[0]);
+    if (file) {
+      setOldUrl(file);
+      file = URL.createObjectURL(file);
+      setImgPreview(file);
+      setOldImgPreview(file);
+    } else {
+      setCoverPhotoUrl(old_url);
+      setImgPreview(oldImgPreview);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
-    const data = await dispatch(
-      addNewDeck(title, cover_photo_url, category_id, sessionUser.id)
-    );
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('cover_photo_url', cover_photo_url);
+    formData.append('category_id', category_id);
+    formData.append('user_id', sessionUser.id);
+    formData.append('has_image', has_image);
+    const data = await dispatch(addNewDeck(formData));
     if (data.errors) {
       return setErrors(data.errors);
     }
     history.push(`/decks/${data}`);
+  };
+
+  const imageInput = () => {
+    return (
+      <div className="form-input-containers">
+        <label className="custom-file-upload" htmlFor="cover_photo_url">
+          Cover Photo <br />
+          {imgPreview ? (
+            <img className="img-preview" src={imgPreview} alt={'preview'} />
+          ) : (
+            <DriveFolderUploadTwoToneIcon
+              id="drive-icon"
+              className="img-preview"
+            />
+          )}
+        </label>
+        <input
+          id="cover_photo_url"
+          className="form-inputs"
+          name="cover_photo_url"
+          type="file"
+          accept=".pdf, .png, .jpg, .jpeg, .gif"
+          onChange={setImage}
+        />
+        <p className="error-display">{errors['cover_photo_url']}</p>
+      </div>
+    );
   };
 
   return (
@@ -50,17 +101,17 @@ const NewDeckForm = () => {
         <p className="error-display">{errors['title']}</p>
       </div>
       <div className="form-input-containers">
-        <label htmlFor="cover_photo_url">Cover Photo Url (Optional)</label>
+        <label htmlFor="has_image">Add a cover photo to this study deck?</label>
         <input
           className="form-inputs"
-          name="cover_photo_url"
-          type="text"
-          placeholder="Cover Photo URL"
-          value={cover_photo_url}
-          onChange={(e) => setCoverPhotoUrl(e.target.value)}
+          name="has_image"
+          type="checkbox"
+          value={has_image}
+          onChange={() => (has_image ? setHasImage(false) : setHasImage(true))}
         />
-        <p className="error-display">{errors['cover_photo_url']}</p>
+        <p className="error-display">{errors['has_image']}</p>
       </div>
+      {has_image ? imageInput() : null}
       <div className="form-input-containers">
         <label htmlFor="category_id">Category</label>
         <select

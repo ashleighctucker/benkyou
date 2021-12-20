@@ -31,37 +31,24 @@ export const getMyDecks = (user_id) => async (dispatch) => {
   }
 };
 
-export const addNewDeck =
-  (title, cover_photo_url, category_id, user_id) => async (dispatch) => {
-    if (!cover_photo_url)
-      cover_photo_url =
-        'https://images.unsplash.com/photo-1597423244036-ef5020e83f3c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80';
-
-    const response = await fetch('/api/decks/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title,
-        cover_photo_url,
-        category_id,
-        user_id,
-      }),
-    });
-    if (response.ok) {
-      const deck = await response.json();
-      dispatch(add(deck));
-      return +deck.id;
-    } else if (response.status < 500) {
-      const data = await response.json();
-      if (data.errors) {
-        return data;
-      }
-    } else {
-      return ['An error occurred.'];
+export const addNewDeck = (formData) => async (dispatch) => {
+  const response = await fetch('/api/decks/', {
+    method: 'POST',
+    body: formData,
+  });
+  if (response.ok) {
+    const deck = await response.json();
+    dispatch(add(deck));
+    return +deck.id;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
     }
-  };
+  } else {
+    return ['An error occurred.'];
+  }
+};
 
 const initialState = {};
 
