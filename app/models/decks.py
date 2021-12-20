@@ -52,7 +52,6 @@ class Deck(db.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'cover_photo_url': self.cover_photo_url,
             'category_id': self.category_id,
             'created_on': self.created_on,
         }
