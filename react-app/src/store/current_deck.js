@@ -1,5 +1,6 @@
 const LOAD_DECK = 'deck/LOAD_DECK';
 const ADD_CARD = 'card/ADD_CARD';
+const UPDATE_CARD = 'card/UPDATE_CARD';
 
 const load = (deck) => ({
   type: LOAD_DECK,
@@ -8,6 +9,11 @@ const load = (deck) => ({
 
 const add = (card) => ({
   type: ADD_CARD,
+  card,
+});
+
+const update = (card) => ({
+  type: UPDATE_CARD,
   card,
 });
 
@@ -50,6 +56,25 @@ export const addCardToDeck = (formData) => async (dispatch) => {
   }
 };
 
+export const editCard = (formData) => async (dispatch) => {
+  const response = await fetch(`/api/cards/${formData.get('card_id')}/`, {
+    method: 'PUT',
+    body: formData,
+  });
+  if (response.ok) {
+    const card = await response.json();
+    dispatch(update(card));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ['An error occurred.'];
+  }
+};
+
 const initialState = {};
 
 export default function currentDeckReducer(state = initialState, action) {
@@ -58,6 +83,10 @@ export default function currentDeckReducer(state = initialState, action) {
     case LOAD_DECK:
       return { ...action.deck };
     case ADD_CARD:
+      newState = { ...state };
+      newState['cards'][action.card.id] = action.card;
+      return newState;
+    case UPDATE_CARD:
       newState = { ...state };
       newState['cards'][action.card.id] = action.card;
       return newState;
