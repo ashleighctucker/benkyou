@@ -94,6 +94,32 @@ export const deleteCard = (id) => async (dispatch) => {
   }
 };
 
+export const switchDeck = (card_id, deck_id) => async (dispatch) => {
+  console.log(deck_id);
+  const response = await fetch(`/api/cards/move/${card_id}/`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      deck_id,
+    }),
+  });
+  if (response.ok) {
+    const card = await response.json();
+    dispatch(remove(card.id));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    console.log(data.errors);
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ['An error occurred. Please try again.'];
+  }
+};
+
 const initialState = {};
 
 export default function currentDeckReducer(state = initialState, action) {

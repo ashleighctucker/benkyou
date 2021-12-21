@@ -2,6 +2,7 @@ import React from 'react';
 
 import EditCardButton from './CardEditButton';
 import DeleteCardButton from './CardDeleteButton';
+import SwitchDeckButton from './SwitchDeckButton';
 
 import '../CardList.css';
 
@@ -11,6 +12,7 @@ const CardTiles = ({ card, classPass }) => {
       <div className="card-button-container">
         <EditCardButton card={card} />
         <DeleteCardButton card={card} />
+        <SwitchDeckButton card={card} />
       </div>
       <div className={`card-tile-front ${classPass}`}>
         <div className="front-main">
