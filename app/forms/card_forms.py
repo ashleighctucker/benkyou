@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, TextAreaField
+from wtforms import StringField, IntegerField, TextAreaField, BooleanField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import Card, db
 
@@ -32,8 +32,8 @@ class NewCardForm(FlaskForm):
     type = StringField('type', validators=[check_length])
     definition = TextAreaField('definition', validators=[DataRequired()])
     example = TextAreaField('example')
-    image_url = StringField(
-        'image url', validators=[check_length])
+    image_url = StringField('image url')
+    has_image = BooleanField('has image')
     emoji = StringField('emoji', validators=[check_emoji])
     deck_id = IntegerField('deck id', validators=[DataRequired()])
     user_id = IntegerField('user id', validators=[DataRequired()])
@@ -45,9 +45,11 @@ class EditCardForm(FlaskForm):
     type = StringField('type', validators=[check_length])
     definition = TextAreaField('definition', validators=[DataRequired()])
     example = TextAreaField('example')
-    image_url = StringField(
-        'image url', validators=[check_length])
+    has_image = BooleanField('has image')
+    image_url = StringField('image url')
     emoji = StringField('emoji', validators=[check_emoji])
+    edit_image = BooleanField('edit image')
+    add_image = BooleanField('add image')
 
 
 class DeckSwitchForm(FlaskForm):

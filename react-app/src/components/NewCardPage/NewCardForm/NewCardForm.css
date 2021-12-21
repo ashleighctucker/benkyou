@@ -1,0 +1,32 @@
+.required-input {
+  color: #B0413E;
+}
+
+#back-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+#back-button-container span {
+  font-size: 90%;
+  color: #B0413E;
+}
+
+#back-button-container button {
+  padding: 1.5% 2%;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 1300px) {
+  #new-card-form input, #new-card-form label {
+    font-size: 50%;
+  }
+
+  .form-inputs {
+    width: 100%;
+  }
+
+}

@@ -52,7 +52,6 @@ class Deck(db.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'cover_photo_url': self.cover_photo_url,
             'category_id': self.category_id,
             'created_on': self.created_on,
         }
@@ -71,16 +70,17 @@ class Deck(db.Model):
             'creator': owner,
             'created_on': self.created_on,
             'updated_on': self.updated_on,
-            'cards': {obj.id: {'id': obj.id,
-                               'title': obj.title,
-                               'pronunciation': obj.pronunciation,
-                               'type': obj.type,
-                               'definition': obj.definition,
-                               'example': obj.example,
-                               'image_url': obj.image_url,
-                               'emoji': obj.emoji,
-                               'deck_id': obj.deck_id}
-                      for obj in self.cards}
+            'cards': [{'id': obj.id,
+                       'title': obj.title,
+                       'has_image': obj.has_image,
+                       'pronunciation': obj.pronunciation,
+                       'type': obj.type,
+                       'definition': obj.definition,
+                       'example': obj.example,
+                       'image_url': obj.image_url,
+                       'emoji': obj.emoji,
+                       'deck_id': obj.deck_id}
+                      for obj in self.cards]
         }
 
 

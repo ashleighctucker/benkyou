@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 
 import { getDeck } from '../../../store/current_deck';
-import EditDeckModal from '../EditDeckButton';
-import DeleteDeckModal from '../DeleteDeckButton';
+import DeleteDeckModal from './DeleteDeckButton';
+import EditDeckModal from './EditDeckButton';
+import CardList from './CardList';
 import './DeckView.css';
 
 const DeckView = () => {
@@ -13,6 +15,7 @@ const DeckView = () => {
   const categories = useSelector((state) => state.categories);
   const deckCat = categories[deck.category_id];
 
+  const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
@@ -46,6 +49,13 @@ const DeckView = () => {
           </div>
         </div>
         <div className="deck-buttons">
+          <button
+            className="deck-view-button"
+            onClick={() => history.push(`/decks/${deck.id}/add-card`)}
+          >
+            <AddCircleTwoToneIcon />
+            Add Card
+          </button>
           <EditDeckModal />
           <DeleteDeckModal />
         </div>
@@ -54,12 +64,13 @@ const DeckView = () => {
             Created by: {deck.creator} on{'  '}
             {new Date(deck.created_on).toDateString()}
           </p>
-          <div>
-            <button >Add Card</button>
-          </div>
         </div>
       </div>
-      <div className="card-list-container"></div>
+      <div id="buffer-main"></div>
+      <div className="card-list-container">
+        <CardList />
+      </div>
+      <div id="buffer-cards"></div>
     </div>
   );
 };

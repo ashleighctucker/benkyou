@@ -1,17 +1,32 @@
 /* page setup */
 .deck-view-container {
   display: grid;
-  grid-template-areas: 'deck''cards';
-  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 'deck buff1''cards buff';
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 12fr 1fr;
 }
 
 /* deck info setup */
 .deck-info-container {
   grid-area: deck;
   display: grid;
-  grid-template-areas: 'title cat''by by';
+  grid-template-areas: 'title buttons''by buttons';
   grid-template-rows: 2fr 1fr;
   grid-template-columns: 2fr 1fr;
+  background-color: #fafafa;
+}
+
+#buffer-main {
+  grid-area: buff1;
+  background-color: #fafafa;
+  height: 100%;
+  width: 100%;
+}
+
+#buffer-cards {
+  grid-area: buff2;
+  height: 100%;
+  width: 100%;
 }
 
 .deck-title {
@@ -28,7 +43,9 @@
   height: 7rem;
   width: 7rem;
   border-radius: 50%;
-  margin-right: 2%;
+  margin-right: 4%;
+  border: 3px #36558F solid;
+  box-shadow: #5D2E46 0px 0px 0px 3px, #157A6E 0px 0px 0px 6px, #FFACB7 0px 0px 0px 9px, #CB904D 0px 0px 0px 12px, #EA596E 0px 0px 0px 15px;
 }
 
 .deck-category {
@@ -37,7 +54,7 @@
 }
 
 .deck-buttons {
-  grid-area: cat;
+  grid-area: buttons;
 }
 
 .deck-maker {
@@ -64,6 +81,8 @@
   border-radius: 3px;
   font-family: inherit;
   font-size: 100%;
+  white-space: nowrap;
+  min-width: 12rem;
 }
 
 /* cards styles */

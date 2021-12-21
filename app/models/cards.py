@@ -11,6 +11,7 @@ class Card(db.Model):
     type = db.Column(db.String(256))
     definition = db.Column(db.Text, nullable=False)
     example = db.Column(db.Text)
+    has_image = db.Column(db.Boolean, default=False)
     image_url = db.Column(db.String(256))
     emoji = db.Column(db.String(3))
     deck_id = db.Column(db.Integer, db.ForeignKey('decks.id'), nullable=False)
@@ -32,6 +33,7 @@ class Card(db.Model):
             'type': self.type,
             'definition': self.definition,
             'example': self.example,
+            'has_image': self.has_image,
             'image_url': self.image_url,
             'emoji': self.emoji,
             'deck_id': self.deck_id

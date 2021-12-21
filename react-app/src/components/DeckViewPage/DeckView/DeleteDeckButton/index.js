@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from '../../../context/Modal';
+import { Modal } from '../../../../context/Modal';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ConfirmDeleteForm from './ConfirmDeleteForm';
 
