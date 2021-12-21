@@ -34,7 +34,7 @@ const SwitchDeckForm = ({ card, close }) => {
     if (data) {
       return setErrors(data.errors);
     }
-    close();
+    window.location.reload();
   };
 
   return (
