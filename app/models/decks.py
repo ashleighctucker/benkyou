@@ -72,6 +72,7 @@ class Deck(db.Model):
             'updated_on': self.updated_on,
             'cards': {obj.id: {'id': obj.id,
                                'title': obj.title,
+                               'has_image': obj.has_image,
                                'pronunciation': obj.pronunciation,
                                'type': obj.type,
                                'definition': obj.definition,

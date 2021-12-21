@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
-import { deleteDeck } from '../../../../store/my_decks';
+import { deleteDeck } from '../../../../../store/my_decks';
 import './DeleteForm.css';
 
 const ConfirmDeleteForm = ({ close }) => {

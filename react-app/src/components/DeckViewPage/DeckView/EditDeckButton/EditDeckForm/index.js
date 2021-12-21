@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
 
-import { editDeck } from '../../../../store/my_decks';
-import { getDeck } from '../../../../store/current_deck';
+import { editDeck } from '../../../../../store/my_decks';
+import { getDeck } from '../../../../../store/current_deck';
 import './EditDeckForm.css';
 
 const EditDeckForm = ({ close }) => {

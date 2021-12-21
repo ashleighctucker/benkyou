@@ -1,0 +1,61 @@
+#card-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4%;
+}
+
+.card-tile-container {
+  display: grid;
+  grid-template-areas: 'front back';
+  grid-template-columns: 1fr 1fr;
+}
+
+.card-tile-front {
+  grid-area: front;
+}
+
+.card-tile-back {
+  grid-area: back;
+}
+
+.card-tile-back {
+  display: flex;
+  flex-direction: column;
+  padding: 10% 5%;
+  border: 1px black solid;
+  border-radius: 5px;
+  margin: 2%;
+  background-color: white;
+}
+
+.card-tile-front {
+  display: grid;
+  grid-template-areas: 'main main side';
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 10% 5%;
+  border: 1px black solid;
+  border-radius: 5px;
+  margin: 2%;
+  background-color: white;
+}
+
+.front-main {
+  grid-area: main;
+}
+
+.front-side {
+  grid-area: side;
+}
+
+.card-sticker {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  border: 3px #36558F solid;
+  box-shadow: #5D2E46 0px 0px 0px 3px, #157A6E 0px 0px 0px 6px, #FFACB7 0px 0px 0px 9px, #CB904D 0px 0px 0px 12px, #EA596E 0px 0px 0px 15px;
+}
+
+.tile-example {
+  text-align: center;
+}

@@ -35,7 +35,7 @@
   grid-template-areas: 'icon name';
   grid-template-columns: 1fr 7fr;
   align-items: center;
-  min-height: 5%;
+  min-height: 3.5rem;
   padding: 3%;
 }
 

@@ -2,7 +2,7 @@
 .deck-view-container {
   display: grid;
   grid-template-areas: 'deck''cards';
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 1fr auto;
 }
 
 /* deck info setup */
