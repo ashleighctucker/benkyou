@@ -24,9 +24,14 @@ const CardList = () => {
 
   return (
     <div id="card-view">
-      {cards ? <h1>Cards ({cards.length})</h1> : null}
       {cards ? (
-        <div className="card-tile-container">
+        <div id="card-count">
+          <h1>Cards ({cards.length})</h1>
+        </div>
+      ) : null}
+      {cards ? (
+        <div className="card-tile-container example">
+          <div className="tile-example"></div>
           <div className="tile-example">
             <h2>Front</h2>
           </div>

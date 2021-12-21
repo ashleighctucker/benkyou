@@ -7,29 +7,16 @@
 
 .card-tile-container {
   display: grid;
-  grid-template-areas: 'front back';
-  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'buttons front back';
+  grid-template-columns: 1fr 2fr 2fr;
   margin: 2% 0;
   gap: 3%;
-}
-
-.card-tile-front {
-  grid-area: front;
-  background-image: url('./CardTiles/bg.png');
-  backface-visibility: ;
-  background-size: cover;
-  letter-spacing: 2px;
-  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
 .card-tile-back {
   grid-area: back;
   background-image: url('./CardTiles/bg.png');
   background-size: cover;
-  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
-}
-
-.card-tile-back {
   display: flex;
   flex-direction: column;
   padding: 5% 5%;
@@ -37,20 +24,23 @@
   border-radius: 5px;
   margin: 2%;
   background-color: white;
-  font-weight: bold;
   font-size: 120%;
 }
 
 .card-tile-front {
+  grid-area: front;
+  background-image: url('./CardTiles/bg.png');
+  background-size: cover;
+  letter-spacing: 2px;
   display: grid;
-  grid-template-areas: 'main main side';
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 'main side';
+  grid-template-columns: 4fr 1fr;
   padding: 8% 5%;
   border: 1px black solid;
   border-radius: 5px;
   margin: 2%;
   background-color: white;
-  font-weight: bold;
+  font-size: 120%;
 }
 
 .front-main {
@@ -61,18 +51,23 @@
   grid-area: side;
 }
 
+
+#card-count, .tile-example {
+  text-align: center;
+}
+
+
+/* sticker styles */
 .card-sticker {
   height: 5rem;
   width: 5rem;
   border-radius: 50%;
   border: 3px #36558F solid;
+  background-color: white;
   box-shadow: #5D2E46 0px 0px 0px 3px, #157A6E 0px 0px 0px 6px, #FFACB7 0px 0px 0px 9px, #CB904D 0px 0px 0px 12px, #EA596E 0px 0px 0px 15px, rgba(60, 64, 67, 0.3) 0px 1px 2px 17px, rgba(60, 64, 67, 0.15) 0px 1px 2px 19px;
 }
 
-.tile-example {
-  text-align: center;
-}
-
+/* card colors */
 .even-card.card-tile-front {
   box-shadow: 0 0 0 15px #157A6E;
 }

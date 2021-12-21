@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 
 import { getDeck } from '../../../store/current_deck';
 import DeleteDeckModal from './DeleteDeckButton';
@@ -48,6 +49,13 @@ const DeckView = () => {
           </div>
         </div>
         <div className="deck-buttons">
+          <button
+            className="deck-view-button"
+            onClick={() => history.push(`/decks/${deck.id}/add-card`)}
+          >
+            <AddCircleTwoToneIcon />
+            Add Card
+          </button>
           <EditDeckModal />
           <DeleteDeckModal />
         </div>
@@ -56,16 +64,13 @@ const DeckView = () => {
             Created by: {deck.creator} on{'  '}
             {new Date(deck.created_on).toDateString()}
           </p>
-          <div>
-            <button onClick={() => history.push(`/decks/${deck.id}/add-card`)}>
-              Add Card
-            </button>
-          </div>
         </div>
       </div>
+      <div id="buffer-main"></div>
       <div className="card-list-container">
         <CardList />
       </div>
+      <div id="buffer-cards"></div>
     </div>
   );
 };

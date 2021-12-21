@@ -13,9 +13,9 @@ const NavBar = () => {
 
   const hello = () => {
     if (sessionUser.first_name.length > 10) {
-      return <p>Hey there, {sessionUser.first_name.slice(0, 11)}!</p>;
+      return <p id="hello">Hey there, {sessionUser.first_name.slice(0, 11)}!</p>;
     } else {
-      return <p>Hey there, {sessionUser.first_name}!</p>;
+      return <p id="hello">Hey there, {sessionUser.first_name}!</p>;
     }
   };
 

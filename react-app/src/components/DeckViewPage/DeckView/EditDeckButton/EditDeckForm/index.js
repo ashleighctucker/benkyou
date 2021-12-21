@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
+import AddPhotoAlternateTwoToneIcon from '@mui/icons-material/AddPhotoAlternateTwoTone';
 
 import { editDeck } from '../../../../../store/my_decks';
 import { getDeck } from '../../../../../store/current_deck';
@@ -70,9 +70,8 @@ const EditDeckForm = ({ close }) => {
           {imgPreview ? (
             <img className="img-preview" src={imgPreview} alt={'preview'} />
           ) : (
-            <DriveFolderUploadTwoToneIcon
+            <AddPhotoAlternateTwoToneIcon
               id="drive-icon"
-              className="img-preview"
             />
           )}
         </label>

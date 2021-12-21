@@ -76,6 +76,10 @@
   word-wrap: break-word;
 }
 
+#hello {
+  margin-right: 5%;
+}
+
 /* for navbar buttons */
 .nav-buttons {
   height: 80%;

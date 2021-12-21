@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import DriveFolderUploadTwoToneIcon from '@mui/icons-material/DriveFolderUploadTwoTone';
+import AddPhotoAlternateTwoToneIcon from '@mui/icons-material/AddPhotoAlternateTwoTone';
 
 import { addNewDeck } from '../../../store/my_decks';
 import './NewDeckForm.css';
@@ -65,10 +65,7 @@ const NewDeckForm = () => {
           {imgPreview ? (
             <img className="img-preview" src={imgPreview} alt={'preview'} />
           ) : (
-            <DriveFolderUploadTwoToneIcon
-              id="drive-icon"
-              className="img-preview"
-            />
+            <AddPhotoAlternateTwoToneIcon id="drive-icon" />
           )}
         </label>
         <input
