@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getDeck } from '../../../store/current_deck';
@@ -14,6 +14,7 @@ const DeckView = () => {
   const categories = useSelector((state) => state.categories);
   const deckCat = categories[deck.category_id];
 
+  const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
@@ -56,7 +57,9 @@ const DeckView = () => {
             {new Date(deck.created_on).toDateString()}
           </p>
           <div>
-            <button>Add Card</button>
+            <button onClick={() => history.push(`/decks/${deck.id}/add-card`)}>
+              Add Card
+            </button>
           </div>
         </div>
       </div>

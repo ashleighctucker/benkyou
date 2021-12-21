@@ -14,10 +14,10 @@ def create_card():
     form['csrf_token'].data = request.cookies['csrf_token']
     url = 'No Photo'
     if form.data['has_image']:
-        if "cover_photo_url" not in form.data:
+        if "image_url" not in form.data:
             return {"errors": "image required"}, 400
 
-        image = form.data["cover_photo_url"]
+        image = form.data["image_url"]
 
         if not allowed_file(image.filename):
             return {"errors": "file type not permitted"}, 400
@@ -49,10 +49,10 @@ def edit_card(id):
     url = 'No Photo'
 
     if form.data['edit_image'] or form.data['add_image']:
-        if "cover_photo_url" not in form.data:
+        if "image_url" not in form.data:
             return {"errors": "image required"}, 400
 
-        image = form.data["cover_photo_url"]
+        image = form.data["image_url"]
 
         if not allowed_file(image.filename):
             return {"errors": "file type not permitted"}, 400

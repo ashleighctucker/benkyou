@@ -1,0 +1,14 @@
+.required-input {
+  color: #B0413E;
+}
+
+@media screen and (max-width: 1300px) {
+  #new-card-form input, #new-card-form label {
+    font-size: 50%;
+  }
+
+  .form-inputs {
+    width: 100%;
+  }
+
+}
