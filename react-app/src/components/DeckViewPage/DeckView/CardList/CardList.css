@@ -53,7 +53,7 @@
   width: 5rem;
   border-radius: 50%;
   border: 3px #36558F solid;
-  box-shadow: #5D2E46 0px 0px 0px 3px, #157A6E 0px 0px 0px 6px, #FFACB7 0px 0px 0px 9px, #CB904D 0px 0px 0px 12px, #EA596E 0px 0px 0px 15px;
+  box-shadow: #5D2E46 0px 0px 0px 3px, #157A6E 0px 0px 0px 6px, #FFACB7 0px 0px 0px 9px, #CB904D 0px 0px 0px 12px, #EA596E 0px 0px 0px 15px, rgba(60, 64, 67, 0.3) 0px 1px 2px 17px, rgba(60, 64, 67, 0.15) 0px 1px 2px 19px;
 }
 
 .tile-example {
