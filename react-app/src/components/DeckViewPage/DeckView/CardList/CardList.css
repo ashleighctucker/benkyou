@@ -9,35 +9,48 @@
   display: grid;
   grid-template-areas: 'front back';
   grid-template-columns: 1fr 1fr;
+  margin: 2% 0;
+  gap: 3%;
 }
 
 .card-tile-front {
   grid-area: front;
+  background-image: url('./CardTiles/bg.png');
+  backface-visibility: ;
+  background-size: cover;
+  letter-spacing: 2px;
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
 .card-tile-back {
   grid-area: back;
+  background-image: url('./CardTiles/bg.png');
+  background-size: cover;
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
 .card-tile-back {
   display: flex;
   flex-direction: column;
-  padding: 10% 5%;
+  padding: 5% 5%;
   border: 1px black solid;
   border-radius: 5px;
   margin: 2%;
   background-color: white;
+  font-weight: bold;
+  font-size: 120%;
 }
 
 .card-tile-front {
   display: grid;
   grid-template-areas: 'main main side';
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 10% 5%;
+  padding: 8% 5%;
   border: 1px black solid;
   border-radius: 5px;
   margin: 2%;
   background-color: white;
+  font-weight: bold;
 }
 
 .front-main {
@@ -58,4 +71,20 @@
 
 .tile-example {
   text-align: center;
+}
+
+.even-card.card-tile-front {
+  box-shadow: 0 0 0 15px #157A6E;
+}
+
+.even-card.card-tile-back {
+  box-shadow: 0 0 0 15px #5D2E46;
+}
+
+.odd-card.card-tile-front {
+  box-shadow: 0 0 0 15px #36558F;
+}
+
+.odd-card.card-tile-back {
+  box-shadow: 0 0 0 15px #E08E45;
 }

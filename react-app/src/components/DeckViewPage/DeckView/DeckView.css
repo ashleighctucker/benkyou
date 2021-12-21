@@ -1,8 +1,9 @@
 /* page setup */
 .deck-view-container {
   display: grid;
-  grid-template-areas: 'deck''cards';
+  grid-template-areas: 'deck buff''cards buff';
   grid-template-rows: 1fr auto;
+  grid-template-columns: 8fr 1fr;
 }
 
 /* deck info setup */

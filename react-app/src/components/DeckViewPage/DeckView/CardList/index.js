@@ -9,15 +9,22 @@ const CardList = () => {
 
   const makeTiles = () => {
     const tiles = [];
-    for (let key in cards) {
-      tiles.push(<CardTiles key={key} card={cards[key]} />);
+    for (let i = 0; i < cards.length; i++) {
+      let tile = (
+        <CardTiles
+          key={i}
+          card={cards[i]}
+          classPass={i % 2 === 0 ? 'even-card' : 'odd-card'}
+        />
+      );
+      tiles.push(tile);
     }
     return tiles;
   };
 
   return (
     <div id="card-view">
-      {cards ? <h1>Cards ({Object.keys(cards).length})</h1> : null}
+      {cards ? <h1>Cards ({cards.length})</h1> : null}
       {cards ? (
         <div className="card-tile-container">
           <div className="tile-example">
