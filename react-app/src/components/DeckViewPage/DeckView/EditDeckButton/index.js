@@ -11,7 +11,6 @@ const EditDeckModal = () => {
         className="deck-view-button"
         onClick={() => setShowEditModal(true)}
       >
-        {' '}
         <EditTwoToneIcon />
         Edit Deck Details
       </button>

@@ -44,8 +44,7 @@
   width: 7rem;
   border-radius: 50%;
   margin-right: 4%;
-  border: 3px #36558F solid;
-  box-shadow: #5D2E46 0px 0px 0px 3px, #157A6E 0px 0px 0px 6px, #FFACB7 0px 0px 0px 9px, #CB904D 0px 0px 0px 12px, #EA596E 0px 0px 0px 15px;
+  border: 5px #157a6e93 solid;
 }
 
 .deck-category {
