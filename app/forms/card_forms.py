@@ -54,4 +54,3 @@ class EditCardForm(FlaskForm):
 
 class DeckSwitchForm(FlaskForm):
     deck_id = IntegerField('deck id', validators=[DataRequired()])
-    card_id = IntegerField('card id', validators=[DataRequired()])
