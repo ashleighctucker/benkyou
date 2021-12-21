@@ -1,0 +1,17 @@
+.edit-card-button {
+  border: none;
+  padding: 5% 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #c2c2c2;
+  color: #157A6E;
+  margin: 2%;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 100%;
+  white-space: nowrap;
+  min-width: 10rem;
+  margin: 3% 0;
+}

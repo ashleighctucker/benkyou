@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import AddPhotoAlternateTwoToneIcon from '@mui/icons-material/AddPhotoAlternateTwoTone';
 import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
 
 import { getDeck } from '../../../store/current_deck';
 import { addCardToDeck } from '../../../store/current_deck';
+import { setImage } from '../../../utils/images';
+import AddImageCheck from '../../../utils/addCheck';
+import ImageInput from '../../../utils/imageInput';
 import './NewCardForm.css';
 
 const NewCardForm = () => {
   const { deckId } = useParams();
   const deck = useSelector((state) => state.current_deck);
   const sessionUser = useSelector((state) => state.session.user);
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,6 +24,7 @@ const NewCardForm = () => {
     })();
   }, [dispatch, deckId]);
 
+  // card states
   const [title, setTitle] = useState('');
   const [pronunciation, setPronunciation] = useState('');
   const [type, setType] = useState('');
@@ -29,10 +33,11 @@ const NewCardForm = () => {
   const [has_image, setHasImage] = useState('');
   const [image_url, setImageUrl] = useState('');
   const [emoji, setEmoji] = useState('');
-
+  // image preview states
   const [old_url, setOldUrl] = useState('');
   const [imgPreview, setImgPreview] = useState('');
   const [oldImgPreview, setOldImgPreview] = useState('');
+
   const [errors, setErrors] = useState({});
 
   const handleSubmit = async (e) => {
@@ -56,43 +61,18 @@ const NewCardForm = () => {
     history.push(`/decks/${data}`);
   };
 
-  const setImage = (e) => {
-    let file = e.target.files[0];
-    setImageUrl(e.target.files[0]);
-    if (file) {
-      setOldUrl(file);
-      file = URL.createObjectURL(file);
-      setImgPreview(file);
-      setOldImgPreview(file);
-    } else {
-      setImageUrl(old_url);
-      setImgPreview(oldImgPreview);
-    }
-  };
-
-  const imageInput = () => {
-    return (
-      <div className="form-input-containers">
-        <label className="custom-file-upload" htmlFor="image_url">
-          Cover Photo <br />
-          {imgPreview ? (
-            <img className="img-preview" src={imgPreview} alt={'preview'} />
-          ) : (
-            <AddPhotoAlternateTwoToneIcon id="drive-icon" />
-          )}
-        </label>
-        <input
-          id="image_url"
-          className="form-inputs"
-          name="image_url"
-          type="file"
-          accept=".pdf, .png, .jpg, .jpeg, .gif"
-          onChange={setImage}
-        />
-        <p className="error-display">{errors['image_url']}</p>
-      </div>
+  const handleSetImage = (e) => {
+    setImage(
+      e,
+      old_url,
+      oldImgPreview,
+      setImageUrl,
+      setOldUrl,
+      setImgPreview,
+      setOldImgPreview
     );
   };
+
   return (
     <div>
       <form className="main-form" id="new-card-form" onSubmit={handleSubmit}>
@@ -161,20 +141,19 @@ const NewCardForm = () => {
           />
           <p className="error-display">{errors['example']}</p>
         </div>
-        <div className="form-input-containers">
-          <label htmlFor="has_image">Add a photo to this card?</label>
-          <input
-            className="form-inputs"
-            name="has_image"
-            type="checkbox"
-            value={has_image}
-            onChange={() =>
-              has_image ? setHasImage(false) : setHasImage(true)
-            }
+        <AddImageCheck
+          addImage={has_image}
+          setAddImage={setHasImage}
+          errors={errors}
+          item={'card'}
+        />
+        {has_image ? (
+          <ImageInput
+            imgPreview={imgPreview}
+            handleSetImage={handleSetImage}
+            errors={errors}
           />
-          <p className="error-display">{errors['has_image']}</p>
-        </div>
-        {has_image ? imageInput() : null}
+        ) : null}
         <div className="form-input-containers">
           <label htmlFor="emoji">Emoji</label>
           <input

@@ -1,17 +1,23 @@
 import React from 'react';
 
+import EditCardButton from './CardEditButton';
+import DeleteCardButton from './CardDeleteButton';
+
 import '../CardList.css';
 
 const CardTiles = ({ card, classPass }) => {
   return (
     <div className="card-tile-container">
-      <div className="card-button-container"></div>
+      <div className="card-button-container">
+        <EditCardButton card={card} />
+        <DeleteCardButton card={card} />
+      </div>
       <div className={`card-tile-front ${classPass}`}>
         <div className="front-main">
           <h2 className="card-title">
             {card.title[0].toUpperCase() + card.title.slice(1)}
           </h2>
-          
+
           {card.pronunciation ? (
             <p>Prononciation: {card.pronunciation}</p>
           ) : null}

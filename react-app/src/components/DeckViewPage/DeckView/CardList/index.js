@@ -5,7 +5,11 @@ import CardTiles from './CardTiles';
 import './CardList.css';
 
 const CardList = () => {
-  const cards = useSelector((state) => state.current_deck.cards);
+  const cardsObj = useSelector((state) => state.current_deck.cards);
+  const cards = []
+  for (let key in cardsObj)  {
+    cards.push(cardsObj[key])
+  }
 
   const makeTiles = () => {
     const tiles = [];

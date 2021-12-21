@@ -13,6 +13,13 @@
   gap: 3%;
 }
 
+.card-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .card-tile-back {
   grid-area: back;
   background-image: url('./CardTiles/bg.png');

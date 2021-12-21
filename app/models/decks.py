@@ -70,17 +70,17 @@ class Deck(db.Model):
             'creator': owner,
             'created_on': self.created_on,
             'updated_on': self.updated_on,
-            'cards': [{'id': obj.id,
-                       'title': obj.title,
-                       'has_image': obj.has_image,
-                       'pronunciation': obj.pronunciation,
-                       'type': obj.type,
-                       'definition': obj.definition,
-                       'example': obj.example,
-                       'image_url': obj.image_url,
-                       'emoji': obj.emoji,
-                       'deck_id': obj.deck_id}
-                      for obj in self.cards]
+            'cards': {obj.id: {'id': obj.id,
+                               'title': obj.title,
+                               'has_image': obj.has_image,
+                               'pronunciation': obj.pronunciation,
+                               'type': obj.type,
+                               'definition': obj.definition,
+                               'example': obj.example,
+                               'image_url': obj.image_url,
+                               'emoji': obj.emoji,
+                               'deck_id': obj.deck_id}
+                      for obj in self.cards}
         }
 
 

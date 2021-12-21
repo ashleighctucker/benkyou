@@ -1,45 +1,31 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import AddPhotoAlternateTwoToneIcon from '@mui/icons-material/AddPhotoAlternateTwoTone';
 
+import { setImage } from '../../../utils/images';
 import { addNewDeck } from '../../../store/my_decks';
+import AddImageCheck from '../../../utils/addCheck';
+import ImageInput from '../../../utils/imageInput';
 import './NewDeckForm.css';
 
 const NewDeckForm = () => {
   const categories = useSelector((state) => state.categories);
-  const catList = [];
-  for (let category in categories) {
-    catList.push(categories[category]);
-  }
   const sessionUser = useSelector((state) => state.session.user);
 
+  // deck states
   const [title, setTitle] = useState('');
   const [cover_photo_url, setCoverPhotoUrl] = useState('');
-  const [category_id, setCategoryId] = useState(catList[3].id);
+  const [category_id, setCategoryId] = useState(categories[3].id);
   const [has_image, setHasImage] = useState(false);
-
+  // image preview states
   const [old_url, setOldUrl] = useState('');
   const [imgPreview, setImgPreview] = useState('');
   const [oldImgPreview, setOldImgPreview] = useState('');
+
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const setImage = (e) => {
-    let file = e.target.files[0];
-    setCoverPhotoUrl(e.target.files[0]);
-    if (file) {
-      setOldUrl(file);
-      file = URL.createObjectURL(file);
-      setImgPreview(file);
-      setOldImgPreview(file);
-    } else {
-      setCoverPhotoUrl(old_url);
-      setImgPreview(oldImgPreview);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,27 +43,15 @@ const NewDeckForm = () => {
     history.push(`/decks/${data}`);
   };
 
-  const imageInput = () => {
-    return (
-      <div className="form-input-containers">
-        <label className="custom-file-upload" htmlFor="cover_photo_url">
-          Cover Photo <br />
-          {imgPreview ? (
-            <img className="img-preview" src={imgPreview} alt={'preview'} />
-          ) : (
-            <AddPhotoAlternateTwoToneIcon id="drive-icon" />
-          )}
-        </label>
-        <input
-          id="cover_photo_url"
-          className="form-inputs"
-          name="cover_photo_url"
-          type="file"
-          accept=".pdf, .png, .jpg, .jpeg, .gif"
-          onChange={setImage}
-        />
-        <p className="error-display">{errors['cover_photo_url']}</p>
-      </div>
+  const handleSetImage = (e) => {
+    setImage(
+      e,
+      old_url,
+      oldImgPreview,
+      setCoverPhotoUrl,
+      setOldUrl,
+      setImgPreview,
+      setOldImgPreview
     );
   };
 
@@ -96,18 +70,19 @@ const NewDeckForm = () => {
         />
         <p className="error-display">{errors['title']}</p>
       </div>
-      <div className="form-input-containers">
-        <label htmlFor="has_image">Add a cover photo to this study deck?</label>
-        <input
-          className="form-inputs"
-          name="has_image"
-          type="checkbox"
-          value={has_image}
-          onChange={() => (has_image ? setHasImage(false) : setHasImage(true))}
+      <AddImageCheck
+        addImage={has_image}
+        setAddImage={setHasImage}
+        errors={errors}
+        item={'study deck'}
+      />
+      {has_image ? (
+        <ImageInput
+          imgPreview={imgPreview}
+          handleSetImage={handleSetImage}
+          errors={errors}
         />
-        <p className="error-display">{errors['has_image']}</p>
-      </div>
-      {has_image ? imageInput() : null}
+      ) : null}
       <div className="form-input-containers">
         <label htmlFor="category_id">Category</label>
         <select
@@ -116,7 +91,7 @@ const NewDeckForm = () => {
           value={category_id}
           onChange={(e) => setCategoryId(e.target.value)}
         >
-          {catList.map((category) => (
+          {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.title}
             </option>
