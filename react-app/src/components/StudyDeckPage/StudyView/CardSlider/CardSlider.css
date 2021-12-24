@@ -1,0 +1,101 @@
+.slider-block {
+  display: block;
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 60vw;
+  overflow: hidden;
+  padding: 5% 0;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  color: #157A6E;
+  z-index: 100;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-arrow {
+  left: 2%;
+}
+
+.right-arrow {
+  right: 2%;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: .7s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: .7s;
+  transform: scale(1.08);
+}
+
+.flip-card-inner {
+  display: grid;
+  grid-template-areas: 'num''card''button';
+  grid-template-rows: auto 1fr;
+}
+
+.card-num {
+  grid-area: num;
+  text-align: center;
+}
+
+.flip-card-front {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flip-card-front.flipped {
+  grid-area: card;
+  letter-spacing: 2px;
+  display: grid;
+  grid-template-areas: 'main side';
+  grid-template-columns: 4fr 1fr;
+  border: 1px black solid;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 150%;
+  height: 20rem;
+  width: 35rem;
+}
+
+.flip-card-back {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flip-card-back.flipped {
+  grid-area: card;
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 150%;
+  height: 20rem;
+  width: 35rem;
+}
+
+.flip-button {
+  grid-area: button;
+
+}
+
+.flip-button:hover {
+  background-color: #157A6E;
+  color: #efefef;
+}

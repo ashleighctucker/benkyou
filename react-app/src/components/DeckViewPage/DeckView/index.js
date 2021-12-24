@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
+import ShuffleTwoToneIcon from '@mui/icons-material/ShuffleTwoTone';
+import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 
 import { getDeck } from '../../../store/current_deck';
 import DeleteDeckModal from './DeleteDeckButton';
@@ -47,6 +49,25 @@ const DeckView = () => {
               </span>
             </p>
           </div>
+        </div>
+        <div className="study-buttons">
+          {deck.cards && Object.keys(deck['cards']).length > 0 ? (
+            <button
+              onClick={() => history.push(`/decks/${deck.id}/study`)}
+              className="deck-view-button"
+            >
+              <SchoolTwoToneIcon />
+              Study Deck
+            </button>
+          ) : null}
+          {deck.cards && Object.keys(deck['cards']).length > 0 ? (
+            <button
+              onClick={() => history.push(`/decks/${deck.id}/shuffled-study`)}
+              className="deck-view-button"
+            >
+              <ShuffleTwoToneIcon /> Shuffle Deck
+            </button>
+          ) : null}
         </div>
         <div className="deck-buttons">
           <button

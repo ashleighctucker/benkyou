@@ -26,12 +26,16 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-  padding: 5% 5%;
   border: 1px black solid;
   border-radius: 5px;
   margin: 2%;
   background-color: white;
   font-size: 120%;
+}
+
+.back-info {
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .card-tile-front {
@@ -41,8 +45,7 @@
   letter-spacing: 2px;
   display: grid;
   grid-template-areas: 'main side';
-  grid-template-columns: 4fr 1fr;
-  padding: 8% 5%;
+  grid-template-columns: 2fr 1fr;
   border: 1px black solid;
   border-radius: 5px;
   margin: 2%;
@@ -52,20 +55,20 @@
 
 .front-main {
   grid-area: main;
+  margin: 0 5%;
 }
 
 .front-side {
   grid-area: side;
 }
 
-
 #card-count, .tile-example {
   text-align: center;
 }
 
-
 /* sticker styles */
 .card-sticker {
+  margin-top: 20%;
   height: 5rem;
   width: 5rem;
   border-radius: 50%;
