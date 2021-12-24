@@ -88,6 +88,11 @@
   min-width: 12rem;
 }
 
+.deck-view-button:hover {
+  background-color: #157A6E;
+  color: #efefef;
+}
+
 
 .study-buttons {
   display: flex;

@@ -15,3 +15,8 @@
   min-width: 10rem;
   margin: 3% 0;
 }
+
+.edit-card-button:hover {
+  background-color: #157A6E;
+  color: #efefef;
+}

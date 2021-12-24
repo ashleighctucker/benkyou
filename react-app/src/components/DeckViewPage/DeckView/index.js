@@ -61,7 +61,10 @@ const DeckView = () => {
             </button>
           ) : null}
           {deck.cards && Object.keys(deck['cards']).length > 0 ? (
-            <button className="deck-view-button">
+            <button
+              onClick={() => history.push(`/decks/${deck.id}/shuffled-study`)}
+              className="deck-view-button"
+            >
               <ShuffleTwoToneIcon /> Shuffle Deck
             </button>
           ) : null}
