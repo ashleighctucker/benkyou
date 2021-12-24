@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import NewDeckPage from './components/NewDeckPage';
 import DeckViewPage from './components/DeckViewPage';
 import NewCardPage from './components/NewCardPage';
+import StudyDeckPage from './components/StudyDeckPage';
 
 // thunks
 import { authenticate } from './store/session';
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route exact={true} path="/decks/:deckId/add-card">
             <NewCardPage className="main-grid" />
+          </Route>
+          <Route exact={true} path="/decks/:deckId/study">
+            <StudyDeckPage className="main-grid" />
           </Route>
           <Route path="/">
             <h1 className="main-grid">Home Page</h1>
