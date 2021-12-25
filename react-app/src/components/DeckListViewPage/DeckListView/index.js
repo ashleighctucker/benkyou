@@ -6,6 +6,7 @@ import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 import ShuffleTwoToneIcon from '@mui/icons-material/ShuffleTwoTone';
 import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 
+import EditDeckListModal from './DeckList/EditDecklistButton';
 import { getDecklist, getAllCards } from '../../../store/current_list';
 import DeckList from './DeckList';
 
@@ -48,9 +49,7 @@ const DeckListView = () => {
           {decklist.all_cards && (
             <h4>{decklist.all_cards.length} Cards in List</h4>
           )}
-          {decklist.all_cards &&
-          decklist['all_cards'].length > 0 &&
-          sessionUser ? (
+          {decklist.all_cards && sessionUser ? (
             <button
               onClick={() => history.push(`/decklists/${decklist.id}/study`)}
               className="deck-view-button"
@@ -61,9 +60,7 @@ const DeckListView = () => {
           ) : (
             <p>Log in to study decklist!</p>
           )}
-          {decklist.all_cards &&
-          decklist['all_cards'].length > 0 &&
-          sessionUser ? (
+          {decklist.all_cards && sessionUser ? (
             <button
               onClick={() =>
                 history.push(`/decklists/${decklist.id}/shuffled-study`)
@@ -76,10 +73,13 @@ const DeckListView = () => {
         </div>
         <div className="deck-buttons">
           {owner && (
-            <button className="deck-view-button">
-              <AddCircleTwoToneIcon />
-              Add Deck
-            </button>
+            <>
+              <button className="deck-view-button">
+                <AddCircleTwoToneIcon />
+                Add Deck
+              </button>
+              <EditDeckListModal />
+            </>
           )}
         </div>
         <div className="deck-maker">

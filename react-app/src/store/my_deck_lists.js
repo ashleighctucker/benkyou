@@ -1,5 +1,6 @@
 const LOAD_MY_DECK_LISTS = 'decklists/LOAD_MY_DECK_LISTS';
 const ADD_LIST = 'decklists/ADD_LIST';
+const EDIT_LIST = 'decklists/EDIT_LIST';
 
 const load = (list) => ({
   type: LOAD_MY_DECK_LISTS,
@@ -8,6 +9,11 @@ const load = (list) => ({
 
 const add = (decklist) => ({
   type: ADD_LIST,
+  decklist,
+});
+
+const update = (decklist) => ({
+  type: EDIT_LIST,
   decklist,
 });
 
@@ -50,9 +56,32 @@ export const addNewDeckList = (formData) => async (dispatch) => {
   }
 };
 
+export const editDecklist = (formData) => async (dispatch) => {
+  const response = await fetch(
+    `/api/decklists/${formData.get('decklist_id')}/`,
+    {
+      method: 'PUT',
+      body: formData,
+    }
+  );
+  if (response.ok) {
+    const decklist = await response.json();
+    dispatch(update(decklist));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ['An error occurred.'];
+  }
+};
+
 const initialState = {};
 
 export default function myDeckListReducer(state = initialState, action) {
+  let newState;
   switch (action.type) {
     case LOAD_MY_DECK_LISTS: {
       const normalDeckLists = {};
@@ -61,6 +90,10 @@ export default function myDeckListReducer(state = initialState, action) {
     }
     case ADD_LIST:
       return { ...state, [action.decklist.id]: action.deck };
+    case EDIT_LIST:
+      newState = { ...state };
+      newState[action.decklist.id] = action.decklist;
+      return newState;
     default:
       return state;
   }

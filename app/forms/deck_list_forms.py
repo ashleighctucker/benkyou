@@ -20,9 +20,7 @@ class NewDeckListForm(FlaskForm):
 
 class EditDeckListForm(FlaskForm):
     title = StringField('title', validators=[DataRequired(), check_length])
-    cover_photo_url = StringField(
-        'cover photo', validators=[check_length, URL(
-            require_tld=True, message="Please enter a valid url for the cover photo")])
+    cover_photo_url = StringField('cover photo')
     has_image = BooleanField('has image')
     edit_image = BooleanField('edit image')
     add_image = BooleanField('add image')
