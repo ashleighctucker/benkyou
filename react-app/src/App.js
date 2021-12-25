@@ -11,6 +11,7 @@ import DeckListViewPage from './components/DeckListViewPage';
 import NewCardPage from './components/NewCardPage';
 import StudyDeckPage from './components/StudyDeckPage';
 import ShuffleStudyDeckPage from './components/ShuffleStudyPage';
+import NewDeckListPage from './components/NewDeckListPage';
 
 // thunks
 import { authenticate } from './store/session';
@@ -53,6 +54,9 @@ function App() {
           </Route>
           <Route exact={true} path="/decks/:deckId/shuffled-study">
             <ShuffleStudyDeckPage />
+          </Route>
+          <Route path="/new-deck-list">
+            <NewDeckListPage />
           </Route>
           <Route exact={true} path="/decklists/:decklistId">
             <DeckListViewPage />

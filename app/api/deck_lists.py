@@ -2,6 +2,9 @@ from flask import Blueprint, request
 from app.models import DeckList, Deck, db
 from app.forms import NewDeckListForm, EditDeckListForm
 from .auth_routes import validation_errors_to_error_messages
+from app.awsupload import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
+
 
 deck_list_routes = Blueprint('decklists', __name__)
 
@@ -22,12 +25,30 @@ def get_all_cards_from_list(id):
 def create_deck_list():
     form = NewDeckListForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    url = 'No Photo'
+    if form.data['has_image']:
+        if "cover_photo_url" not in form.data:
+            return {"errors": "image required"}, 400
+
+        image = form.data["cover_photo_url"]
+
+        if not allowed_file(image.filename):
+            return {"errors": "file type not permitted"}, 400
+
+        image.filename = get_unique_filename(image.filename)
+
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return upload, 400
+
+        url = upload["url"]
     if form.validate_on_submit():
         newDeckList = DeckList(
-            title=form.data['title'], cover_photo_url=form.data['cover_photo_url'], user_id=form.data['user_id'])
+            title=form.data['title'], cover_photo_url=url, user_id=form.data['user_id'], has_image=form.data['has_image'])
         db.session.add(newDeckList)
         db.session.commit()
-        return newDeckList.to_dict()
+        return newDeckList.simple_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 

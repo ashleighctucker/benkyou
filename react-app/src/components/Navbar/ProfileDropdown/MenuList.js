@@ -16,10 +16,10 @@ const MenuList = () => {
       <NavLink to="/profile">Profile</NavLink>
 
       <NavLink to="/my-decks">My Decks</NavLink>
+      <NavLink to="/new-deck">Create A New Deck</NavLink>
 
       <NavLink to="/my-decks">My Lists</NavLink>
-
-      <NavLink to="/new-deck">Create A New Deck</NavLink>
+      <NavLink to="/new-deck-list">Create A New List</NavLink>
 
       <button id="logout-button" onClick={handleLogout}>
         Log Out <ExitToAppIcon id="logout-icon" />

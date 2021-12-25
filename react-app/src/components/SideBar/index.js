@@ -34,9 +34,9 @@ const SideBar = () => {
               <CollectionsBookmarkTwoToneIcon className="deck-icon" />
             </div>
             <NavLink className="sidebar-deck-link" to={`/decklists/${list}`}>
-              {my_deck_lists[list].title.length > 23
-                ? my_deck_lists[list].title.slice(0, 24) + '...'
-                : my_deck_lists[list].title}
+              {my_deck_lists[list]?.title.length > 23
+                ? my_deck_lists[list]?.title.slice(0, 24) + '...'
+                : my_deck_lists[list]?.title}
             </NavLink>
           </div>
         );
