@@ -3,7 +3,6 @@ const ADD_DECK = 'decks/ADD_DECK';
 const EDIT_DECK = 'decks/EDIT_DECK';
 const REMOVE_DECK = 'decks/REMOVE_DECK';
 
-
 const load = (list) => ({
   type: LOAD_MY_DECKS,
   list,
@@ -23,6 +22,26 @@ const remove = (id) => ({
   type: REMOVE_DECK,
   id,
 });
+
+export const getRecentDecks = () => async (dispatch) => {
+  const response = await fetch('/api/decks/recents/', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  if (response.ok) {
+    const recentDecks = await response.json();
+    dispatch(load(recentDecks['decks']));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.'];
+  }
+};
 
 export const getMyDecks = (user_id) => async (dispatch) => {
   const response = await fetch(`/api/users/${user_id}/decks/`, {

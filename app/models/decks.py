@@ -84,6 +84,7 @@ class Deck(db.Model):
 
         return {
             'id': self.id,
+            'owner_id': self.user_id,
             'title': self.title,
             'has_image': self.has_image,
             'cover_photo_url': self.cover_photo_url,
@@ -158,6 +159,7 @@ class DeckList(db.Model):
             'creator': owner,
             'created_on': self.created_on,
             'has_image': self.has_image,
+            'owner_id': self.user_id,
             'decks': [{'id': obj.id,
                        'title': obj.title,
                        'cover_photo_url': obj.cover_photo_url,

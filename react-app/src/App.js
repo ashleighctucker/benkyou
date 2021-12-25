@@ -25,12 +25,6 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate())
-        .then(async (id) => {
-          if (id) {
-            await dispatch(getMyDecks(id));
-            await dispatch(getMyDeckLists(id));
-          }
-        })
         .then(() => dispatch(getCategories()))
         .then(() => setLoaded(true));
     })();
@@ -52,10 +46,10 @@ function App() {
             <DeckViewPage />
           </Route>
           <Route exact={true} path="/decks/:deckId/add-card">
-            <NewCardPage  />
+            <NewCardPage />
           </Route>
           <Route exact={true} path="/decks/:deckId/study">
-            <StudyDeckPage  />
+            <StudyDeckPage />
           </Route>
           <Route exact={true} path="/decks/:deckId/shuffled-study">
             <ShuffleStudyDeckPage />

@@ -12,6 +12,12 @@ import DeckList from './DeckList';
 const DeckListView = () => {
   const { decklistId } = useParams();
   const decklist = useSelector((state) => state.current_list);
+  const sessionUser = useSelector((state) => state.session.user);
+
+  let owner = false;
+  if (+decklist.owner_id === +sessionUser?.id) {
+    owner = true;
+  }
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -42,7 +48,9 @@ const DeckListView = () => {
           {decklist.all_cards && (
             <h4>{decklist.all_cards.length} Cards in List</h4>
           )}
-          {decklist.all_cards && decklist['all_cards'].length > 0 ? (
+          {decklist.all_cards &&
+          decklist['all_cards'].length > 0 &&
+          sessionUser ? (
             <button
               onClick={() => history.push(`/decklists/${decklist.id}/study`)}
               className="deck-view-button"
@@ -50,8 +58,12 @@ const DeckListView = () => {
               <SchoolTwoToneIcon />
               Study Decklist
             </button>
-          ) : null}
-          {decklist.all_cards && decklist['all_cards'].length > 0 ? (
+          ) : (
+            <p>Log in to study decklist!</p>
+          )}
+          {decklist.all_cards &&
+          decklist['all_cards'].length > 0 &&
+          sessionUser ? (
             <button
               onClick={() =>
                 history.push(`/decklists/${decklist.id}/shuffled-study`)
@@ -63,10 +75,12 @@ const DeckListView = () => {
           ) : null}
         </div>
         <div className="deck-buttons">
-          <button className="deck-view-button">
-            <AddCircleTwoToneIcon />
-            Add Deck
-          </button>
+          {owner && (
+            <button className="deck-view-button">
+              <AddCircleTwoToneIcon />
+              Add Deck
+            </button>
+          )}
         </div>
         <div className="deck-maker">
           <p>
