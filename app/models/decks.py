@@ -127,16 +127,24 @@ class DeckList(db.Model):
     def add_deck(self, deck):
         if deck not in self.decks:
             self.decks.append(deck)
-            return self.to_dict()
+            return {'id': deck.id,
+                    'title': deck.title,
+                    'cover_photo_url': deck.cover_photo_url,
+                    'category': deck.category_type,
+                    'category_id': deck.category_id,
+                    'has_image': deck.has_image,
+                    'created_on': deck.created_on,
+                    'cards_amount': deck.cards_amount,
+                    'creator': deck.deck_owner}
         else:
-            return {'errors': f"Deck {deck.id} already in list"}
+            return {'errors': f"Deck {deck.title} already in list"}
 
     def remove_deck(self, deck):
         if deck in self.decks:
             self.decks.remove(deck)
-            return self.to_dict()
+            return deck.id
         else:
-            return {'errors': f"Could not find deck {deck.id} in list"}
+            return {'errors': f"Could not find deck {deck.title} in list"}
 
     def simple_dict(self):
         return {
@@ -160,14 +168,14 @@ class DeckList(db.Model):
             'created_on': self.created_on,
             'has_image': self.has_image,
             'owner_id': self.user_id,
-            'decks': [{'id': obj.id,
-                       'title': obj.title,
-                       'cover_photo_url': obj.cover_photo_url,
-                       'category': obj.category_type,
-                       'category_id': obj.category_id,
-                       'has_image': obj.has_image,
-                       'created_on': obj.created_on,
-                       'cards_amount': obj.cards_amount,
-                       'creator': obj.deck_owner}
-                      for obj in self.decks]
+            'decks': {obj.id: {'id': obj.id,
+                               'title': obj.title,
+                               'cover_photo_url': obj.cover_photo_url,
+                               'category': obj.category_type,
+                               'category_id': obj.category_id,
+                               'has_image': obj.has_image,
+                               'created_on': obj.created_on,
+                               'cards_amount': obj.cards_amount,
+                               'creator': obj.deck_owner}
+                      for obj in self.decks}
         }

@@ -89,24 +89,28 @@ def edit_deck_list(id):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-@deck_list_routes.route('/<int:id>/add/<int:deck_id>/', methods=["PUT"])
+@deck_list_routes.route('/<int:id>/add/<int:deck_id>/', methods=["PATCH"])
 def add_deck_to_list(id, deck_id):
     deckList = DeckList.query.get(int(id))
     deck = Deck.query.get(int(deck_id))
     if deck:
         response = deckList.add_deck(deck)
+        if 'errors' in response:
+            return response, 400
         db.session.commit()
         return response
     else:
         return {'errors': [f"Could not find deck {deck_id} to add to list"]}, 500
 
 
-@deck_list_routes.route('/<int:id>/remove/<int:deck_id>/', methods=["PUT"])
+@deck_list_routes.route('/<int:id>/remove/<int:deck_id>/', methods=["PATCH"])
 def remove_deck_from_list(id, deck_id):
     deckList = DeckList.query.get(int(id))
     deck = Deck.query.get(int(deck_id))
     if deck:
         response = deckList.remove_deck(deck)
+        if response['errors']:
+            return response, 400
         db.session.commit()
         return response
     else:

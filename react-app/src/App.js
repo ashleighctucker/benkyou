@@ -16,8 +16,6 @@ import NewDeckListPage from './components/NewDeckListPage';
 // thunks
 import { authenticate } from './store/session';
 import { getCategories } from './store/categories';
-import { getMyDecks } from './store/my_decks';
-import { getMyDeckLists } from './store/my_deck_lists';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

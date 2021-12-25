@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 import ShuffleTwoToneIcon from '@mui/icons-material/ShuffleTwoTone';
 import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 
+import AddDeckButton from './AddDeckButton';
 import EditDeckListModal from './EditDecklistButton';
 import DeleteDecklistModal from './DeleteDecklistButton';
 import { getDecklist, getAllCards } from '../../../store/current_list';
@@ -75,10 +75,7 @@ const DeckListView = () => {
         <div className="deck-buttons">
           {owner && (
             <>
-              <button className="deck-view-button">
-                <AddCircleTwoToneIcon />
-                Add Deck
-              </button>
+              <AddDeckButton />
               <EditDeckListModal />
               <DeleteDecklistModal />
             </>
@@ -93,7 +90,7 @@ const DeckListView = () => {
       </div>
       <div id="buffer-main"></div>
       <div className="card-list-container">
-        <DeckList />
+        <DeckList decklist={decklist} decksObj={decklist['decks']} />
       </div>
       <div id="buffer-cards"></div>
     </div>
