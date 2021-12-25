@@ -17,8 +17,8 @@ const ConfirmDeleteList = ({ close }) => {
 
   return (
     <div className="modal-form">
-      <h2>Are you sure you want to delete your deck?</h2>
-      <h3>Deck Title: {list.title}</h3>
+      <h2>Are you sure you want to delete your deck list?</h2>
+      <h3>Deck List Title: {list.title}</h3>
       <button id="delete-button" onClick={handleDelete}>
         <DeleteForeverTwoToneIcon /> Confirm Delete
       </button>

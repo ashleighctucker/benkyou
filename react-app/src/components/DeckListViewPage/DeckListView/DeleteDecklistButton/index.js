@@ -11,7 +11,7 @@ const DeleteDecklistModal = () => {
         className="deck-view-button"
         onClick={() => setShowDeleteModal(true)}
       >
-        <DeleteTwoToneIcon /> Delete Deck
+        <DeleteTwoToneIcon /> Delete Deck List
       </button>
       {showDeleteModal && (
         <Modal onClose={() => setShowDeleteModal(false)}>
