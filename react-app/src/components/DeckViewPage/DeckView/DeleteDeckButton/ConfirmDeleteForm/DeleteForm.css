@@ -13,6 +13,11 @@
   color: #B0413E;
 }
 
+#delete-button:hover {
+  background-color: #B0413E;
+  color: #efefef;
+}
+
 #delete-message {
   color: #B0413E;
   font-size: 80%;
@@ -30,4 +35,9 @@
   color: #efefef;
   font-size: 100%;
   color: #157A6E;
+}
+
+#cancel-delete:hover {
+  background-color: #157A6E;
+  color: #efefef;
 }

@@ -1,6 +1,7 @@
 const LOAD_MY_DECK_LISTS = 'decklists/LOAD_MY_DECK_LISTS';
 const ADD_LIST = 'decklists/ADD_LIST';
 const EDIT_LIST = 'decklists/EDIT_LIST';
+const REMOVE_LIST = 'decklist/REMOVE_LIST';
 
 const load = (list) => ({
   type: LOAD_MY_DECK_LISTS,
@@ -15,6 +16,11 @@ const add = (decklist) => ({
 const update = (decklist) => ({
   type: EDIT_LIST,
   decklist,
+});
+
+const remove = (id) => ({
+  type: REMOVE_LIST,
+  id,
 });
 
 export const getMyDeckLists = (user_id) => async (dispatch) => {
@@ -78,6 +84,19 @@ export const editDecklist = (formData) => async (dispatch) => {
   }
 };
 
+export const deleteDecklist = (id) => async (dispatch) => {
+  const response = await fetch(`/api/decklists/${id}/`, {
+    method: 'DELETE',
+  });
+  if (response.ok) {
+    const message = await response.json();
+    await dispatch(remove(id));
+    return message;
+  } else {
+    return ['An error occurred.'];
+  }
+};
+
 const initialState = {};
 
 export default function myDeckListReducer(state = initialState, action) {
@@ -93,6 +112,10 @@ export default function myDeckListReducer(state = initialState, action) {
     case EDIT_LIST:
       newState = { ...state };
       newState[action.decklist.id] = action.decklist;
+      return newState;
+    case REMOVE_LIST:
+      newState = { ...state };
+      delete newState[action.id];
       return newState;
     default:
       return state;

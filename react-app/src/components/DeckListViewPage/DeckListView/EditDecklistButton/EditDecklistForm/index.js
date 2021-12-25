@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { editDecklist } from '../../../../../../store/my_deck_lists';
-import { getDecklist, getAllCards } from '../../../../../../store/current_list';
-import { setImage } from '../../../../../../utils/images';
-import AddImageCheck from '../../../../../../utils/addCheck';
-import EditImageCheck from '../../../../../../utils/editCheck';
-import ImageInput from '../../../../../../utils/imageInput';
+import { editDecklist } from '../../../../../store/my_deck_lists';
+import { getDecklist, getAllCards } from '../../../../../store/current_list';
+import { setImage } from '../../../../../utils/images';
+import AddImageCheck from '../../../../../utils/addCheck';
+import EditImageCheck from '../../../../../utils/editCheck';
+import ImageInput from '../../../../../utils/imageInput';
 
 const EditDecklistForm = ({ close }) => {
   const current_list = useSelector((state) => state.current_list);

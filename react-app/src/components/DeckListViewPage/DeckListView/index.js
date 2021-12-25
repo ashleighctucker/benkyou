@@ -6,7 +6,8 @@ import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 import ShuffleTwoToneIcon from '@mui/icons-material/ShuffleTwoTone';
 import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 
-import EditDeckListModal from './DeckList/EditDecklistButton';
+import EditDeckListModal from './EditDecklistButton';
+import DeleteDecklistModal from './DeleteDecklistButton';
 import { getDecklist, getAllCards } from '../../../store/current_list';
 import DeckList from './DeckList';
 
@@ -79,6 +80,7 @@ const DeckListView = () => {
                 Add Deck
               </button>
               <EditDeckListModal />
+              <DeleteDecklistModal />
             </>
           )}
         </div>
