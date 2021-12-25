@@ -34,6 +34,28 @@ class Deck(db.Model):
     def deck_owner(self):
         return self.creator.user_name
 
+    @property
+    def cardlist(self):
+        owner = str(self.creator.user_name)
+        return [{'id': obj.id,
+                 'title': obj.title,
+                 'has_image': obj.has_image,
+                 'pronunciation': obj.pronunciation,
+                 'type': obj.type,
+                 'definition': obj.definition,
+                 'example': obj.example,
+                 'image_url': obj.image_url,
+                 'emoji': obj.emoji,
+                 'deck_id': obj.deck_id,
+                 'deck_title': self.title,
+                 'deck_creator': owner
+                 }
+                for obj in self.cards]
+
+    @property
+    def cards_amount(self):
+        return len(self.cardlist)
+
     def add_mastered_user(self, user):
         if user not in self.mastered_users:
             self.mastered_users.append(user)
@@ -89,6 +111,7 @@ class DeckList(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(256), nullable=False)
+    has_image = db.Column(db.Boolean, default=False)
     cover_photo_url = db.Column(db.String(256))
     user_id = db.Column(db.Integer, db.ForeignKey(
         "users.id"), nullable=False)
@@ -118,8 +141,12 @@ class DeckList(db.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'cover_photo_url': self.cover_photo_url,
         }
+
+    def get_cards(self):
+        cards = [obj.cardlist for obj in self.decks]
+
+        return cards
 
     def to_dict(self):
         owner = str(self.creator.user_name)
@@ -129,11 +156,16 @@ class DeckList(db.Model):
             'title': self.title,
             'cover_photo_url': self.cover_photo_url,
             'creator': owner,
-            'decks': {obj.id: {'id': obj.id,
-                               'title': obj.title,
-                               'cover_photo_url': obj.cover_photo_url,
-                               'category': obj.category_type,
-                               'category_id': obj.category_id,
-                               'creator': obj.deck_owner}
-                      for obj in self.decks}
+            'created_on': self.created_on,
+            'has_image': self.has_image,
+            'decks': [{'id': obj.id,
+                       'title': obj.title,
+                       'cover_photo_url': obj.cover_photo_url,
+                       'category': obj.category_type,
+                       'category_id': obj.category_id,
+                       'has_image': obj.has_image,
+                       'created_on': obj.created_on,
+                       'cards_amount': obj.cards_amount,
+                       'creator': obj.deck_owner}
+                      for obj in self.decks]
         }

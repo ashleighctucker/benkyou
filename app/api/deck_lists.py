@@ -12,6 +12,12 @@ def get_full_deck_list_detail(id):
     return decklist.to_dict()
 
 
+@deck_list_routes.route('/cards/<int:id>/')
+def get_all_cards_from_list(id):
+    decklist = DeckList.query.get(int(id))
+    return {'cards': decklist.get_cards()}
+
+
 @deck_list_routes.route('/', methods=["POST"])
 def create_deck_list():
     form = NewDeckListForm()
