@@ -7,6 +7,7 @@ import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 import NewDeckPage from './components/NewDeckPage';
 import DeckViewPage from './components/DeckViewPage';
+import DeckListViewPage from './components/DeckListViewPage';
 import NewCardPage from './components/NewCardPage';
 import StudyDeckPage from './components/StudyDeckPage';
 import ShuffleStudyDeckPage from './components/ShuffleStudyPage';
@@ -48,16 +49,19 @@ function App() {
             <NewDeckPage className="main-grid" />
           </Route>
           <Route exact={true} path="/decks/:deckId">
-            <DeckViewPage className="main-grid" />
+            <DeckViewPage />
           </Route>
           <Route exact={true} path="/decks/:deckId/add-card">
-            <NewCardPage className="main-grid" />
+            <NewCardPage  />
           </Route>
           <Route exact={true} path="/decks/:deckId/study">
-            <StudyDeckPage className="main-grid" />
+            <StudyDeckPage  />
           </Route>
           <Route exact={true} path="/decks/:deckId/shuffled-study">
-            <ShuffleStudyDeckPage className="main-grid" />
+            <ShuffleStudyDeckPage />
+          </Route>
+          <Route exact={true} path="/decklists/:decklistId">
+            <DeckListViewPage />
           </Route>
           <Route path="/">
             <h1 className="main-grid">Home Page</h1>
