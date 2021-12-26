@@ -1,37 +1,55 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import RemoveCircleTwoToneIcon from '@mui/icons-material/RemoveCircleTwoTone';
 
+import { removeDeckFromList } from '../../../../store/current_list';
 import './DeckList.css';
 
-const DeckList = ({ decklist, decksObj }) => {
+const DeckList = ({ decklist, decksObj, owner }) => {
+  const dispatch = useDispatch();
 
   const makeList = () => {
     let list = [];
     for (let key in decksObj) {
       let tile = (
-        <div
-          onClick={() => history.push(`/decks/${decksObj[key].id}`)}
-          key={decksObj[key].id}
-          className="deck-tile"
-        >
-          <div className="deck-tile-title">
-            <h1>{decksObj[key].title}</h1>
-            <p>
-              Created By: {decksObj[key].creator} on{' '}
-              {new Date(decksObj[key].created_on).toDateString()}
-            </p>
-            <p>Cards: {decksObj[key].cards_amount}</p>
+        <div className="deck-tile-container">
+          {owner && (
+            <div className="deck-button-container">
+              <button
+                onClick={() =>
+                  dispatch(removeDeckFromList(decklist.id, decksObj[key].id))
+                }
+                className="deck-view-button"
+              >
+                <RemoveCircleTwoToneIcon /> Remove From List
+              </button>
+            </div>
+          )}
+          <div
+            onClick={() => history.push(`/decks/${decksObj[key].id}`)}
+            key={decksObj[key].id}
+            className="deck-tile"
+          >
+            <div className="deck-tile-title">
+              <h1>{decksObj[key].title}</h1>
+              <p>
+                Created By: {decksObj[key].creator} on{' '}
+                {new Date(decksObj[key].created_on).toDateString()}
+              </p>
+              <p>Cards: {decksObj[key].cards_amount}</p>
+            </div>
+            {decksObj[key].has_image ? (
+              <div
+                className="card-sticker deck-sticker"
+                style={{
+                  backgroundImage: `url(${decksObj[key].cover_photo_url})`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                }}
+              />
+            ) : null}
           </div>
-          {decksObj[key].has_image ? (
-            <div
-              className="card-sticker deck-sticker"
-              style={{
-                backgroundImage: `url(${decksObj[key].cover_photo_url})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-              }}
-            />
-          ) : null}
         </div>
       );
       list.push(tile);

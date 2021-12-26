@@ -1,6 +1,7 @@
 const LOAD_LIST = 'decklist/LOAD_DECK_LIST';
 const LOAD_CARDS = 'decklist/LOAD_ALL_CARDS';
 const ADD_DECK = 'decklist/ADD_DECK';
+const REMOVE_DECK = 'decklist/REMOVE_DECK';
 
 const load = (decklist) => ({
   type: LOAD_LIST,
@@ -15,6 +16,11 @@ const loadCards = (list) => ({
 const addDeck = (deck) => ({
   type: ADD_DECK,
   deck,
+});
+
+const removeDeck = (id) => ({
+  type: REMOVE_DECK,
+  id,
 });
 
 export const getDecklist = (id) => async (dispatch) => {
@@ -78,6 +84,28 @@ export const addDeckToDeckList = (decklist_id, deck_id) => async (dispatch) => {
   }
 };
 
+export const removeDeckFromList =
+  (decklist_id, deck_id) => async (dispatch) => {
+    const response = await fetch(
+      `/api/decklists/${decklist_id}/remove/${deck_id}/`,
+      {
+        method: 'PATCH',
+      }
+    );
+    if (response.ok) {
+      const deckId = await response.json();
+      await dispatch(removeDeck(deckId['id']));
+      return null;
+    } else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) {
+        return data.errors;
+      }
+    } else {
+      return ['An error occurred. Please try again.'];
+    }
+  };
+
 const initialState = {};
 
 export default function currentDecklistReducer(state = initialState, action) {
@@ -94,6 +122,10 @@ export default function currentDecklistReducer(state = initialState, action) {
     case ADD_DECK:
       newState = { ...state };
       newState['decks'][action.deck.id] = action.deck;
+      return newState;
+    case REMOVE_DECK:
+      newState = { ...state };
+      delete newState['decks'][action.id];
       return newState;
     default:
       return state;

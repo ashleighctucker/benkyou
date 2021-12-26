@@ -109,7 +109,7 @@ def remove_deck_from_list(id, deck_id):
     deck = Deck.query.get(int(deck_id))
     if deck:
         response = deckList.remove_deck(deck)
-        if response['errors']:
+        if 'errors' in response:
             return response, 400
         db.session.commit()
         return response

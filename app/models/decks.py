@@ -142,7 +142,7 @@ class DeckList(db.Model):
     def remove_deck(self, deck):
         if deck in self.decks:
             self.decks.remove(deck)
-            return deck.id
+            return {'id': deck.id}
         else:
             return {'errors': f"Could not find deck {deck.title} in list"}
 

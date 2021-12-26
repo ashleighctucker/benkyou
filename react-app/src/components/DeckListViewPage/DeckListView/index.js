@@ -90,7 +90,11 @@ const DeckListView = () => {
       </div>
       <div id="buffer-main"></div>
       <div className="card-list-container">
-        <DeckList decklist={decklist} decksObj={decklist['decks']} />
+        <DeckList
+          decklist={decklist}
+          decksObj={decklist['decks']}
+          owner={owner}
+        />
       </div>
       <div id="buffer-cards"></div>
     </div>
