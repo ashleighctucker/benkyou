@@ -9,8 +9,13 @@ import ImageInput from '../../../utils/imageInput';
 import './NewDeckForm.css';
 
 const NewDeckForm = () => {
-  const categories = useSelector((state) => state.categories);
+  const categoriesObj = useSelector((state) => state.categories);
   const sessionUser = useSelector((state) => state.session.user);
+
+  const categories = [];
+  for (let key in categoriesObj) {
+    categories.push(categoriesObj[key]);
+  }
 
   // deck states
   const [title, setTitle] = useState('');

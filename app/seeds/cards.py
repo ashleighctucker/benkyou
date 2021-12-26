@@ -39,7 +39,7 @@ def seed_cards():
                            pronunciation=data[key]['pronunciation'], type=data[key]['definitions'][0]['type'], definition=data[key]['definitions'][0]['definition'], example=data[key]['definitions'][0]['example'], image_url=data[key]['definitions'][0]['image_url'], emoji=data[key]['definitions'][0]['emoji'], deck_id=3, user_id=1)
         db.session.add(newCard)
 
-    cards4 = open('./app/seeds/card_seeds/cards_3.json')
+    cards4 = open('./app/seeds/card_seeds/cards_4.json')
     data = json.load(cards4)
 
     for key in data:
@@ -49,6 +49,42 @@ def seed_cards():
         else:
             newCard = Card(title=data[key]['word'],
                            pronunciation=data[key]['pronunciation'], type=data[key]['definitions'][0]['type'], definition=data[key]['definitions'][0]['definition'], example=data[key]['definitions'][0]['example'], image_url=data[key]['definitions'][0]['image_url'], emoji=data[key]['definitions'][0]['emoji'], deck_id=4, user_id=1)
+        db.session.add(newCard)
+
+    cards5 = open('./app/seeds/card_seeds/cards_5.json')
+    data = json.load(cards5)
+
+    for key in data:
+        if data[key]['definitions'][0]['image_url']:
+            newCard = Card(has_image=True, title=data[key]['word'],
+                           pronunciation=data[key]['pronunciation'], type=data[key]['definitions'][0]['type'], definition=data[key]['definitions'][0]['definition'], example=data[key]['definitions'][0]['example'], image_url=data[key]['definitions'][0]['image_url'], emoji=data[key]['definitions'][0]['emoji'], deck_id=5, user_id=2)
+        else:
+            newCard = Card(title=data[key]['word'],
+                           pronunciation=data[key]['pronunciation'], type=data[key]['definitions'][0]['type'], definition=data[key]['definitions'][0]['definition'], example=data[key]['definitions'][0]['example'], image_url=data[key]['definitions'][0]['image_url'], emoji=data[key]['definitions'][0]['emoji'], deck_id=5, user_id=2)
+        db.session.add(newCard)
+
+    cards6 = open('./app/seeds/card_seeds/cards_6.json')
+    data = json.load(cards6)
+
+    for key in data:
+        if data[key]['definitions'][0]['image_url']:
+            newCard = Card(has_image=True, title=data[key]['word'],
+                           pronunciation=data[key]['pronunciation'], type=data[key]['definitions'][0]['type'], definition=data[key]['definitions'][0]['definition'], example=data[key]['definitions'][0]['example'], image_url=data[key]['definitions'][0]['image_url'], emoji=data[key]['definitions'][0]['emoji'], deck_id=6, user_id=2)
+        else:
+            newCard = Card(title=data[key]['word'],
+                           pronunciation=data[key]['pronunciation'], type=data[key]['definitions'][0]['type'], definition=data[key]['definitions'][0]['definition'], example=data[key]['definitions'][0]['example'], image_url=data[key]['definitions'][0]['image_url'], emoji=data[key]['definitions'][0]['emoji'], deck_id=6, user_id=2)
+        db.session.add(newCard)
+
+    cards7 = open('./app/seeds/card_seeds/cards_7.json')
+    data = json.load(cards7)
+
+    for key in data:
+        if data[key]['definitions'][0]['image_url']:
+            newCard = Card(has_image=True, title=data[key]['word'],
+                           pronunciation=data[key]['pronunciation'], type=data[key]['definitions'][0]['type'], definition=data[key]['definitions'][0]['definition'], example=data[key]['definitions'][0]['example'], image_url=data[key]['definitions'][0]['image_url'], emoji=data[key]['definitions'][0]['emoji'], deck_id=7, user_id=2)
+        else:
+            newCard = Card(title=data[key]['word'],
+                           pronunciation=data[key]['pronunciation'], type=data[key]['definitions'][0]['type'], definition=data[key]['definitions'][0]['definition'], example=data[key]['definitions'][0]['example'], image_url=data[key]['definitions'][0]['image_url'], emoji=data[key]['definitions'][0]['emoji'], deck_id=7, user_id=2)
         db.session.add(newCard)
 
     db.session.commit()

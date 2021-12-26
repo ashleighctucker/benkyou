@@ -95,7 +95,6 @@ export const deleteCard = (id) => async (dispatch) => {
 };
 
 export const switchDeck = (card_id, deck_id) => async (dispatch) => {
-  console.log(deck_id);
   const response = await fetch(`/api/cards/move/${card_id}/`, {
     method: 'PUT',
     headers: {
@@ -111,7 +110,6 @@ export const switchDeck = (card_id, deck_id) => async (dispatch) => {
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
-    console.log(data.errors);
     if (data.errors) {
       return data;
     }

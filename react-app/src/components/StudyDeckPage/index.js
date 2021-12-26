@@ -5,7 +5,7 @@ import StudyView from './StudyView';
 
 const StudyDeckPage = () => {
   return (
-    <div className="main-page-grid-container">
+    <div className="main-grid main-page-grid-container">
       <SideBar className="side" />
       <StudyView />
     </div>

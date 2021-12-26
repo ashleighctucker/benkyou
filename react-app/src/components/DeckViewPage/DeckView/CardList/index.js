@@ -36,17 +36,6 @@ const CardList = () => {
           </h1>
         </div>
       ) : null}
-      {cards ? (
-        <div className="card-tile-container example">
-          <div className="tile-example"></div>
-          <div className="tile-example">
-            <h2>Front</h2>
-          </div>
-          <div className="tile-example">
-            <h2>Back</h2>
-          </div>
-        </div>
-      ) : null}
       {cards ? makeTiles() : null}
     </div>
   );

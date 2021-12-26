@@ -2,10 +2,10 @@ from app.models import db, Category
 
 
 def seed_categories():
-    category1 = Category(title="nouns", color_hex="1414BC")
-    category2 = Category(title="adjectives", color_hex="FF865E")
-    category3 = Category(title="verbs", color_hex="FFC947")
-    category4 = Category(title="mix", color_hex="FFC3E7")
+    category1 = Category(title="nouns", color_hex="157A6E")
+    category2 = Category(title="adjectives", color_hex="5D2E46")
+    category3 = Category(title="verbs", color_hex="E08E45")
+    category4 = Category(title="mix", color_hex="EA596E")
 
     db.session.add(category1)
     db.session.add(category2)

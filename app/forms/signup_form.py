@@ -9,7 +9,8 @@ def user_exists(form, field):
     email = field.data
     user = User.query.filter(User.email == email).first()
     if user:
-        raise ValidationError('Email address is already in use.')
+        raise ValidationError(
+            'Email address alredy assocaited with an account.')
 
 
 def username_exists(form, field):
@@ -17,7 +18,7 @@ def username_exists(form, field):
     user_name = field.data
     user = User.query.filter(User.user_name == user_name).first()
     if user:
-        raise ValidationError('Username is already in use.')
+        raise ValidationError('Username not available.')
 
 
 def check_length(form, field):

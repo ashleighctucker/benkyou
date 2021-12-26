@@ -14,6 +14,12 @@ def get_full_deck_detail(id):
     return deck.to_dict()
 
 
+@deck_routes.route('/recents/')
+def get_recents():
+    decks = db.session.query(Deck).order_by(Deck.created_on).limit(15)
+    return {'decks': [deck.simple_dict() for deck in decks]}
+
+
 @deck_routes.route('/', methods=["POST"])
 def create_deck():
     form = NewDeckForm()

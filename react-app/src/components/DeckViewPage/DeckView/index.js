@@ -15,6 +15,13 @@ const DeckView = () => {
   const { deckId } = useParams();
   const deck = useSelector((state) => state.current_deck);
   const categories = useSelector((state) => state.categories);
+  const sessionUser = useSelector((state) => state.session.user);
+
+  let owner = false;
+  if (+sessionUser?.id === +deck.owner_id) {
+    owner = true;
+  }
+
   const deckCat = categories[deck.category_id];
 
   const history = useHistory();
@@ -36,6 +43,7 @@ const DeckView = () => {
                 backgroundImage: `url(${deck.cover_photo_url})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
+                border: `5px solid #${deckCat?.color_hex}`
               }}
             />
           ) : null}
@@ -51,7 +59,9 @@ const DeckView = () => {
           </div>
         </div>
         <div className="study-buttons">
-          {deck.cards && Object.keys(deck['cards']).length > 0 ? (
+          {deck.cards &&
+          Object.keys(deck['cards']).length > 0 &&
+          sessionUser ? (
             <button
               onClick={() => history.push(`/decks/${deck.id}/study`)}
               className="deck-view-button"
@@ -59,8 +69,10 @@ const DeckView = () => {
               <SchoolTwoToneIcon />
               Study Deck
             </button>
-          ) : null}
-          {deck.cards && Object.keys(deck['cards']).length > 0 ? (
+          ) : <span>Log in to study this deck!</span>}
+          {deck.cards &&
+          Object.keys(deck['cards']).length > 0 &&
+          sessionUser ? (
             <button
               onClick={() => history.push(`/decks/${deck.id}/shuffled-study`)}
               className="deck-view-button"
@@ -70,15 +82,19 @@ const DeckView = () => {
           ) : null}
         </div>
         <div className="deck-buttons">
-          <button
-            className="deck-view-button"
-            onClick={() => history.push(`/decks/${deck.id}/add-card`)}
-          >
-            <AddCircleTwoToneIcon />
-            Add Card
-          </button>
-          <EditDeckModal />
-          <DeleteDeckModal />
+          {owner ? (
+            <>
+              <button
+                className="deck-view-button"
+                onClick={() => history.push(`/decks/${deck.id}/add-card`)}
+              >
+                <AddCircleTwoToneIcon />
+                Add Card
+              </button>
+              <EditDeckModal />
+              <DeleteDeckModal />
+            </>
+          ) : null}
         </div>
         <div className="deck-maker">
           <p>

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField
+from wtforms import StringField, IntegerField,  BooleanField
 from wtforms.validators import DataRequired, ValidationError, URL
 from app.models import DeckList
 
@@ -13,14 +13,14 @@ def check_length(form, field):
 
 class NewDeckListForm(FlaskForm):
     title = StringField('title', validators=[DataRequired(), check_length])
-    cover_photo_url = StringField(
-        'cover photo', validators=[check_length, URL(
-            require_tld=True, message="Please enter a valid url for the cover photo")])
+    cover_photo_url = StringField('cover photo')
     user_id = IntegerField('user id', validators=[DataRequired()])
+    has_image = BooleanField('has image')
 
 
 class EditDeckListForm(FlaskForm):
     title = StringField('title', validators=[DataRequired(), check_length])
-    cover_photo_url = StringField(
-        'cover photo', validators=[check_length, URL(
-            require_tld=True, message="Please enter a valid url for the cover photo")])
+    cover_photo_url = StringField('cover photo')
+    has_image = BooleanField('has image')
+    edit_image = BooleanField('edit image')
+    add_image = BooleanField('add image')

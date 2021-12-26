@@ -1,3 +1,4 @@
+from app.models.categorites import Category
 from .db import db
 from datetime import datetime
 
@@ -34,6 +35,32 @@ class Deck(db.Model):
     def deck_owner(self):
         return self.creator.user_name
 
+    @property
+    def cardlist(self):
+        owner = str(self.creator.user_name)
+        return [{'id': obj.id,
+                 'title': obj.title,
+                 'has_image': obj.has_image,
+                 'pronunciation': obj.pronunciation,
+                 'type': obj.type,
+                 'definition': obj.definition,
+                 'example': obj.example,
+                 'image_url': obj.image_url,
+                 'emoji': obj.emoji,
+                 'deck_id': obj.deck_id,
+                 'deck_title': self.title,
+                 'deck_creator': owner
+                 }
+                for obj in self.cards]
+
+    @property
+    def cards_amount(self):
+        return len(self.cardlist)
+
+    @property
+    def cat_color(self):
+        return str(self.category.color_hex)
+
     def add_mastered_user(self, user):
         if user not in self.mastered_users:
             self.mastered_users.append(user)
@@ -62,6 +89,7 @@ class Deck(db.Model):
 
         return {
             'id': self.id,
+            'owner_id': self.user_id,
             'title': self.title,
             'has_image': self.has_image,
             'cover_photo_url': self.cover_photo_url,
@@ -89,6 +117,7 @@ class DeckList(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(256), nullable=False)
+    has_image = db.Column(db.Boolean, default=False)
     cover_photo_url = db.Column(db.String(256))
     user_id = db.Column(db.Integer, db.ForeignKey(
         "users.id"), nullable=False)
@@ -103,23 +132,35 @@ class DeckList(db.Model):
     def add_deck(self, deck):
         if deck not in self.decks:
             self.decks.append(deck)
-            return self.to_dict()
+            return {'id': deck.id,
+                    'title': deck.title,
+                    'cover_photo_url': deck.cover_photo_url,
+                    'category': deck.category_type,
+                    'category_id': deck.category_id,
+                    'has_image': deck.has_image,
+                    'created_on': deck.created_on,
+                    'cards_amount': deck.cards_amount,
+                    'creator': deck.deck_owner}
         else:
-            return {'errors': f"Deck {deck.id} already in list"}
+            return {'errors': f"Deck {deck.title} already in list"}
 
     def remove_deck(self, deck):
         if deck in self.decks:
             self.decks.remove(deck)
-            return self.to_dict()
+            return {'id': deck.id}
         else:
-            return {'errors': f"Could not find deck {deck.id} in list"}
+            return {'errors': f"Could not find deck {deck.title} in list"}
 
     def simple_dict(self):
         return {
             'id': self.id,
             'title': self.title,
-            'cover_photo_url': self.cover_photo_url,
         }
+
+    def get_cards(self):
+        cards = [obj.cardlist for obj in self.decks]
+
+        return cards
 
     def to_dict(self):
         owner = str(self.creator.user_name)
@@ -129,11 +170,18 @@ class DeckList(db.Model):
             'title': self.title,
             'cover_photo_url': self.cover_photo_url,
             'creator': owner,
+            'created_on': self.created_on,
+            'has_image': self.has_image,
+            'owner_id': self.user_id,
             'decks': {obj.id: {'id': obj.id,
+                               'color': obj.cat_color,
                                'title': obj.title,
                                'cover_photo_url': obj.cover_photo_url,
                                'category': obj.category_type,
                                'category_id': obj.category_id,
+                               'has_image': obj.has_image,
+                               'created_on': obj.created_on,
+                               'cards_amount': obj.cards_amount,
                                'creator': obj.deck_owner}
                       for obj in self.decks}
         }

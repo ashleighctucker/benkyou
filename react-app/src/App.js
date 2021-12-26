@@ -5,17 +5,21 @@ import { useDispatch } from 'react-redux';
 // components
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
+
+import NewDeckListPage from './components/NewDeckListPage';
 import NewDeckPage from './components/NewDeckPage';
-import DeckViewPage from './components/DeckViewPage';
 import NewCardPage from './components/NewCardPage';
+
+import DeckViewPage from './components/DeckViewPage';
+import DeckListViewPage from './components/DeckListViewPage';
+
 import StudyDeckPage from './components/StudyDeckPage';
 import ShuffleStudyDeckPage from './components/ShuffleStudyPage';
-
+import StudyDecklistPage from './components/StudyDecklistPage';
+import ShuffleStudyDecklistPage from './components/ShuffleStudyDecklistPage';
 // thunks
 import { authenticate } from './store/session';
 import { getCategories } from './store/categories';
-import { getMyDecks } from './store/my_decks';
-import { getMyDeckLists } from './store/my_deck_lists';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -24,12 +28,6 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate())
-        .then(async (id) => {
-          if (id) {
-            await dispatch(getMyDecks(id));
-            await dispatch(getMyDeckLists(id));
-          }
-        })
         .then(() => dispatch(getCategories()))
         .then(() => setLoaded(true));
     })();
@@ -48,16 +46,28 @@ function App() {
             <NewDeckPage className="main-grid" />
           </Route>
           <Route exact={true} path="/decks/:deckId">
-            <DeckViewPage className="main-grid" />
+            <DeckViewPage />
           </Route>
           <Route exact={true} path="/decks/:deckId/add-card">
-            <NewCardPage className="main-grid" />
+            <NewCardPage />
           </Route>
           <Route exact={true} path="/decks/:deckId/study">
-            <StudyDeckPage className="main-grid" />
+            <StudyDeckPage />
           </Route>
           <Route exact={true} path="/decks/:deckId/shuffled-study">
-            <ShuffleStudyDeckPage className="main-grid" />
+            <ShuffleStudyDeckPage />
+          </Route>
+          <Route path="/new-deck-list">
+            <NewDeckListPage />
+          </Route>
+          <Route exact={true} path="/decklists/:decklistId">
+            <DeckListViewPage />
+          </Route>
+          <Route exact={true} path="/decklists/:decklistId/study">
+            <StudyDecklistPage />
+          </Route>
+          <Route exact={true} path="/decklists/:decklistId/shuffled-study">
+            <ShuffleStudyDecklistPage />
           </Route>
           <Route path="/">
             <h1 className="main-grid">Home Page</h1>

@@ -6,7 +6,8 @@ const load = (list) => ({
 });
 
 export const searchDecks = (term) => async (dispatch) => {
-  const response = await fetch(`/api/search/${term}`, {
+  if (!term) term = ' ';
+  const response = await fetch(`/api/search/${term}/`, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -17,20 +18,21 @@ export const searchDecks = (term) => async (dispatch) => {
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
+    return data;
   } else {
     return ['An error occurred. Please try again.'];
   }
 };
 
-const initialState = {};
+const initialState = [];
 
 export default function searchReducer(state = initialState, action) {
+  let newState;
   switch (action.type) {
     case LOAD_RESULTS: {
-      return { ...action.list };
+      newState = {};
+      action.list.forEach((deck) => (newState[deck.id] = deck));
+      return newState;
     }
     default:
       return state;

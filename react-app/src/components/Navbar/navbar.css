@@ -27,6 +27,7 @@
   font-size: 275%;
   font-style: italic;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 /* Search bar nav styles */
