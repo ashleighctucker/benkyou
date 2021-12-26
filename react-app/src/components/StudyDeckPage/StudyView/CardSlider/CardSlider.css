@@ -11,6 +11,7 @@
   width: 60vw;
   overflow: hidden;
   padding: 5% 0;
+  perspective: 60vw;
 }
 
 .arrow {
@@ -45,6 +46,9 @@
   display: grid;
   grid-template-areas: 'num''card''button';
   grid-template-rows: auto 1fr;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
 }
 
 .card-num {
@@ -56,6 +60,7 @@
   display: none;
   margin: 0;
   padding: 0;
+  backface-visibility: hidden;
 }
 
 .flip-card-front.flipped {

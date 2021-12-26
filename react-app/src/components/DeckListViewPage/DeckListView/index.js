@@ -41,6 +41,7 @@ const DeckListView = () => {
                 backgroundImage: `url(${decklist.cover_photo_url})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
+                border: '5px solid #157A6E',
               }}
             />
           ) : null}

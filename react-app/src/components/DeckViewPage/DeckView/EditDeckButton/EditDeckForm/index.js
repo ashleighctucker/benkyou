@@ -10,8 +10,13 @@ import ImageInput from '../../../../../utils/imageInput';
 import './EditDeckForm.css';
 
 const EditDeckForm = ({ close }) => {
-  const categories = useSelector((state) => state.categories);
+  const categoriesObj = useSelector((state) => state.categories);
   const current_deck = useSelector((state) => state.current_deck);
+
+  const categories = [];
+  for (let key in categoriesObj) {
+    categories.push(categoriesObj[key]);
+  }
 
   // deck states
   const [title, setTitle] = useState(current_deck.title);

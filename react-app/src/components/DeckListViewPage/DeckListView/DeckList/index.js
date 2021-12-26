@@ -13,7 +13,7 @@ const DeckList = ({ decklist, decksObj, owner }) => {
     let list = [];
     for (let key in decksObj) {
       let tile = (
-        <div className="deck-tile-container">
+        <div key={decksObj[key].id} className="deck-tile-container">
           {owner && (
             <div className="deck-button-container">
               <button
@@ -28,8 +28,8 @@ const DeckList = ({ decklist, decksObj, owner }) => {
           )}
           <div
             onClick={() => history.push(`/decks/${decksObj[key].id}`)}
-            key={decksObj[key].id}
             className="deck-tile"
+            style={{ border: `5px solid #${decksObj[key].color}` }}
           >
             <div className="deck-tile-title">
               <h1>{decksObj[key].title}</h1>

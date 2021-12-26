@@ -1,3 +1,4 @@
+from app.models.categorites import Category
 from .db import db
 from datetime import datetime
 
@@ -55,6 +56,10 @@ class Deck(db.Model):
     @property
     def cards_amount(self):
         return len(self.cardlist)
+
+    @property
+    def cat_color(self):
+        return str(self.category.color_hex)
 
     def add_mastered_user(self, user):
         if user not in self.mastered_users:
@@ -169,6 +174,7 @@ class DeckList(db.Model):
             'has_image': self.has_image,
             'owner_id': self.user_id,
             'decks': {obj.id: {'id': obj.id,
+                               'color': obj.cat_color,
                                'title': obj.title,
                                'cover_photo_url': obj.cover_photo_url,
                                'category': obj.category_type,

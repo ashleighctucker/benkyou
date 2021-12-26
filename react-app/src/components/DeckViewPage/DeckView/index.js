@@ -43,6 +43,7 @@ const DeckView = () => {
                 backgroundImage: `url(${deck.cover_photo_url})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
+                border: `5px solid #${deckCat?.color_hex}`
               }}
             />
           ) : null}

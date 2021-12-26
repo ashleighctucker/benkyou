@@ -5,14 +5,18 @@ import { useDispatch } from 'react-redux';
 // components
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
+
+import NewDeckListPage from './components/NewDeckListPage';
 import NewDeckPage from './components/NewDeckPage';
+import NewCardPage from './components/NewCardPage';
+
 import DeckViewPage from './components/DeckViewPage';
 import DeckListViewPage from './components/DeckListViewPage';
-import NewCardPage from './components/NewCardPage';
+
 import StudyDeckPage from './components/StudyDeckPage';
 import ShuffleStudyDeckPage from './components/ShuffleStudyPage';
-import NewDeckListPage from './components/NewDeckListPage';
-
+import StudyDecklistPage from './components/StudyDecklistPage';
+import ShuffleStudyDecklistPage from './components/ShuffleStudyDecklistPage';
 // thunks
 import { authenticate } from './store/session';
 import { getCategories } from './store/categories';
@@ -58,6 +62,12 @@ function App() {
           </Route>
           <Route exact={true} path="/decklists/:decklistId">
             <DeckListViewPage />
+          </Route>
+          <Route exact={true} path="/decklists/:decklistId/study">
+            <StudyDecklistPage />
+          </Route>
+          <Route exact={true} path="/decklists/:decklistId/shuffled-study">
+            <ShuffleStudyDecklistPage />
           </Route>
           <Route path="/">
             <h1 className="main-grid">Home Page</h1>

@@ -20,7 +20,7 @@
   background-color: white;
   display: grid;
   grid-template-areas: 'info photo';
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   margin: 2% 0;
   border-radius: 5px;
   cursor: pointer;
