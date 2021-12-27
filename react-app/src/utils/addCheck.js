@@ -5,7 +5,7 @@ const AddImageCheck = ({ addImage, setAddImage, errors, item }) => {
     <div className="form-input-containers">
       <label htmlFor="edit_image">Add a cover photo to this {item}?</label>
       <input
-        className="form-inputs"
+        className="check-input"
         name="edit_image"
         type="checkbox"
         value={addImage}

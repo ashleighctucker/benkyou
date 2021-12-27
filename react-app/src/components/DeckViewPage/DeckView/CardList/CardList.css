@@ -70,6 +70,7 @@
 /* sticker styles */
 .card-sticker {
   margin-top: 20%;
+  margin-left: 20%;
   height: 5rem;
   width: 5rem;
   border-radius: 50%;
@@ -93,4 +94,10 @@
 
 .odd-card.card-tile-back {
   box-shadow: 0 0 0 15px #E08E45;
+}
+
+@media screen and (max-width: 1200px) {
+  .card-sticker {
+    display: none;
+  }
 }

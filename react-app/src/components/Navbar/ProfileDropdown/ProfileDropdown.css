@@ -60,3 +60,9 @@
   margin: 0 2%;
   color: #CB904D;
 }
+
+@media screen and (max-width: 1200px) {
+  .dropdown-content {
+    min-width: 35%;
+  }
+}

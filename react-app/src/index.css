@@ -39,10 +39,14 @@ html, body {
   grid-row-end: 3;
 }
 
-/* main page media queries */
-@media screen and (max-width: 1300px) {
-  .content {
-    grid-template-rows: 1fr 18fr;
-    height: 100%;
-  }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  transition: background-color 10000s ease-in-out 0s;
 }
+
+/* main page media queries */
+/* @media screen and (max-width: 1200px) {} */

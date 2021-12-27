@@ -20,6 +20,10 @@
   background-color: transparent;
 }
 
+#back-button-container button:hover {
+  color: #B0413E;
+}
+
 @media screen and (max-width: 1300px) {
   #new-card-form input, #new-card-form label {
     font-size: 50%;

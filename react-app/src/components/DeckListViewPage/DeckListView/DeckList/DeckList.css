@@ -1,7 +1,7 @@
 .deck-tile-container {
   display: flex;
   height: fit-content;
-  width: 60%;
+  width: 80%;
   justify-content: center;
   align-items: center;
 }
@@ -16,7 +16,7 @@
 
 .deck-tile {
   height: 15rem;
-  width: 70%;
+  width: 60%;
   background-color: white;
   display: grid;
   grid-template-areas: 'info photo';
