@@ -24,8 +24,8 @@ class Deck(db.Model):
                             cascade="all, delete-orphan")
     deck_lists = db.relationship(
         'DeckList', secondary="added_decks", back_populates="decks")
-    mastered_users = db.relationship(
-        'User', secondary="mastered_decks", back_populates="mastered_decks")
+    completed_users = db.relationship(
+        'User', secondary="completed_decks", back_populates="completed_decks")
 
     @property
     def category_type(self):
@@ -61,17 +61,17 @@ class Deck(db.Model):
     def cat_color(self):
         return str(self.category.color_hex)
 
-    def add_mastered_user(self, user):
-        if user not in self.mastered_users:
-            self.mastered_users.append(user)
-            return self.to_dict()
+    def add_completed_user(self, user):
+        if user not in self.completed_users:
+            self.completed_users.append(user)
+            return {'user': user.id}
         else:
             return {'errors': f"Deck {self.id} already in mastered by user {user.id}."}
 
-    def remove_mastered_deck(self, user):
-        if user in self.mastered_users:
-            self.mastered_users.remove(user)
-            return self.to_dict()
+    def remove_completed_user(self, user):
+        if user in self.completed_users:
+            self.completed_users.remove(user)
+            return {'user': user.id}
         else:
             return {'errors': f"Could not find {user.id} in mastered list"}
 

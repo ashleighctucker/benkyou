@@ -22,12 +22,22 @@ class User(db.Model, UserMixin):
         'Card', back_populates='creator', cascade="all, delete-orphan")
     deck_lists = db.relationship(
         'DeckList', back_populates='creator',  cascade="all, delete-orphan")
-    mastered_decks = db.relationship(
-        'Deck', secondary="mastered_decks", back_populates='mastered_users')
+    completed_decks = db.relationship(
+        'Deck', secondary="completed_decks", back_populates='completed_users')
+    badges = db.relationship(
+        'Badge', secondary="user_badges", back_populates="users")
 
     @property
     def password(self):
         return self.hashed_password
+
+    @property
+    def badge_dict(self):
+        return {badge.id: {'id': badge.id, 'title': badge.title} for badge in self.badges}
+
+    @property
+    def completed_dict(self):
+        return [{'deck_id': obj.id, 'created_on': obj.created_on} for obj in self.completed_decks]
 
     @password.setter
     def password(self, password):
@@ -42,7 +52,6 @@ class User(db.Model, UserMixin):
             'username': self.user_name,
             'email': self.email,
             'first_name': self.first_name,
-            'created_on': self.created_on,
         }
 
     def to_dict(self):
@@ -52,5 +61,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'created_on': self.created_on,
-            'mastered_decks': [{'deck_id': obj.deck_id, 'created_on': obj.created_on} for obj in self.mastered_decks]
+            'completed_decks': self.completed_dict,
+            'badges': self.badge_dict
         }
