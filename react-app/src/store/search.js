@@ -1,8 +1,13 @@
 const LOAD_RESULTS = 'search/LOAD_RESULTS';
+const RESET_RESULTS = 'search/RESET_RESULTS';
 
 const load = (list) => ({
   type: LOAD_RESULTS,
   list,
+});
+
+const reset = () => ({
+  type: RESET_RESULTS,
 });
 
 export const searchDecks = (term) => async (dispatch) => {
@@ -18,13 +23,14 @@ export const searchDecks = (term) => async (dispatch) => {
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
+    dispatch(reset());
     return data;
   } else {
     return ['An error occurred. Please try again.'];
   }
 };
 
-const initialState = [];
+const initialState = {};
 
 export default function searchReducer(state = initialState, action) {
   let newState;
@@ -34,6 +40,8 @@ export default function searchReducer(state = initialState, action) {
       action.list.forEach((deck) => (newState[deck.id] = deck));
       return newState;
     }
+    case RESET_RESULTS:
+      return {};
     default:
       return state;
   }

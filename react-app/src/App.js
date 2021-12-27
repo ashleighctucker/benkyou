@@ -12,6 +12,7 @@ import NewCardPage from './components/NewCardPage';
 
 import DeckViewPage from './components/DeckViewPage';
 import DeckListViewPage from './components/DeckListViewPage';
+import SearchResultsPage from './components/SearchResultsPage';
 
 import StudyDeckPage from './components/StudyDeckPage';
 import ShuffleStudyDeckPage from './components/ShuffleStudyPage';
@@ -44,6 +45,9 @@ function App() {
         <Switch>
           <Route path="/new-deck">
             <NewDeckPage className="main-grid" />
+          </Route>
+          <Route path="/benkyou/search-results/:term">
+            <SearchResultsPage />
           </Route>
           <Route exact={true} path="/decks/:deckId">
             <DeckViewPage />

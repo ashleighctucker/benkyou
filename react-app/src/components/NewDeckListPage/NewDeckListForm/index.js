@@ -24,6 +24,10 @@ const NewDecklistForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  if (!sessionUser) {
+    history.push('/');
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});

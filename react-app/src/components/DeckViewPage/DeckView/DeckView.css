@@ -85,7 +85,7 @@
   font-family: inherit;
   font-size: 100%;
   white-space: nowrap;
-  min-width: 12rem;
+  min-width: 55%;
 }
 
 .deck-view-button:hover {
@@ -104,4 +104,11 @@
 /* cards styles */
 .card-list-container {
   grid-area: cards;
+}
+
+/* deck view media queries */
+@media screen and (max-width: 1200px) {
+  .deck-view-button {
+    min-width: 80%;
+  }
 }

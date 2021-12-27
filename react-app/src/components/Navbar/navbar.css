@@ -41,6 +41,7 @@
 
 #search-nav {
   color: #157A6E;
+  cursor: pointer;
 }
 
 #search {
@@ -60,7 +61,9 @@
   border: none;
   background-color: transparent;
   outline: none;
+
 }
+
 
 #nav-1, #nav-2 {
   width: 10%;
@@ -103,7 +106,7 @@
 
 /* Nav bar media queries */
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px) {
   #nav-logo, #search-bar {
     display: none;
   }

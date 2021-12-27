@@ -19,3 +19,23 @@
   max-height: 80vh;
   overflow-y: auto
 }
+
+.check-input {
+  margin-top: 5%;
+  margin-left: 3%;
+}
+
+@media screen and (max-width: 1200px) {
+  .modal-form {
+    width: 80vw;
+    font-size: 200%;
+  }
+
+  .modal-form select {
+    font-size: 80%;
+  }
+
+  input.check-input {
+    transform: scale(3)
+  }
+}
