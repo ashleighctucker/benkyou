@@ -1,5 +1,8 @@
-from app.models import db, Card
+from app.models import db, Card, User, Deck
+from faker import Faker
 import json
+
+fake = Faker()
 
 
 def seed_cards():
@@ -86,6 +89,20 @@ def seed_cards():
             newCard = Card(title=data[key]['word'],
                            pronunciation=data[key]['pronunciation'], type=data[key]['definitions'][0]['type'], definition=data[key]['definitions'][0]['definition'], example=data[key]['definitions'][0]['example'], image_url=data[key]['definitions'][0]['image_url'], emoji=data[key]['definitions'][0]['emoji'], deck_id=7, user_id=2)
         db.session.add(newCard)
+
+    users = db.session.query(User).all()
+    for user in users:
+        decks = db.session.query(Deck).filter(Deck.user_id == user.id).all()
+        if user.id == 1 or user.id == 2:
+            continue
+        for deck in decks:
+            for card in range(0, 20):
+                seed_title = fake.word()
+                type = 'Seed Card'
+                definition = fake.sentence()
+                seed_card = Card(title=seed_title, type=type,
+                                 definition=definition, user_id=user.id, deck_id=deck.id)
+                db.session.add(seed_card)
 
     db.session.commit()
 

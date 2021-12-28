@@ -2,8 +2,8 @@ from .db import db
 from datetime import datetime
 
 
-class MasteredDeck(db.Model):
-    __tablename__ = 'mastered_decks'
+class CompletedDeck(db.Model):
+    __tablename__ = 'completed_decks'
 
     deck_id = db.Column(db.Integer, db.ForeignKey(
         'decks.id'), primary_key=True)
