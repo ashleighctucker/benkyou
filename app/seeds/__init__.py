@@ -4,6 +4,8 @@ from .categories import seed_categories, undo_categories
 from .decks import seed_decks, undo_decks
 from .cards import seed_cards, undo_cards
 from .deck_lists import seed_deck_lists, undo_deck_lists
+from .badges import seed_badges, undo_badges
+from .user_badges import seed_user_badges, undo_user_badges
 
 
 # Creates a seed group to hold our commands
@@ -15,10 +17,13 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
+    seed_badges()
+    seed_user_badges()
     seed_categories()
     seed_decks()
     seed_cards()
     seed_deck_lists()
+
     # Add other seed functions here
 
 
@@ -26,6 +31,8 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_badges()
+    undo_user_badges()
     undo_categories()
     undo_decks()
     undo_cards()

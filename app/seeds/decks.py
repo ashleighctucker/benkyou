@@ -1,4 +1,9 @@
-from app.models import db, Deck
+from enum import unique
+from app.models import db, Deck, User
+from faker import Faker
+from random import randrange
+
+fake = Faker()
 
 
 def seed_decks():
@@ -34,6 +39,7 @@ def seed_decks():
                  category_id=3,
                  user_id=2,
                  has_image=True)
+
     db.session.add(deck1)
     db.session.add(deck2)
     db.session.add(deck3)
@@ -41,6 +47,17 @@ def seed_decks():
     db.session.add(deck5)
     db.session.add(deck6)
     db.session.add(deck7)
+
+    users = db.session.query(User).all()
+    for user in users:
+        for deck in range(0, 5):
+            cat_id = randrange(1, 4)
+            user_id = user.id
+            seed_title = fake.words(nb=3, unique=True)
+            seed_title.append('Deck')
+            seed_deck = Deck(title=" ".join(seed_title),
+                             category_id=cat_id, user_id=user_id)
+            db.session.add(seed_deck)
     db.session.commit()
 
 

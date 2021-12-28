@@ -32,6 +32,18 @@ class User(db.Model, UserMixin):
         return self.hashed_password
 
     @property
+    def decks_list(self):
+        return [{'id': deck.id,
+                 'title': deck.title,
+                 'category_id': deck.category_id,
+                 'created_on': deck.created_on, } for deck in self.decks]
+
+    @property
+    def lists_list(self):
+        return [{'id': decklist.id,
+                 'title': decklist.title} for decklist in self.deck_lists]
+
+    @property
     def badge_dict(self):
         return {badge.id: {'id': badge.id, 'title': badge.title} for badge in self.badges}
 
@@ -61,6 +73,8 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'created_on': self.created_on,
+            'decks': self.decks_list,
+            'lists': self.lists_list,
             'completed_decks': self.completed_dict,
             'badges': self.badge_dict
         }
