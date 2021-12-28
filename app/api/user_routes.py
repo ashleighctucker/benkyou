@@ -65,7 +65,7 @@ def remove_complete_deck(id, deckId):
         db.session.commit()
         return response
     else:
-        return {'errors': [f"Could not add user {id} to mastered deck"]}, 500
+        return {'errors': [f"Could not add user {id} to completed deck"]}, 500
 
 
 @user_routes.route('/<int:id>/info/')

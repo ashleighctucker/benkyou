@@ -73,7 +73,7 @@ class Deck(db.Model):
             self.completed_users.remove(user)
             return {'user': user.id}
         else:
-            return {'errors': f"Could not find {user.id} in mastered list"}
+            return {'errors': f"Could not find {user.id} in completed list"}
 
     def simple_dict(self):
         return {
