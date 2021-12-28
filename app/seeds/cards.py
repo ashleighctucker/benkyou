@@ -93,9 +93,11 @@ def seed_cards():
     users = db.session.query(User).all()
     for user in users:
         decks = db.session.query(Deck).filter(Deck.user_id == user.id).all()
-        if user.id == 1 or user.id == 2:
+        if user.id == 1:
             continue
         for deck in decks:
+            if deck.id in (5, 6, 7):
+                continue
             for card in range(0, 20):
                 seed_title = fake.word()
                 type = 'Seed Card'

@@ -12,6 +12,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     first_name = db.Column(db.String(150), nullable=False)
+    has_image = db.Column(db.Boolean, default=False)
+    profile_picture = db.Column(db.String(256))
     created_on = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
     updated_on = db.Column(db.DateTime, onupdate=datetime.utcnow)
