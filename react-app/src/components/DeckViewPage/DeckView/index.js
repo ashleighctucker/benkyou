@@ -8,6 +8,7 @@ import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 import { getDeck } from '../../../store/current_deck';
 import DeleteDeckModal from './DeleteDeckButton';
 import EditDeckModal from './EditDeckButton';
+import CompleteDeckButton from './CompleteDeckButton';
 import CardList from './CardList';
 import './DeckView.css';
 
@@ -43,7 +44,7 @@ const DeckView = () => {
                 backgroundImage: `url(${deck.cover_photo_url})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                border: `5px solid #${deckCat?.color_hex}`
+                border: `5px solid #${deckCat?.color_hex}`,
               }}
             />
           ) : null}
@@ -69,7 +70,7 @@ const DeckView = () => {
               <SchoolTwoToneIcon />
               Study Deck
             </button>
-          ) : <span>Log in to study this deck!</span>}
+          ) : null}
           {deck.cards &&
           Object.keys(deck['cards']).length > 0 &&
           sessionUser ? (
@@ -79,6 +80,11 @@ const DeckView = () => {
             >
               <ShuffleTwoToneIcon /> Shuffle Deck
             </button>
+          ) : null}
+          {deck.cards &&
+          Object.keys(deck['cards']).length > 0 &&
+          sessionUser ? (
+            <CompleteDeckButton />
           ) : null}
         </div>
         <div className="deck-buttons">

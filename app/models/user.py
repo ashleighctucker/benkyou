@@ -49,7 +49,7 @@ class User(db.Model, UserMixin):
 
     @property
     def completed_dict(self):
-        return [{'deck_id': obj.id, 'created_on': obj.created_on} for obj in self.completed_decks]
+        return {obj.id: {'deck_id': obj.id, 'created_on': obj.created_on} for obj in self.completed_decks}
 
     @password.setter
     def password(self, password):
@@ -57,14 +57,6 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
-
-    def simple_dict(self):
-        return {
-            'id': self.id,
-            'username': self.user_name,
-            'email': self.email,
-            'first_name': self.first_name,
-        }
 
     def to_dict(self):
         return {
