@@ -50,8 +50,10 @@ def seed_decks():
 
     users = db.session.query(User).all()
     for user in users:
+        if user.id == 1:
+            continue
         for deck in range(0, 5):
-            cat_id = randrange(1, 4)
+            cat_id = randrange(1, 5)
             user_id = user.id
             seed_title = fake.words(nb=3, unique=True)
             seed_title.append('Deck')

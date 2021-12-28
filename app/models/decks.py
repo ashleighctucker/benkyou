@@ -79,8 +79,13 @@ class Deck(db.Model):
         return {
             'id': self.id,
             'title': self.title,
+            'has_image': self.has_image,
+            'cover_photo_url': self.cover_photo_url,
             'category_id': self.category_id,
             'created_on': self.created_on,
+            'category_id': self.category_id,
+            'cards_amount': self.cards_amount,
+            'color': self.cat_color
         }
 
     def to_dict(self):
