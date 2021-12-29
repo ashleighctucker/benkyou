@@ -8,8 +8,9 @@ def username_exists(form, field):
     # Checking if username is already in use
     user_name = field.data
     user = User.query.filter(User.user_name == user_name).first()
-    if user.id != form.data['user_id']:
-        raise ValidationError('Username not available.')
+    if user:
+        if user.id != form.data['user_id']:
+            raise ValidationError('Username not available.')
 
 
 def check_user_name(form, field):
@@ -30,9 +31,10 @@ def user_exists(form, field):
     # Checking if user exists
     email = field.data
     user = User.query.filter(User.email == email).first()
-    if user.id != form.data['user_id']:
-        raise ValidationError(
-            'Email address alredy assocaited with an account.')
+    if user:
+        if user.id != form.data['user_id']:
+            raise ValidationError(
+                'Email address alredy assocaited with an account.')
 
 
 class EditProfileForm(FlaskForm):
@@ -43,4 +45,5 @@ class EditProfileForm(FlaskForm):
                              DataRequired(), check_length])
     user_id = IntegerField('user id', validators=[DataRequired()])
     add_image = BooleanField('add image')
+    edit_image = BooleanField('edit image')
     profile_picture = StringField('profile pic')

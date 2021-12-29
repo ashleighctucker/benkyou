@@ -11,7 +11,7 @@ const AddImageCheck = ({ addImage, setAddImage, errors, item }) => {
         value={addImage}
         onChange={() => (addImage ? setAddImage(false) : setAddImage(true))}
       />
-      <p className="error-display">{errors['edit_image']}</p>
+      <p className="error-display">{errors?.edit_image}</p>
     </div>
   );
 };

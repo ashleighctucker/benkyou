@@ -12,6 +12,8 @@ def seed_users():
         user_name='marnie_study', email='marnie@benkyou.com', password='password', first_name='Marnie')
     bobbie = User(
         user_name='bobbie_study', email='bobbie@benkyou.com', password='password', first_name='Bobbie')
+    ash = User(user_name='ash_demo', email='ash@benkyou.com',
+               password='ellen', first_name='Ash')
 
     def createFakeUsers():
         i = 0
@@ -26,6 +28,7 @@ def seed_users():
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(ash)
     createFakeUsers()
 
     db.session.commit()
