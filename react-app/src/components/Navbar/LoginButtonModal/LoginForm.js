@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../store/session';
-import { getMyDecks } from '../../../store/my_decks';
 import './LoginForm.css';
 
 const LoginForm = () => {
@@ -14,9 +13,8 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data.errors) {
-      setErrors(data.errors);
+      return setErrors(data.errors);
     }
-    await dispatch(getMyDecks(data));
   };
 
   const updateEmail = (e) => {
@@ -25,6 +23,10 @@ const LoginForm = () => {
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
+  };
+
+  const demoLogin = async () => {
+    await dispatch(login('benkyou@benkyou.com', 'password'));
   };
 
   return (
@@ -41,6 +43,7 @@ const LoginForm = () => {
           placeholder="Email"
           value={email}
           onChange={updateEmail}
+          autoComplete="email"
         />
         <p className="error-display">{errors['email']}</p>
       </div>
@@ -53,6 +56,7 @@ const LoginForm = () => {
           placeholder="Password"
           value={password}
           onChange={updatePassword}
+          autoComplete="current-password"
         />
         <p className="error-display">{errors['password']}</p>
       </div>
@@ -62,7 +66,10 @@ const LoginForm = () => {
           <span className="bg"></span>
         </button>
       </div>
-      <div className="form-redirect">Don't have an account?</div>
+      <span>or</span>
+      <div className="form-redirect" onClick={demoLogin}>
+        Log In to Demo Account
+      </div>
     </form>
   );
 };

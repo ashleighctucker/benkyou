@@ -43,6 +43,16 @@
   margin: 3%;
 }
 
+.form-redirect {
+  margin-top: 2%;
+  color: #157A6E;
+  cursor: pointer;
+}
+
+.form-redirect:hover {
+  color: #E08E45;
+}
+
 /* auth-form-submit-buttons, animation */
 .auth-form-sumbit-button {
   color: black;

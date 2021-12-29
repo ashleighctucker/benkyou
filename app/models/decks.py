@@ -64,21 +64,23 @@ class Deck(db.Model):
     def add_completed_user(self, user):
         if user not in self.completed_users:
             self.completed_users.append(user)
-            return {'user': user.id}
+            return {'deck_id': self.id, 'created_on': self.created_on}
         else:
-            return {'errors': f"Deck {self.id} already in mastered by user {user.id}."}
+            return {'errors': f"Deck {self.id} already in complteted by user {user.id}."}
 
     def remove_completed_user(self, user):
         if user in self.completed_users:
             self.completed_users.remove(user)
-            return {'user': user.id}
+            return {'deck_id': self.id}
         else:
             return {'errors': f"Could not find {user.id} in completed list"}
 
     def simple_dict(self):
+        owner = str(self.creator.user_name)
         return {
             'id': self.id,
             'title': self.title,
+            'creator': owner,
             'has_image': self.has_image,
             'cover_photo_url': self.cover_photo_url,
             'category_id': self.category_id,

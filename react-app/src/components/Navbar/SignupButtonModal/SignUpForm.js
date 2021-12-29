@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signUp } from '../../../store/session';
+import { signUp, login } from '../../../store/session';
 import '../LoginButtonModal/LoginForm.css';
 
 const SignUpForm = () => {
@@ -44,6 +44,10 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const demoLogin = async () => {
+    await dispatch(login('benkyou@benkyou.com', 'password'));
+  };
+
   return (
     <form className="auth-form" onSubmit={onSignUp}>
       <h1>
@@ -68,6 +72,7 @@ const SignUpForm = () => {
           name="user_name"
           onChange={updateUsername}
           value={username}
+          autoComplete="username"
         ></input>
         <p className="error-display">{errors['user_name']}</p>
       </div>
@@ -79,6 +84,7 @@ const SignUpForm = () => {
           name="email"
           onChange={updateEmail}
           value={email}
+          autoComplete="email"
         ></input>
         <p className="error-display">{errors['email']}</p>
       </div>
@@ -90,6 +96,7 @@ const SignUpForm = () => {
           name="password"
           onChange={updatePassword}
           value={password}
+          autoComplete="new-password"
         ></input>
         <p className="error-display">{errors['password']}</p>
       </div>
@@ -102,6 +109,7 @@ const SignUpForm = () => {
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+          autoComplete="new-password"
         ></input>
         <p className="error-display">{errors['repeat_password']}</p>
       </div>
@@ -111,7 +119,10 @@ const SignUpForm = () => {
           <span className="bg"></span>
         </button>
       </div>
-      <div className="form-redirect">Already have an account?</div>
+      <span>or</span>
+      <div className="form-redirect" onClick={demoLogin}>
+        Log In to Demo Account
+      </div>
     </form>
   );
 };

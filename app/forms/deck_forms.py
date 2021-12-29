@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, FileField, BooleanField
-from wtforms.validators import DataRequired, ValidationError, URL
+from wtforms.validators import DataRequired, ValidationError
 from app.models import Deck
 
 

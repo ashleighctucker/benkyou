@@ -88,8 +88,17 @@
   min-width: 55%;
 }
 
+.complete-button {
+  color: #E08E45;
+}
+
 .deck-view-button:hover {
   background-color: #157A6E;
+  color: #efefef;
+}
+
+.complete-button:hover {
+  background-color: #E08E45;
   color: #efefef;
 }
 
