@@ -81,9 +81,8 @@ def edit_deck(id):
         deckToEdit.title = form.data['title']
         if form.data['edit_image'] or form.data['add_image']:
             deckToEdit.cover_photo_url = url
-        deckToEdit.category_id = form.data['category_id']
-        if form.data['edit_image'] or form.data['add_image']:
             deckToEdit.has_image = True
+        deckToEdit.category_id = form.data['category_id']
         db.session.commit()
         return deckToEdit.to_dict()
     else:

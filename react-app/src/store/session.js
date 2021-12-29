@@ -146,6 +146,25 @@ export const removeCompleteDeck = (user_id, deck_id) => async (dispatch) => {
   }
 };
 
+export const editProfile = (formData) => async (dispatch) => {
+  const response = await fetch(`api/users/${formData.get('user_id')}/`, {
+    method: 'PUT',
+    body: formData,
+  });
+  if (response.ok) {
+    const user = await response.json();
+    dispatch(setUser(user));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ['An error occurred.'];
+  }
+};
+
 const initialState = {
   user: null,
   splash: {

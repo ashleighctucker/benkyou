@@ -20,7 +20,7 @@ const ImageInput = ({ imgPreview, handleSetImage, errors }) => {
         accept=".pdf, .png, .jpg, .jpeg, .gif"
         onChange={handleSetImage}
       />
-      <p className="error-display">{errors['cover_photo_url']}</p>
+      <p className="error-display">{errors?.cover_photo_url}</p>
     </div>
   );
 };

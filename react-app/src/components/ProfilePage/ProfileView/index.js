@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Profile.css';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import { Modal } from '../../../context/Modal';
+import EditProfileForm from './EditProfileForm';
 
 import { authenticate } from '../../../store/session';
 
@@ -10,6 +13,7 @@ const ProfileView = () => {
   const badges = useSelector((state) => {
     if (sessionUser) return state.session.user['badges'];
   });
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -63,7 +67,18 @@ const ProfileView = () => {
           <p>Email: {sessionUser?.email}</p>
         </div>
         <div className="user-buttons">
-          <button>Edit Profile</button>
+          <button
+            className="deck-view-button"
+            onClick={() => setShowEditModal(true)}
+          >
+            <EditTwoToneIcon />
+            Edit Profile
+          </button>
+          {showEditModal && (
+            <Modal onClose={() => setShowEditModal(false)}>
+              <EditProfileForm close={() => setShowEditModal(false)} />
+            </Modal>
+          )}
         </div>
       </div>
 
