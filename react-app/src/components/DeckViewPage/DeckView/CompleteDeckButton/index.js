@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
 
 import EmojiObjectsTwoToneIcon from '@mui/icons-material/EmojiObjectsTwoTone';
 import EmojiObjectsRoundedIcon from '@mui/icons-material/EmojiObjectsRounded';
 
 import { addCompleteDeck, removeCompleteDeck } from '../../../../store/session';
-import { getDeck } from '../../../../store/current_deck';
 
 const CompleteDeckButton = () => {
   const deck = useSelector((state) => state.current_deck);
