@@ -16,7 +16,7 @@ def get_full_deck_detail(id):
 
 @deck_routes.route('/recents/')
 def get_recents():
-    decks = db.session.query(Deck).order_by(Deck.created_on).limit(15)
+    decks = db.session.query(Deck).order_by(Deck.created_on).limit(7)
     return {'decks': [deck.simple_dict() for deck in decks]}
 
 

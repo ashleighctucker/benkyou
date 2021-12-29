@@ -23,8 +23,6 @@ const removeDeck = (id) => ({
   id,
 });
 
-const initialState = { user: null };
-
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
     headers: {
@@ -148,13 +146,31 @@ export const removeCompleteDeck = (user_id, deck_id) => async (dispatch) => {
   }
 };
 
+const initialState = {
+  user: null,
+  splash: {
+    card: {
+      title: 'Benkyou',
+      pronunciation: 'ben-kyō',
+      emoji: '🙇🏻‍♀️📚🧠',
+      has_image: true,
+      image_url:
+        'https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/53/cc/95/53cc9570-7bf4-065a-d51c-0123d54fc138/source/512x512bb.jpg',
+      definition: 'to study, dilligence, working hard',
+      example:
+        '私たちはもっと 勉強する 必要があります。(We need to study more.)',
+      type: 'Noun/Suru Verb',
+    },
+  },
+};
+
 export default function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case SET_USER:
-      return { user: action.payload };
+      return { ...state, user: action.payload };
     case REMOVE_USER:
-      return { user: null };
+      return { ...state, user: null };
     case ADD_COMPLETE_DECK:
       newState = { ...state };
       newState.user.completed_decks[action.deck.deck_id] = action.deck;

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 // components
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
+import SplashPage from './components/SplashPage';
 
 import NewDeckListPage from './components/NewDeckListPage';
 import NewDeckPage from './components/NewDeckPage';
@@ -78,7 +79,7 @@ function App() {
             <ShuffleStudyDecklistPage />
           </Route>
           <Route path="/">
-            <h1 className="main-grid">Home Page</h1>
+            <SplashPage />
           </Route>
         </Switch>
       </div>

@@ -88,7 +88,7 @@ const DeckView = () => {
           ) : null}
         </div>
         <div className="deck-buttons">
-          {owner ? (
+          {owner && deck.id !== 1 ? (
             <>
               <button
                 className="deck-view-button"
