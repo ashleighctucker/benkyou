@@ -40,6 +40,26 @@
   background-size: cover;
 }
 
+.badge-container {
+  display: flex;
+}
+
 .badge-tile.badge-1 {
   background-image: url('../../../utils/Badges/b1_FirstBenkyouBadge.png');
+}
+
+.badge-tile.badge-2 {
+  background-image: url('../../../utils//Badges/b2_StudyBuddyBadge.png')
+}
+
+.badge-tile.badge-3 {
+  background-image: url('../../../utils/Badges/b3_WordNerdBadge.png')
+}
+
+.badge-tile.badge-4 {
+  background-image: url('../../../utils/Badges/b4_WordWizBadge.png');
+}
+
+.badge-tile.badge-5 {
+  background-image: url('../../../utils/Badges/b5_BigBrainBadge.png');
 }
