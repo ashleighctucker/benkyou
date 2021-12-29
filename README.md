@@ -35,3 +35,19 @@
 * Enhacing the badges feature with an alert pop up when a user is awarded a badge
 * Enhancing the study feature with 3D Flip card animations 
 * Allowing users to favorite decks to save for later
+
+## Want to contribute to Benkyou or try it locally?
+
+1. clone the repo with the command `git clone https://github.com/ashleighctucker/benkyou.git`
+2. cd into the newly created project directory and install the backend dependencies with: `pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt`
+3. create a .env file based on the example .env file in the root direcotry with the proper settings for your development environment
+4. setup your PostgresSQL user and database, matching the .env file you just created 
+5. enter the pipenv shell: `pipenv shell`
+6. migrate the datbase: `flask db upgrade`
+7. seed the database: `flask seed all` 
+8. start the backend server: `flask run`
+9. open another terminal for the front-end server, cd into the '/react-app' directory
+10. install the front-end dependencies: `npm install`
+11. start the front-end server: `npm start`
+
+
