@@ -11,8 +11,6 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(term);
-
   const handleSearch = async () => {
     await dispatch(searchDecks(term));
     history.push(`/benkyou/search-results/${term}`);

@@ -10,7 +10,6 @@ user_routes = Blueprint('users', __name__)
 
 def award_badges(user):
     length = len(user.completed_dict)
-    print(length)
     if length == 1:
         badge = Badge.query.get(1)
         badge.add_user_badge(user)
