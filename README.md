@@ -19,3 +19,9 @@
  * WTForms
  * Faker
  * [Owlbot API](https://owlbot.info)
+
+### Future Features for Benkyou
+
+* Enhacing the badges feature with an alert pop up when a user is awarded a badge
+* Enhancing the study feature with 3D Flip card animations 
+* Allowing users to favorite decks to save for later
