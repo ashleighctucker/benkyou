@@ -4,15 +4,15 @@
 
  You can find Benkyou's current databse schema [here](https://github.com/ashleighctucker/benkyou/wiki/Database-Schema). (updated 12/28/21) 
  
- ### Tech Stack
+ ## Tech Stack
  
- Front-End:
+ ### Front-End:
  * Javascript
  * React
  * Redux
  * MUI (for icons)
 
- Back-end:
+ ### Back-end:
  * Python
  * Flask
  * SQL Alchemy/Alembic
@@ -20,7 +20,7 @@
  * Faker
  * [Owlbot API](https://owlbot.info)
 
-### Future Features for Benkyou
+## Future Features for Benkyou
 
 * Enhacing the badges feature with an alert pop up when a user is awarded a badge
 * Enhancing the study feature with 3D Flip card animations 
