@@ -63,10 +63,12 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.user_name,
+            'user_name': self.user_name,
             'email': self.email,
             'first_name': self.first_name,
             'created_on': self.created_on,
+            'has_image': self.has_image,
+            'profile_picture': self.profile_picture,
             'decks': self.decks_list,
             'lists': self.lists_list,
             'completed_decks': self.completed_dict,

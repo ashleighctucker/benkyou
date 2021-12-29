@@ -157,7 +157,7 @@ export default function reducer(state = initialState, action) {
       return { user: null };
     case ADD_COMPLETE_DECK:
       newState = { ...state };
-      newState.user.completed_decks[action.deck.id] = action.deck;
+      newState.user.completed_decks[action.deck.deck_id] = action.deck;
       return newState;
     case REMOVE_COMPLETE_DECK:
       newState = { ...state };

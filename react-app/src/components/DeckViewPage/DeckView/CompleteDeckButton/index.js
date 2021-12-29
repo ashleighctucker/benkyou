@@ -1,30 +1,39 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 
 import EmojiObjectsTwoToneIcon from '@mui/icons-material/EmojiObjectsTwoTone';
 import EmojiObjectsRoundedIcon from '@mui/icons-material/EmojiObjectsRounded';
 
 import { addCompleteDeck, removeCompleteDeck } from '../../../../store/session';
+import { getDeck } from '../../../../store/current_deck';
 
 const CompleteDeckButton = () => {
-  const { deckId } = useParams();
+  const deck = useSelector((state) => state.current_deck);
   const sessionUser = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
 
-  const [completed, setCompleted] = useState(
-    sessionUser?.completed_decks[deckId] ? true : false
-  );
+  useEffect(() => {
+    if (
+      sessionUser.completed_decks[deck.id] &&
+      sessionUser.completed_decks[deck.id]['deck_id']
+    )
+      setCompleted(true);
+    else {
+      setCompleted(false);
+    }
+  }, [deck.id, sessionUser, dispatch]);
 
+  const [completed, setCompleted] = useState(false);
 
   const handleComplete = async () => {
-    await dispatch(addCompleteDeck(sessionUser.id, deckId));
+    await dispatch(addCompleteDeck(sessionUser.id, deck.id));
     setCompleted(true);
   };
 
   const handleRemove = async () => {
-    await dispatch(removeCompleteDeck(sessionUser.id, deckId));
+    await dispatch(removeCompleteDeck(sessionUser.id, deck.id));
     setCompleted(false);
   };
 
