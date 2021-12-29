@@ -6,13 +6,13 @@
  
  ## Tech Stack
  
- ### Front-End:
+ ### [Front-End](https://github.com/ashleighctucker/benkyou/wiki/React-Routes):
  * Javascript
  * React
  * Redux
  * MUI (for icons)
 
- ### Back-end:
+ ### [Back-end](https://github.com/ashleighctucker/benkyou/wiki/API-Routes):
  * Python
  * Flask
  * SQL Alchemy/Alembic
