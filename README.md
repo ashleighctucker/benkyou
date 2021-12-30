@@ -4,7 +4,7 @@
 
 ![preview](https://github.com/ashleighctucker/benkyou/blob/main/images/preview-benkyou.gif)
 
- You can find Benkyou's current databse schema [here](https://github.com/ashleighctucker/benkyou/wiki/Database-Schema). (updated 12/28/21) 
+ You can find Benkyou's current databse schema [here](https://github.com/ashleighctucker/benkyou/wiki/Database-Schema). 
  
  ## Tech Stack
  
