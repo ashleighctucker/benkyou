@@ -33,7 +33,7 @@ const ShuffleStudyDecklistView = () => {
   }
 
   return (
-    <div className="main">
+    <div className="main splash-div">
       <h1>Studying {list?.title} (shuffled) </h1>
       <h3>
         created by {list.creator} on {new Date(list.created_on).toDateString()}

@@ -65,7 +65,7 @@ const NewDeckForm = () => {
   };
 
   return (
-    <form className="main-form" onSubmit={handleSubmit}>
+    <form className="main-form splash-div" onSubmit={handleSubmit}>
       <h1>Create a New Study Deck</h1>
       <div className="form-input-containers">
         <label htmlFor="title">Title</label>

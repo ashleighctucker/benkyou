@@ -45,7 +45,7 @@ const SearchResultsView = () => {
   };
 
   return (
-    <div className="main">
+    <div className="main splash-div">
       <h1>Search Results for "{term}" </h1>
       {Object.keys(decksObj).length > 0 ? (
         createDeckLinks()

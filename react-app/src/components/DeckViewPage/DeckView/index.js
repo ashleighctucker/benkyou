@@ -34,7 +34,7 @@ const DeckView = () => {
   }, [dispatch, deckId]);
 
   return (
-    <div className="deck-view-container">
+    <div className="deck-view-container splash-div">
       <div className="deck-info-container">
         <div className="deck-title">
           {deck.has_image ? (

@@ -29,7 +29,7 @@ const SideBar = () => {
     if (sessionUser) {
       for (let list in my_deck_lists) {
         let link = (
-          <div key={`list${list}`} className="sidebar-deck">
+          <div key={`side list ${list}`} className="sidebar-deck">
             <div className="deck-icon-container">
               <CollectionsBookmarkTwoToneIcon className="deck-icon" />
             </div>
@@ -45,7 +45,7 @@ const SideBar = () => {
     }
     for (let deck in my_decks) {
       let link = (
-        <div key={`deck${deck}`} className="sidebar-deck">
+        <div key={`side deck ${deck}`} className="sidebar-deck">
           <div className="deck-icon-container">
             <ClassTwoToneIcon className="deck-icon" />
           </div>

@@ -31,7 +31,7 @@ const DeckListView = () => {
   }, [dispatch, decklistId]);
 
   return (
-    <div className="deck-view-container">
+    <div className="deck-view-container splash-div">
       <div className="deck-info-container">
         <div className="deck-title">
           {decklist.has_image ? (
@@ -60,7 +60,7 @@ const DeckListView = () => {
               Study Decklist
             </button>
           ) : (
-            <p>Log in to study decklist!</p>
+            null
           )}
           {decklist.all_cards && sessionUser ? (
             <button

@@ -23,7 +23,7 @@ const SplashPage = () => {
   };
 
   return (
-    <div className="main-grid main-page-grid-container">
+    <div className="main-grid main-page-grid-container splash-div">
       <SideBar className="side" />
       <div className="main">
         <h1 className="fade-in-first">

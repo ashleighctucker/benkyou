@@ -74,7 +74,7 @@ const NewCardForm = () => {
   };
 
   return (
-    <div>
+    <div className="splash-div">
       <form className="main-form" id="new-card-form" onSubmit={handleSubmit}>
         <h1>Add a card to the {deck.title}</h1>
         <div className="form-input-containers">
