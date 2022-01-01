@@ -3,6 +3,10 @@
   cursor: pointer;
 }
 
+.splash-div {
+  margin-bottom: 5%;
+}
+
 .benkyou-link:hover {
   color: #E08E45
 }
@@ -69,4 +73,3 @@
     opacity: 1;
   }
 }
-

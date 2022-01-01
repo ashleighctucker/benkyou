@@ -5,6 +5,7 @@ import './Profile.css';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import { Modal } from '../../../context/Modal';
 import EditProfileForm from './EditProfileForm';
+import { NavLink } from 'react-router-dom';
 
 import { authenticate } from '../../../store/session';
 
@@ -32,9 +33,10 @@ const ProfileView = () => {
     let tiles = [];
     for (let key in badges) {
       let tile = (
-        <>
-          <div className={`badge-tile badge-${key}`} key={key}></div>
-        </>
+        <div
+          className={`badge-tile badge-${key}`}
+          key={`badge show ${badges[key].id}`}
+        ></div>
       );
       tiles.push(tile);
     }
@@ -44,7 +46,7 @@ const ProfileView = () => {
   const tiles = makeBadgeTiles();
 
   return (
-    <div className="profile-container">
+    <div className="profile-container splash-div">
       <div className="user-info">
         <div className="user-top">
           {!sessionUser?.has_image ? (
@@ -87,6 +89,23 @@ const ProfileView = () => {
         <div className="badge-container">
           {tiles.length > 0 ? tiles : <p>Earn badges by completing decks!</p>}
         </div>
+      </div>
+      <div className="profile-container">
+        <h1>My Decks & Lists</h1>
+        {sessionUser.decks.map((deck) => (
+          <li key={`${deck.id}`}>
+            <NavLink className="sidebar-deck-link" to={`/decks/${deck.id}`}>
+              {deck.title}
+            </NavLink>
+          </li>
+        ))}
+        {sessionUser.lists.map((list) => (
+          <li key={`${list.id}`}>
+            <NavLink className="sidebar-deck-link" to={`/decklists/${list.id}`}>
+              {list.title}
+            </NavLink>
+          </li>
+        ))}
       </div>
     </div>
   );

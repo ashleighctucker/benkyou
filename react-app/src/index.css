@@ -34,11 +34,6 @@ html, body {
   grid-area: main;
 }
 
-.footer {
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
-
 a {
   color: inherit;
   text-decoration: none;

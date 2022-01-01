@@ -45,6 +45,10 @@
   grid-area: name;
 }
 
+.sidebar-deck-link:hover {
+  color: #CB904D;
+}
+
 .deck-icon-container {
   grid-area: icon;
   margin-right: 3%;
