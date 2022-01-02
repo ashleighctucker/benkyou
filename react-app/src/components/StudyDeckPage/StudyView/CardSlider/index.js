@@ -57,10 +57,12 @@ const CardSlider = ({ cards }) => {
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
+    setFlipped(false);
   };
 
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
+    setFlipped(false);
   };
 
   if (!Array.isArray(slides) || length <= 0) {
