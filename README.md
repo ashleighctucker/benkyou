@@ -1,6 +1,6 @@
 # Welcome to 勉強 Benkyou!
 
-[Benkyou](https://benkyou-app.herokuapp.com/) is a rough clone of [Brainscape](https://www.brainscape.com) with full C/R/U/D features for study decks, cards inside of those decks, and deck lists (which allows users to add/remove decks from other Benkyou users to their lists). Check out the full front-end [feature](https://github.com/ashleighctucker/benkyou/wiki/Feature-List) list to see all Benkyou currently has deployed!
+[Benkyou](https://benkyou-app.herokuapp.com/) is a rough clone of [Brainscape](https://www.brainscape.com) with full C/R/U/D features for study decks, flash-cards, and deck lists (which allows users to add/remove decks from other Benkyou users to their lists). Check out the full front-end [feature](https://github.com/ashleighctucker/benkyou/wiki/Feature-List) list to see all Benkyou currently has deployed! 
 
 ![preview](https://github.com/ashleighctucker/benkyou/blob/main/images/preview-benkyou.gif)
 
