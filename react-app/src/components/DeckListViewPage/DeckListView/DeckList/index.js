@@ -8,6 +8,12 @@ import './DeckList.css';
 
 const DeckList = ({ decklist, decksObj, owner }) => {
   const dispatch = useDispatch();
+   let options = {
+     weekday: 'long',
+     year: 'numeric',
+     month: 'long',
+     day: 'numeric',
+   };
 
   const makeList = () => {
     let list = [];
@@ -35,7 +41,10 @@ const DeckList = ({ decklist, decksObj, owner }) => {
               <h1>{decksObj[key].title}</h1>
               <p>
                 Created By: {decksObj[key].creator} on{' '}
-                {new Date(decksObj[key].created_on).toDateString()}
+                {new Date(decksObj[key].created_on).toLocaleDateString(
+                  'en-US',
+                  options
+                )}
               </p>
               <p>Cards: {decksObj[key].cards_amount}</p>
             </div>

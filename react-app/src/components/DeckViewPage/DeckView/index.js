@@ -23,6 +23,8 @@ const DeckView = () => {
     owner = true;
   }
 
+  let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
   const deckCat = categories[deck.category_id];
 
   const history = useHistory();
@@ -104,8 +106,8 @@ const DeckView = () => {
         </div>
         <div className="deck-maker">
           <p>
-            Created by: {deck.creator} on{'  '}
-            {new Date(deck.created_on).toDateString()}
+            Created By: {deck.creator} on{'  '}
+            {new Date(deck.created_on).toLocaleDateString('en-US', options)}
           </p>
         </div>
       </div>

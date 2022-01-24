@@ -20,6 +20,12 @@ const DeckListView = () => {
   if (+decklist.owner_id === +sessionUser?.id) {
     owner = true;
   }
+   let options = {
+     weekday: 'long',
+     year: 'numeric',
+     month: 'long',
+     day: 'numeric',
+   };
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -59,9 +65,7 @@ const DeckListView = () => {
               <SchoolTwoToneIcon />
               Study Decklist
             </button>
-          ) : (
-            null
-          )}
+          ) : null}
           {decklist.all_cards && sessionUser ? (
             <button
               onClick={() =>
@@ -85,7 +89,7 @@ const DeckListView = () => {
         <div className="deck-maker">
           <p>
             Created by: {decklist.creator} on{'  '}
-            {new Date(decklist.created_on).toDateString()}
+            {new Date(decklist.created_on).toLocaleDateString('en-US', options)}
           </p>
         </div>
       </div>

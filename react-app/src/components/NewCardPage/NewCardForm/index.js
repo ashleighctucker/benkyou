@@ -168,7 +168,7 @@ const NewCardForm = () => {
         </div>
         <span className="required-input">*required fields</span>
         <div className="form-button-containers">
-          <button type="submit" className="form-sumbit-button">
+          <button type="submit" className="form-submit-button">
             Create Card
             <span className="bg"></span>
           </button>

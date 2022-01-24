@@ -57,7 +57,7 @@ const SplashPage = () => {
               <p className="fade-in-first">
                 Hi {sessionUser.first_name}, we suggest getting started with{' '}
                 <NavLink className="benkyou-link" to="/decks/1/study">
-                  studing our starter deck
+                  studying our starter deck
                 </NavLink>{' '}
                 to see what the app is like.
               </p>
