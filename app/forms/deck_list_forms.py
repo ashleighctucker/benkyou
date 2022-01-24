@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField,  BooleanField
-from wtforms.validators import DataRequired, ValidationError, URL
-from app.models import DeckList
+from wtforms.validators import DataRequired, ValidationError
 
 
 def check_length(form, field):

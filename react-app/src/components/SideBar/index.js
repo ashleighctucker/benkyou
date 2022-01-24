@@ -43,6 +43,12 @@ const SideBar = () => {
         links.push(link);
       }
     }
+    if (sessionUser)
+      links.push(
+        <div>
+          <h3>My Decks</h3>
+        </div>
+      );
     for (let deck in my_decks) {
       let link = (
         <div key={`side deck ${deck}`} className="sidebar-deck">
@@ -68,7 +74,7 @@ const SideBar = () => {
         {sessionUser ? (
           <>
             <div>
-              <h3>My Decks & Lists</h3>
+              <h3>My Lists</h3>
             </div>
             {my_decks ? deck_links() : null}
           </>
