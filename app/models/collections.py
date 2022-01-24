@@ -1,9 +1,11 @@
 from .db import db
 from datetime import datetime
 
+
 class Collection(db.Model):
     __tablename__ = 'collections'
 
+    # db props
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(256), nullable=False)
     has_image = db.Column(db.Boolean, default=False)
@@ -14,9 +16,10 @@ class Collection(db.Model):
                            default=datetime.utcnow)
     updated_on = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
+    # relationships
     creator = db.relationship('User', back_populates='collections')
     decks = db.relationship("Deck", secondary="added_decks",
-                            back_populates="collections")
+                            back_populates="collections", cascade="all, delete-orphan")
 
     def add_deck(self, deck):
         if deck not in self.decks:
@@ -40,16 +43,16 @@ class Collection(db.Model):
         else:
             return {'errors': f"Could not find deck {deck.title} in collection"}
 
+    def get_cards(self):
+        cards = [obj.cardlist for obj in self.decks]
+
+        return cards
+
     def simple_dict(self):
         return {
             'id': self.id,
             'title': self.title,
         }
-
-    def get_cards(self):
-        cards = [obj.cardlist for obj in self.decks]
-
-        return cards
 
     def to_dict(self):
         owner = str(self.creator.user_name)

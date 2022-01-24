@@ -10,14 +10,14 @@ def check_length(form, field):
             raise ValidationError('Field must be between 1-256 characters')
 
 
-class NewDeckListForm(FlaskForm):
+class NewCollectionForm(FlaskForm):
     title = StringField('title', validators=[DataRequired(), check_length])
     cover_photo_url = StringField('cover photo')
     user_id = IntegerField('user id', validators=[DataRequired()])
     has_image = BooleanField('has image')
 
 
-class EditDeckListForm(FlaskForm):
+class EditCollectionForm(FlaskForm):
     title = StringField('title', validators=[DataRequired(), check_length])
     cover_photo_url = StringField('cover photo')
     has_image = BooleanField('has image')

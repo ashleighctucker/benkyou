@@ -1,29 +1,29 @@
 from flask import Blueprint, request
 from app.models import Collection, Deck, db
-from app.forms import NewDeckListForm, EditDeckListForm
+from app.forms import NewCollectionForm, EditCollectionForm
 from .auth_routes import validation_errors_to_error_messages
 from app.awsupload import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
 
-deck_list_routes = Blueprint('decklists', __name__)
+collection_routes = Blueprint('collections', __name__)
 
 
-@deck_list_routes.route('/<int:id>/')
+@collection_routes.route('/<int:id>/')
 def get_full_deck_list_detail(id):
     decklist = Collection.query.get(int(id))
     return decklist.to_dict()
 
 
-@deck_list_routes.route('/cards/<int:id>/')
+@collection_routes.route('/cards/<int:id>/')
 def get_all_cards_from_list(id):
     decklist = Collection.query.get(int(id))
     return {'cards': decklist.get_cards()}
 
 
-@deck_list_routes.route('/', methods=["POST"])
+@collection_routes.route('/', methods=["POST"])
 def create_deck_list():
-    form = NewDeckListForm()
+    form = NewCollectionForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     url = 'No Photo'
     if form.data['has_image']:
@@ -44,19 +44,19 @@ def create_deck_list():
 
         url = upload["url"]
     if form.validate_on_submit():
-        newDeckList = Collection(
+        newCollection = Collection(
             title=form.data['title'], cover_photo_url=url, user_id=form.data['user_id'], has_image=form.data['has_image'])
-        db.session.add(newDeckList)
+        db.session.add(newCollection)
         db.session.commit()
-        return newDeckList.simple_dict()
+        return newCollection.simple_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-@deck_list_routes.route('/<int:id>/',  methods=["PUT"])
+@collection_routes.route('/<int:id>/',  methods=["PUT"])
 def edit_deck_list(id):
-    form = EditDeckListForm()
-    deckListToEdit = Collection.query.get(int(id))
+    form = EditCollectionForm()
+    collectionToEdit = Collection.query.get(int(id))
     form['csrf_token'].data = request.cookies['csrf_token']
     url = 'No Photo'
 
@@ -78,51 +78,51 @@ def edit_deck_list(id):
 
         url = upload["url"]
     if form.validate_on_submit():
-        deckListToEdit.title = form.data['title']
+        collectionToEdit.title = form.data['title']
         if form.data['edit_image'] or form.data['add_image']:
-            deckListToEdit.cover_photo_url = url
+            collectionToEdit.cover_photo_url = url
         if form.data['edit_image'] or form.data['add_image']:
-            deckListToEdit.has_image = True
+            collectionToEdit.has_image = True
         db.session.commit()
-        return deckListToEdit.to_dict()
+        return collectionToEdit.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-@deck_list_routes.route('/<int:id>/add/<int:deck_id>/', methods=["PATCH"])
+@collection_routes.route('/<int:id>/add/<int:deck_id>/', methods=["PATCH"])
 def add_deck_to_list(id, deck_id):
-    deckList = Collection.query.get(int(id))
+    collection = Collection.query.get(int(id))
     deck = Deck.query.get(int(deck_id))
     if deck:
-        response = deckList.add_deck(deck)
+        response = collection.add_deck(deck)
         if 'errors' in response:
             return response, 400
         db.session.commit()
         return response
     else:
-        return {'errors': [f"Could not find deck {deck_id} to add to list"]}, 500
+        return {'errors': [f"Could not find deck {deck_id} to add to the collection"]}, 500
 
 
-@deck_list_routes.route('/<int:id>/remove/<int:deck_id>/', methods=["PATCH"])
+@collection_routes.route('/<int:id>/remove/<int:deck_id>/', methods=["PATCH"])
 def remove_deck_from_list(id, deck_id):
-    deckList = Collection.query.get(int(id))
+    collection = Collection.query.get(int(id))
     deck = Deck.query.get(int(deck_id))
     if deck:
-        response = deckList.remove_deck(deck)
+        response = collection.remove_deck(deck)
         if 'errors' in response:
             return response, 400
         db.session.commit()
         return response
     else:
-        return {'errors': [f"Could not find deck {deck_id} to remove from list"]}, 500
+        return {'errors': [f"Could not find deck {deck_id} to remove from the collection"]}, 500
 
 
-@deck_list_routes.route('/<int:id>/',  methods=["DELETE"])
+@collection_routes.route('/<int:id>/',  methods=["DELETE"])
 def delete_list(id):
-    listToDelte = Collection.query.get(int(id))
-    if listToDelte:
-        db.session.delete(listToDelte)
+    collectionToDelete = Collection.query.get(int(id))
+    if collectionToDelete:
+        db.session.delete(collectionToDelete)
         db.session.commit()
-        return {'message': f"List {id} sucessfully deleted."}
+        return {'message': f"Collection {id} sucessfully deleted."}
     else:
-        return {'errors': [f"Could not find list {id} to delete from database"]}, 500
+        return {'errors': [f"Could not find collection {id} to delete from the database"]}, 500

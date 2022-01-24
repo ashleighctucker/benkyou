@@ -1,4 +1,3 @@
-from app.models.categorites import Category
 from .db import db
 from datetime import datetime
 
@@ -6,6 +5,7 @@ from datetime import datetime
 class Deck(db.Model):
     __tablename__ = 'decks'
 
+    # db props
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(256), nullable=False)
     cover_photo_url = db.Column(db.String(256))
@@ -18,6 +18,7 @@ class Deck(db.Model):
                            default=datetime.utcnow)
     updated_on = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
+    # relationships
     category = db.relationship('Category', back_populates='decks')
     creator = db.relationship('User', back_populates='decks')
     cards = db.relationship('Card', back_populates='deck',
@@ -75,6 +76,7 @@ class Deck(db.Model):
         else:
             return {'errors': f"Could not find {user.id} in completed list"}
 
+    # does not include all the card info
     def simple_dict(self):
         owner = str(self.creator.user_name)
         return {
@@ -89,6 +91,8 @@ class Deck(db.Model):
             'cards_amount': self.cards_amount,
             'color': self.cat_color
         }
+
+    # inlcudes cards
 
     def to_dict(self):
         cat = str(self.category.title)

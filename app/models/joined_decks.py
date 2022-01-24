@@ -2,6 +2,7 @@ from .db import db
 from datetime import datetime
 
 
+# Joins table for Badges
 class CompletedDeck(db.Model):
     __tablename__ = 'completed_decks'
 
@@ -13,6 +14,7 @@ class CompletedDeck(db.Model):
                            default=datetime.utcnow)
 
 
+# Joins table for Collections
 class AddedDeck(db.Model):
     __tablename__ = 'added_decks'
     deck_id = db.Column(db.Integer, db.ForeignKey(

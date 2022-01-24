@@ -7,6 +7,7 @@ from datetime import datetime
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
+    # db props
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
@@ -18,6 +19,7 @@ class User(db.Model, UserMixin):
                            default=datetime.utcnow)
     updated_on = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
+    # relationships
     decks = db.relationship(
         'Deck', back_populates='creator', cascade="all, delete-orphan")
     cards = db.relationship(
@@ -29,6 +31,7 @@ class User(db.Model, UserMixin):
     badges = db.relationship(
         'Badge', secondary="user_badges", back_populates="users")
 
+    
     @property
     def password(self):
         return self.hashed_password
