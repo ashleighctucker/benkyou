@@ -11,7 +11,8 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
     await dispatch(searchDecks(term));
     history.push(`/benkyou/search-results/${term}`);
   };
@@ -23,6 +24,7 @@ const SearchBar = () => {
           id="search-input"
           type="text"
           value={term}
+          placeholder="Search Decks"
           onChange={(e) => setTerm(e.target.value)}
           name="search"
         ></input>
