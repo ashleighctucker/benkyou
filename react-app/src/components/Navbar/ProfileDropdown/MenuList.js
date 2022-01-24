@@ -1,14 +1,16 @@
 import React from 'react';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { logout } from '../../../store/session';
 
 const MenuList = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleLogout = () => {
     dispatch(logout());
+    history.push('/');
   };
 
   return (

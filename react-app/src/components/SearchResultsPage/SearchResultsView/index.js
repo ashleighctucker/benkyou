@@ -7,6 +7,12 @@ const SearchResultsView = () => {
   const { term } = useParams();
 
   const history = useHistory();
+   let options = {
+     weekday: 'long',
+     year: 'numeric',
+     month: 'long',
+     day: 'numeric',
+   };
 
   const createDeckLinks = () => {
     let links = [];
@@ -22,7 +28,10 @@ const SearchResultsView = () => {
               <h1>{decksObj[key].title}</h1>
               <p>
                 Created By: {decksObj[key].creator} on{' '}
-                {new Date(decksObj[key].created_on).toDateString()}
+                {new Date(decksObj[key].created_on).toLocaleDateString(
+                  'en-US',
+                  options
+                )}
               </p>
               <p>Cards: {decksObj[key].cards_amount}</p>
             </div>

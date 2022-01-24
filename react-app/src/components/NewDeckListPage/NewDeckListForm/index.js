@@ -84,7 +84,7 @@ const NewDecklistForm = () => {
         />
       ) : null}
       <div className="form-button-containers">
-        <button type="submit" className="form-sumbit-button">
+        <button type="submit" className="form-submit-button">
           Create Deck List
           <span className="bg"></span>
         </button>

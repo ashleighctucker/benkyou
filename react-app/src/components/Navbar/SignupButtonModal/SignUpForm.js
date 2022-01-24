@@ -114,9 +114,8 @@ const SignUpForm = () => {
         <p className="error-display">{errors['repeat_password']}</p>
       </div>
       <div className="form-button-containers">
-        <button className="auth-form-sumbit-button" type="submit">
+        <button className="form-submit-button" type="submit">
           Sign Up
-          <span className="bg"></span>
         </button>
       </div>
       <span>or</span>

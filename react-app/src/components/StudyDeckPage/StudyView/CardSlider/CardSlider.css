@@ -23,6 +23,10 @@
   user-select: none;
 }
 
+.arrow:hover {
+  color: #CB904D;
+}
+
 .left-arrow {
   left: 2%;
 }
