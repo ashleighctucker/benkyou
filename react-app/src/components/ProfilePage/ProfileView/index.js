@@ -91,7 +91,7 @@ const ProfileView = () => {
         </div>
       </div>
       <div className="profile-container">
-        <h1>My Decks & Lists</h1>
+        <h1>My Decks & Collections</h1>
         {sessionUser.decks.map((deck) => (
           <li key={`${deck.id}`}>
             <NavLink className="sidebar-deck-link" to={`/decks/${deck.id}`}>
@@ -101,7 +101,7 @@ const ProfileView = () => {
         ))}
         {sessionUser.lists.map((list) => (
           <li key={`${list.id}`}>
-            <NavLink className="sidebar-deck-link" to={`/decklists/${list.id}`}>
+            <NavLink className="sidebar-deck-link" to={`/collections/${list.id}`}>
               {list.title}
             </NavLink>
           </li>

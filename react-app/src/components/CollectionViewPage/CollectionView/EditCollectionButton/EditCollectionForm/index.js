@@ -14,7 +14,7 @@ import ImageInput from '../../../../../utils/imageInput';
 const EditCollectionForm = ({ close }) => {
   const current_collection = useSelector((state) => state.current_collection);
 
-  // decklist states
+  // collection states
   const [title, setTitle] = useState(current_collection.title);
   const [cover_photo_url, setCoverPhotoUrl] = useState(
     current_collection.cover_photo_url

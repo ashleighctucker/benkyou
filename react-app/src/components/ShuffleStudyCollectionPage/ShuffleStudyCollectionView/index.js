@@ -13,20 +13,20 @@ function shuffleArray(array) {
   }
 }
 
-const ShuffleStudyDecklistView = () => {
-  const { decklistId } = useParams();
-  const list = useSelector((state) => state.current_list);
-  const cards = useSelector((state) => state.current_list['all_cards']);
+const ShuffleStudyCollectionView = () => {
+  const { collectionId } = useParams();
+  const collection = useSelector((state) => state.current_collection);
+  const cards = useSelector((state) => state.current_collection['all_cards']);
 
   const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
-      await dispatch(getCurrentCollection(decklistId));
-      await dispatch(getAllCards(decklistId));
+      await dispatch(getCurrentCollection(collectionId));
+      await dispatch(getAllCards(collectionId));
     })();
-  }, [dispatch, decklistId]);
+  }, [dispatch, collectionId]);
 
   if (cards) {
     shuffleArray(cards);
@@ -34,20 +34,20 @@ const ShuffleStudyDecklistView = () => {
 
   return (
     <div className="main splash-div">
-      <h1>Studying {list?.title} (shuffled) </h1>
+      <h1>Studying {collection?.title} (shuffled) </h1>
       <h3>
-        created by {list.creator} on {new Date(list.created_on).toDateString()}
+        created by {collection.creator} on {new Date(collection.created_on).toDateString()}
       </h3>
       {cards?.length > 0 && <CardSlider cards={cards} />}
       <button
         id="return-button"
         className="deck-view-button"
-        onClick={() => history.push(`/decklists/${list.id}`)}
+        onClick={() => history.push(`/collections/${collection.id}`)}
       >
-        <DoorBackTwoToneIcon /> Return to List Page
+        <DoorBackTwoToneIcon /> Return to Collection Page
       </button>
     </div>
   );
 };
 
-export default ShuffleStudyDecklistView;
+export default ShuffleStudyCollectionView;

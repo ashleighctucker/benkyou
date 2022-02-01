@@ -7,7 +7,7 @@ import { getCurrentCollection, getAllCards } from '../../../store/current_collec
 import CardSlider from '../../StudyDeckPage/StudyView/CardSlider';
 
 const CollectionStudyView = () => {
-  const { collectiontId } = useParams();
+  const { collectionId } = useParams();
   const collection = useSelector((state) => state.current_collection);
   const cards = useSelector((state) => state.current_collection['all_cards']);
 
@@ -16,10 +16,10 @@ const CollectionStudyView = () => {
 
   useEffect(() => {
     (async () => {
-      await dispatch(getCurrentCollection(collectiontId));
-      await dispatch(getAllCards(collectiontId));
+      await dispatch(getCurrentCollection(collectionId));
+      await dispatch(getAllCards(collectionId));
     })();
-  }, [dispatch, collectiontId]);
+  }, [dispatch, collectionId]);
 
   return (
     <div className="main">
