@@ -7,7 +7,7 @@ import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 
 import AddDeckButton from './AddDeckButton';
 import EditCollectionButton from './EditCollectionButton';
-import DeleteDecklistModal from './DeleteDecklistButton';
+import DeleteCollectionButton from './DeleteCollectionButton';
 import { getCurrentCollection, getAllCards } from '../../../store/current_collection';
 import DeckList from './DeckList';
 
@@ -82,7 +82,7 @@ const CollectionView = () => {
             <>
               <AddDeckButton />
               <EditCollectionButton />
-              <DeleteDecklistModal />
+              <DeleteCollectionButton />
             </>
           )}
         </div>

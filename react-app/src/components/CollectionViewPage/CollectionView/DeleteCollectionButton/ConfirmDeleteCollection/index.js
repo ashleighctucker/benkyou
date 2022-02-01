@@ -3,22 +3,22 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
-import { deleteDecklist } from '../../../../../store/collections';
+import { deleteCollection } from '../../../../../store/collections';
 
-const ConfirmDeleteList = ({ close }) => {
+const ConfirmDeleteCollection = ({ close }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const list = useSelector((state) => state.current_list);
+  const list = useSelector((state) => state.current_collection);
 
   const handleDelete = async () => {
-    await dispatch(deleteDecklist(list.id));
+    await dispatch(deleteCollection(list.id));
     history.push('/');
   };
 
   return (
     <div className="modal-form">
-      <h2>Are you sure you want to delete your deck list?</h2>
-      <h3>Deck List Title: {list.title}</h3>
+      <h2>Are you sure you want to delete your collection?</h2>
+      <h3>Collection Title: {list.title}</h3>
       <button id="delete-button" onClick={handleDelete}>
         <DeleteForeverTwoToneIcon /> Confirm Delete
       </button>
@@ -30,4 +30,4 @@ const ConfirmDeleteList = ({ close }) => {
   );
 };
 
-export default ConfirmDeleteList;
+export default ConfirmDeleteCollection;

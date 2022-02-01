@@ -1,7 +1,7 @@
 const LOAD = 'collections/LOAD';
 const ADD = 'collections/ADD';
 const EDIT = 'collection/EDIT';
-const REMOVE_LIST = 'decklist/REMOVE_LIST';
+const REMOVE = 'collection/REMOVE';
 
 const load = (list) => ({
   type: LOAD,
@@ -19,7 +19,7 @@ const update = (collection) => ({
 });
 
 const remove = (id) => ({
-  type: REMOVE_LIST,
+  type: REMOVE,
   id,
 });
 
@@ -84,8 +84,8 @@ export const editCollection = (formData) => async (dispatch) => {
   }
 };
 
-export const deleteDecklist = (id) => async (dispatch) => {
-  const response = await fetch(`/api/decklists/${id}/`, {
+export const deleteCollection = (id) => async (dispatch) => {
+  const response = await fetch(`/api/collections/${id}/`, {
     method: 'DELETE',
   });
   if (response.ok) {
@@ -113,7 +113,7 @@ export default function collectionReducer (state = initialState, action) {
       newState = { ...state };
       newState[action.collection.id] = action.collection;
       return newState;
-    case REMOVE_LIST:
+    case REMOVE:
       newState = { ...state };
       delete newState[action.id];
       return newState;

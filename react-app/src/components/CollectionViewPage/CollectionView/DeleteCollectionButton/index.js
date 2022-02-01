@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../../context/Modal';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import ConfirmDeleteList from './ConfirmDeleteList';
+import ConfirmDeleteCollection from './ConfirmDeleteCollection';
 
-const DeleteDecklistModal = () => {
+const DeleteCollectionButton = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   return (
     <>
@@ -11,15 +11,15 @@ const DeleteDecklistModal = () => {
         className="deck-view-button"
         onClick={() => setShowDeleteModal(true)}
       >
-        <DeleteTwoToneIcon /> Delete Deck List
+        <DeleteTwoToneIcon /> Delete Collection
       </button>
       {showDeleteModal && (
         <Modal onClose={() => setShowDeleteModal(false)}>
-          <ConfirmDeleteList close={() => setShowDeleteModal(false)} />
+          <ConfirmDeleteCollection close={() => setShowDeleteModal(false)} />
         </Modal>
       )}
     </>
   );
 };
 
-export default DeleteDecklistModal;
+export default DeleteCollectionButton;
