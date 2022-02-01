@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import RemoveCircleTwoToneIcon from '@mui/icons-material/RemoveCircleTwoTone';
 
-import { removeDeckFromList } from '../../../../store/current_list';
+import { removeDeckFromList } from '../../../../store/current_collection';
 import './DeckList.css';
 
 const DeckList = ({ decklist, decksObj, owner }) => {

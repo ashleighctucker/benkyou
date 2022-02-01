@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import DoorBackTwoToneIcon from '@mui/icons-material/DoorBackTwoTone';
 
-import { getCurrentCollection, getAllCards } from '../../../store/current_list';
+import { getCurrentCollection, getAllCards } from '../../../store/current_collection';
 import CardSlider from '../../StudyDeckPage/StudyView/CardSlider';
 
 function shuffleArray(array) {

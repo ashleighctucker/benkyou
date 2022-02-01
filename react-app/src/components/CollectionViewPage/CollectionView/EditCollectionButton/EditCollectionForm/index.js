@@ -2,19 +2,22 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { editCollection } from '../../../../../store/collections';
-import { getCurrentCollection, getAllCards } from '../../../../../store/current_collection';
+import {
+  getCurrentCollection,
+  getAllCards,
+} from '../../../../../store/current_collection';
 import { setImage } from '../../../../../utils/images';
 import AddImageCheck from '../../../../../utils/addCheck';
 import EditImageCheck from '../../../../../utils/editCheck';
 import ImageInput from '../../../../../utils/imageInput';
 
-const EditDecklistForm = ({ close }) => {
-  const current_list = useSelector((state) => state.current_list);
+const EditCollectionForm = ({ close }) => {
+  const current_collection = useSelector((state) => state.current_collection);
 
   // decklist states
-  const [title, setTitle] = useState(current_list.title);
+  const [title, setTitle] = useState(current_collection.title);
   const [cover_photo_url, setCoverPhotoUrl] = useState(
-    current_list.cover_photo_url
+    current_collection.cover_photo_url
   );
   // image radio boolean states
   const [editImage, setEditImage] = useState(false);
@@ -34,15 +37,15 @@ const EditDecklistForm = ({ close }) => {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('cover_photo_url', cover_photo_url);
-    formData.append('collection_id', current_list.id);
+    formData.append('collection_id', current_collection.id);
     formData.append('edit_image', editImage);
     formData.append('add_image', addImage);
     const data = await dispatch(editCollection(formData));
     if (data) {
       return setErrors(data.errors);
     }
-    await dispatch(getCurrentCollection(current_list.id));
-    await dispatch(getAllCards(current_list.id));
+    await dispatch(getCurrentCollection(current_collection.id));
+    await dispatch(getAllCards(current_collection.id));
     close();
   };
   const handleSetImage = (e) => {
@@ -59,7 +62,7 @@ const EditDecklistForm = ({ close }) => {
 
   return (
     <form className="modal-form" onSubmit={handleSubmit}>
-      <h1>Edit Deck List:</h1>
+      <h1>Edit Collection:</h1>
       <h3>{title}</h3>
       <div className="form-input-containers">
         <label htmlFor="title">Edit Title</label>
@@ -72,7 +75,7 @@ const EditDecklistForm = ({ close }) => {
         />
         <p className="error-display">{errors['title']}</p>
       </div>
-      {current_list.has_image ? (
+      {current_collection.has_image ? (
         <EditImageCheck
           editImage={editImage}
           setEditImage={setEditImage}
@@ -83,7 +86,7 @@ const EditDecklistForm = ({ close }) => {
           addImage={addImage}
           setAddImage={setAddImage}
           errors={errors}
-          item={'study deck'}
+          item={'collection'}
         />
       )}
       {editImage || addImage ? (
@@ -95,11 +98,11 @@ const EditDecklistForm = ({ close }) => {
       ) : null}
       <div className="form-button-containers">
         <button type="submit" className="modal-buttons">
-          Edit Deck List
+          Edit Collection
         </button>
       </div>
     </form>
   );
 };
 
-export default EditDecklistForm;
+export default EditCollectionForm;

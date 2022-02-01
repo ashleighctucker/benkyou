@@ -5,7 +5,7 @@ import KeyboardCommandKeyTwoToneIcon from '@mui/icons-material/KeyboardCommandKe
 import KeyboardControlKeyTwoToneIcon from '@mui/icons-material/KeyboardControlKeyTwoTone';
 
 import { searchDecks } from '../../../../../store/search';
-import { addDeckToDeckList } from '../../../../../store/current_list';
+import { addDeckToDeckList } from '../../../../../store/current_collection';
 
 const AddDeckForm = ({ close }) => {
   const curr_list = useSelector((state) => state.current_list);

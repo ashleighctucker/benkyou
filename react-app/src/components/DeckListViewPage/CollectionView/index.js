@@ -6,14 +6,14 @@ import ShuffleTwoToneIcon from '@mui/icons-material/ShuffleTwoTone';
 import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 
 import AddDeckButton from './AddDeckButton';
-import EditCollectionButton from './EditCollectionButton';
+import EditDeckListModal from './EditDecklistButton';
 import DeleteDecklistModal from './DeleteDecklistButton';
 import { getCurrentCollection, getAllCards } from '../../../store/current_collection';
 import DeckList from './DeckList';
 
 const CollectionView = () => {
   const { collectionId } = useParams();
-  const collection = useSelector((state) => state.current_collection);
+  const collection = useSelector((state) => state.current_list);
   const sessionUser = useSelector((state) => state.session.user);
 
   let owner = false;
@@ -81,7 +81,7 @@ const CollectionView = () => {
           {owner && (
             <>
               <AddDeckButton />
-              <EditCollectionButton />
+              <EditDeckListModal />
               <DeleteDecklistModal />
             </>
           )}

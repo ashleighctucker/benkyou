@@ -108,7 +108,7 @@ export const removeDeckFromList =
 
 const initialState = {};
 
-export default function currentDecklistReducer(state = initialState, action) {
+export default function currentCollectionReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case LOAD_COLLECTION:

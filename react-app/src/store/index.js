@@ -8,7 +8,7 @@ import myDeckReducer from './my_decks';
 import collectionReducer from './collections';
 import searchReducer from './search';
 import currentDeckReducer from './current_deck';
-import currentDecklistReducer from './current_list';
+import currentCollectionReducer from './current_collection';
 
 const rootReducer = combineReducers({
   session,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   collections: collectionReducer,
   search_results: searchReducer,
   current_deck: currentDeckReducer,
-  current_list: currentDecklistReducer,
+  current_collection: currentCollectionReducer,
 });
 
 let enhancer;

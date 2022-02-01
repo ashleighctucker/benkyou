@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../../context/Modal';
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import EditDecklistForm from './EditDecklistForm';
+import EditCollectionForm from './EditCollectionForm';
 
-const EditDeckListModal = () => {
+const EditCollectionButton = () => {
   const [showEditModal, setShowEditModal] = useState(false);
 
   return (
@@ -13,15 +13,15 @@ const EditDeckListModal = () => {
         onClick={() => setShowEditModal(true)}
       >
         <EditTwoToneIcon />
-        Edit Deck List Details
+        Edit Collection 
       </button>
       {showEditModal && (
         <Modal onClose={() => setShowEditModal(false)}>
-          <EditDecklistForm close={() => setShowEditModal(false)} />
+          <EditCollectionForm close={() => setShowEditModal(false)} />
         </Modal>
       )}
     </>
   );
 };
 
-export default EditDeckListModal;
+export default EditCollectionButton;
