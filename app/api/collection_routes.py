@@ -11,14 +11,14 @@ collection_routes = Blueprint('collections', __name__)
 
 @collection_routes.route('/<int:id>/')
 def get_full_deck_list_detail(id):
-    decklist = Collection.query.get(int(id))
-    return decklist.to_dict()
+    collection = Collection.query.get(int(id))
+    return collection.to_dict()
 
 
 @collection_routes.route('/cards/<int:id>/')
 def get_all_cards_from_list(id):
-    decklist = Collection.query.get(int(id))
-    return {'cards': decklist.get_cards()}
+    collection = Collection.query.get(int(id))
+    return {'cards': collection.get_cards()}
 
 
 @collection_routes.route('/', methods=["POST"])

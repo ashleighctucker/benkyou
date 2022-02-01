@@ -12,14 +12,14 @@ import NewDeckPage from './components/NewDeckPage';
 import NewCardPage from './components/NewCardPage';
 
 import DeckViewPage from './components/DeckViewPage';
-import DeckListViewPage from './components/CollectionViewPage';
+import CollectionViewPage from './components/CollectionViewPage';
 import SearchResultsPage from './components/SearchResultsPage';
 import ProfilePage from './components/ProfilePage';
 
 import StudyDeckPage from './components/StudyDeckPage';
 import ShuffleStudyDeckPage from './components/ShuffleStudyPage';
-import StudyDecklistPage from './components/StudyDecklistPage';
-import ShuffleStudyDecklistPage from './components/ShuffleStudyDecklistPage';
+import StudyCollectionPage from './components/StudyCollectionPage';
+import ShuffleStudyCollectionPage from './components/ShuffleStudyCollectionPage';
 // thunks
 import { authenticate } from './store/session';
 import { getCategories } from './store/categories';
@@ -70,13 +70,13 @@ function App() {
             <NewCollectionPage />
           </Route>
           <Route exact={true} path="/collections/:collectionId">
-            <DeckListViewPage />
+            <CollectionViewPage />
           </Route>
-          <Route exact={true} path="/decklists/:decklistId/study">
-            <StudyDecklistPage />
+          <Route exact={true} path="/collections/:collectionId/study">
+            <StudyCollectionPage />
           </Route>
-          <Route exact={true} path="/decklists/:decklistId/shuffled-study">
-            <ShuffleStudyDecklistPage />
+          <Route exact={true} path="/collections/:collectionId/shuffled-study">
+            <ShuffleStudyCollectionPage />
           </Route>
           <Route path="/">
             <SplashPage />

@@ -1,14 +1,14 @@
 import React from 'react';
 import SideBar from '../SideBar';
-import DecklistStudyView from './DecklistStudyView';
+import CollectionStudyView from './CollectionStudyView';
 
-const StudyDecklistPage = () => {
+const StudyCollectionPage = () => {
   return (
     <div className="main-grid main-page-grid-container">
       <SideBar className="side" />
-      <DecklistStudyView className="main" />
+      <CollectionStudyView className="main" />
     </div>
   );
 };
 
-export default StudyDecklistPage;
+export default StudyCollectionPage;

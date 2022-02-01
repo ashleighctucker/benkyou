@@ -6,37 +6,37 @@ import DoorBackTwoToneIcon from '@mui/icons-material/DoorBackTwoTone';
 import { getCurrentCollection, getAllCards } from '../../../store/current_collection';
 import CardSlider from '../../StudyDeckPage/StudyView/CardSlider';
 
-const DecklistStudyView = () => {
-  const { decklistId } = useParams();
-  const list = useSelector((state) => state.current_list);
-  const cards = useSelector((state) => state.current_list['all_cards']);
+const CollectionStudyView = () => {
+  const { collectionId } = useParams();
+  const collection = useSelector((state) => state.current_collection);
+  const cards = useSelector((state) => state.current_collection['all_cards']);
 
   const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
-      await dispatch(getCurrentCollection(decklistId));
-      await dispatch(getAllCards(decklistId));
+      await dispatch(getCurrentCollection(collectionId));
+      await dispatch(getAllCards(collectionId));
     })();
-  }, [dispatch, decklistId]);
+  }, [dispatch, collectionId]);
 
   return (
     <div className="main">
-      <h1>Studying {list?.title} </h1>
+      <h1>Studying {collection?.title} </h1>
       <h3>
-        created by {list.creator} on {new Date(list.created_on).toDateString()}
+        created by {collection.creator} on {new Date(collection.created_on).toDateString()}
       </h3>
       {cards?.length > 0 && <CardSlider cards={cards} />}
       <button
         id="return-button"
         className="deck-view-button"
-        onClick={() => history.push(`/decklists/${list.id}`)}
+        onClick={() => history.push(`/collections/${collection.id}`)}
       >
-        <DoorBackTwoToneIcon /> Return to List Page
+        <DoorBackTwoToneIcon /> Return to Collection Page
       </button>
     </div>
   );
 };
 
-export default DecklistStudyView;
+export default CollectionStudyView;
