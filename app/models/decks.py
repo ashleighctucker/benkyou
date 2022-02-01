@@ -24,7 +24,7 @@ class Deck(db.Model):
     cards = db.relationship('Card', back_populates='deck',
                             cascade="all, delete-orphan")
     collections = db.relationship(
-        'Collection', secondary="added_decks", back_populates="decks")
+        'Collection', secondary="added_decks", back_populates="decks", cascade="all, delete-orphan", single_parent=True)
     completed_users = db.relationship(
         'User', secondary="completed_decks", back_populates="completed_decks")
 

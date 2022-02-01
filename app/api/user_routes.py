@@ -70,10 +70,10 @@ def get_my_decks(id):
     return {'decks': user.decks_list}
 
 
-@user_routes.route('/<int:id>/decklists/')
-def get_my_decklists(id):
+@user_routes.route('/<int:id>/collections/')
+def get_my_collections(id):
     user = User.query.get(int(id))
-    return {'decklists': user.lists_list}
+    return {'collections': user.collection_list}
 
 
 @user_routes.route('/<int:id>/decks/<int:deckId>/add/', methods=["PUT"])

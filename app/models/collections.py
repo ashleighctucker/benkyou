@@ -19,7 +19,7 @@ class Collection(db.Model):
     # relationships
     creator = db.relationship('User', back_populates='collections')
     decks = db.relationship("Deck", secondary="added_decks",
-                            back_populates="collections", cascade="all, delete-orphan")
+                            back_populates="collections")
 
     def add_deck(self, deck):
         if deck not in self.decks:

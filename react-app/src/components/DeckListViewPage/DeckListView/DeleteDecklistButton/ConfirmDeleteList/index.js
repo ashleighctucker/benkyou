@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
-import { deleteDecklist } from '../../../../../store/my_deck_lists';
+import { deleteDecklist } from '../../../../../store/collections';
 
 const ConfirmDeleteList = ({ close }) => {
   const dispatch = useDispatch();

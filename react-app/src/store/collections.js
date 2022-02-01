@@ -1,10 +1,10 @@
-const LOAD_MY_DECK_LISTS = 'decklists/LOAD_MY_DECK_LISTS';
+const LOAD = 'collections/LOAD';
 const ADD_LIST = 'decklists/ADD_LIST';
 const EDIT_LIST = 'decklists/EDIT_LIST';
 const REMOVE_LIST = 'decklist/REMOVE_LIST';
 
 const load = (list) => ({
-  type: LOAD_MY_DECK_LISTS,
+  type: LOAD,
   list,
 });
 
@@ -23,15 +23,15 @@ const remove = (id) => ({
   id,
 });
 
-export const getMyDeckLists = (user_id) => async (dispatch) => {
-  const response = await fetch(`/api/users/${user_id}/decklists/`, {
+export const getMyCollections = (user_id) => async (dispatch) => {
+  const response = await fetch(`/api/users/${user_id}/collections/`, {
     headers: {
       'Content-Type': 'application/json',
     },
   });
   if (response.ok) {
-    const myDeckLists = await response.json();
-    dispatch(load(myDeckLists['decklists']));
+    const myCollections = await response.json();
+    dispatch(load(myCollections['collections']));
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -99,13 +99,13 @@ export const deleteDecklist = (id) => async (dispatch) => {
 
 const initialState = {};
 
-export default function myDeckListReducer(state = initialState, action) {
+export default function collectionReducer (state = initialState, action) {
   let newState;
   switch (action.type) {
-    case LOAD_MY_DECK_LISTS: {
-      const normalDeckLists = {};
-      action.list.forEach((list) => (normalDeckLists[list.id] = list));
-      return { ...normalDeckLists };
+    case LOAD: {
+      const normalCollections = {};
+      action.list.forEach((list) => (normalCollections[list.id] = list));
+      return { ...normalCollections };
     }
     case ADD_LIST:
       return { ...state, [action.decklist.id]: action.deck };

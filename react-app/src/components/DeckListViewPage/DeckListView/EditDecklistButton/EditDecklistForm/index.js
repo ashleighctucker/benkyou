@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { editDecklist } from '../../../../../store/my_deck_lists';
+import { editDecklist } from '../../../../../store/collections';
 import { getDecklist, getAllCards } from '../../../../../store/current_list';
 import { setImage } from '../../../../../utils/images';
 import AddImageCheck from '../../../../../utils/addCheck';

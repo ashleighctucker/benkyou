@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { setImage } from '../../../utils/images';
-import { addNewDeckList } from '../../../store/my_deck_lists';
+import { addNewDeckList } from '../../../store/collections';
 import AddImageCheck from '../../../utils/addCheck';
 import ImageInput from '../../../utils/imageInput';
 
