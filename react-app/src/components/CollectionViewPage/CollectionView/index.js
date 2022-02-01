@@ -8,16 +8,16 @@ import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 import AddDeckButton from './AddDeckButton';
 import EditDeckListModal from './EditDecklistButton';
 import DeleteDecklistModal from './DeleteDecklistButton';
-import { getDecklist, getAllCards } from '../../../store/current_list';
+import { getCurrentCollection, getAllCards } from '../../../store/current_list';
 import DeckList from './DeckList';
 
-const DeckListView = () => {
-  const { decklistId } = useParams();
-  const decklist = useSelector((state) => state.current_list);
+const CollectionView = () => {
+  const { collectionId } = useParams();
+  const collection = useSelector((state) => state.current_list);
   const sessionUser = useSelector((state) => state.session.user);
 
   let owner = false;
-  if (+decklist.owner_id === +sessionUser?.id) {
+  if (+collection.owner_id === +sessionUser?.id) {
     owner = true;
   }
    let options = {
@@ -31,49 +31,49 @@ const DeckListView = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
-      await dispatch(getDecklist(decklistId));
-      await dispatch(getAllCards(decklistId));
+      await dispatch(getCurrentCollection(collectionId));
+      await dispatch(getAllCards(collectionId));
     })();
-  }, [dispatch, decklistId]);
+  }, [dispatch, collectionId]);
 
   return (
     <div className="deck-view-container splash-div">
       <div className="deck-info-container">
         <div className="deck-title">
-          {decklist.has_image ? (
+          {collection.has_image ? (
             <div
               className="deck-cover"
               style={{
-                backgroundImage: `url(${decklist.cover_photo_url})`,
+                backgroundImage: `url(${collection.cover_photo_url})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 border: '5px solid #157A6E',
               }}
             />
           ) : null}
-          <div>{decklist.title}</div>
+          <div>{collection.title}</div>
         </div>
         <div className="study-buttons">
-          {decklist.all_cards && (
-            <h4>{decklist.all_cards.length} Cards in List</h4>
+          {collection.all_cards && (
+            <h4>{collection.all_cards.length} Cards in Collection</h4>
           )}
-          {decklist.all_cards && sessionUser ? (
+          {collection.all_cards && sessionUser ? (
             <button
-              onClick={() => history.push(`/decklists/${decklist.id}/study`)}
+              onClick={() => history.push(`/collections/${collection.id}/study`)}
               className="deck-view-button"
             >
               <SchoolTwoToneIcon />
-              Study Decklist
+              Study Collection
             </button>
           ) : null}
-          {decklist.all_cards && sessionUser ? (
+          {collection.all_cards && sessionUser ? (
             <button
               onClick={() =>
-                history.push(`/decklists/${decklist.id}/shuffled-study`)
+                history.push(`/collections/${collection.id}/shuffled-study`)
               }
               className="deck-view-button"
             >
-              <ShuffleTwoToneIcon /> Shuffle Decklist
+              <ShuffleTwoToneIcon /> Shuffle Collection
             </button>
           ) : null}
         </div>
@@ -88,16 +88,16 @@ const DeckListView = () => {
         </div>
         <div className="deck-maker">
           <p>
-            Created by: {decklist.creator} on{'  '}
-            {new Date(decklist.created_on).toLocaleDateString('en-US', options)}
+            Created by: {collection.creator} on{'  '}
+            {new Date(collection.created_on).toLocaleDateString('en-US', options)}
           </p>
         </div>
       </div>
       <div id="buffer-main"></div>
       <div className="card-list-container">
         <DeckList
-          decklist={decklist}
-          decksObj={decklist['decks']}
+          decklist={collection}
+          decksObj={collection['decks']}
           owner={owner}
         />
       </div>
@@ -106,4 +106,4 @@ const DeckListView = () => {
   );
 };
 
-export default DeckListView;
+export default CollectionView;

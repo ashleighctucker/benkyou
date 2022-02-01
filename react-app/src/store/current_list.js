@@ -1,11 +1,11 @@
-const LOAD_LIST = 'decklist/LOAD_DECK_LIST';
-const LOAD_CARDS = 'decklist/LOAD_ALL_CARDS';
+const LOAD_COLLECTION = 'collection/LOAD_COLLECTION';
+const LOAD_CARDS = 'collection/LOAD_ALL_CARDS';
 const ADD_DECK = 'decklist/ADD_DECK';
 const REMOVE_DECK = 'decklist/REMOVE_DECK';
 
-const load = (decklist) => ({
-  type: LOAD_LIST,
-  decklist,
+const load = (collection) => ({
+  type: LOAD_COLLECTION,
+  collection,
 });
 
 const loadCards = (list) => ({
@@ -23,15 +23,15 @@ const removeDeck = (id) => ({
   id,
 });
 
-export const getDecklist = (id) => async (dispatch) => {
-  const response = await fetch(`/api/decklists/${id}/`, {
+export const getCurrentCollection = (id) => async (dispatch) => {
+  const response = await fetch(`/api/collections/${id}/`, {
     headers: {
       'Content-Type': 'application/json',
     },
   });
   if (response.ok) {
-    const decklist = await response.json();
-    dispatch(load(decklist));
+    const collection = await response.json();
+    dispatch(load(collection));
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -44,7 +44,7 @@ export const getDecklist = (id) => async (dispatch) => {
 };
 
 export const getAllCards = (id) => async (dispatch) => {
-  const response = await fetch(`/api/decklists/cards/${id}/`, {
+  const response = await fetch(`/api/collections/cards/${id}/`, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -111,8 +111,8 @@ const initialState = {};
 export default function currentDecklistReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
-    case LOAD_LIST:
-      return { ...action.decklist };
+    case LOAD_COLLECTION:
+      return { ...action.collection };
     case LOAD_CARDS:
       const cards = [];
       action.list.forEach((arr, i) => cards.push(...action.list[i]));

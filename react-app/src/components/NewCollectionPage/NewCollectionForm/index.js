@@ -41,7 +41,7 @@ const NewCollectionForm = () => {
     if (data.errors) {
       return setErrors(data.errors);
     }
-    history.push(`/decklists/${data}`);
+    history.push(`/collection/${data}`);
   };
 
   const handleSetImage = (e) => {

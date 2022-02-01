@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import DoorBackTwoToneIcon from '@mui/icons-material/DoorBackTwoTone';
 
-import { getDecklist, getAllCards } from '../../../store/current_list';
+import { getCurrentCollection, getAllCards } from '../../../store/current_list';
 import CardSlider from '../../StudyDeckPage/StudyView/CardSlider';
 
 const DecklistStudyView = () => {
@@ -16,7 +16,7 @@ const DecklistStudyView = () => {
 
   useEffect(() => {
     (async () => {
-      await dispatch(getDecklist(decklistId));
+      await dispatch(getCurrentCollection(decklistId));
       await dispatch(getAllCards(decklistId));
     })();
   }, [dispatch, decklistId]);

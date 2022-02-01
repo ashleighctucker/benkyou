@@ -7,12 +7,12 @@ import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 import SplashPage from './components/SplashPage';
 
-import NewDeckListPage from './components/NewDeckListPage';
+import NewCollectionPage from './components/NewCollectionPage';
 import NewDeckPage from './components/NewDeckPage';
 import NewCardPage from './components/NewCardPage';
 
 import DeckViewPage from './components/DeckViewPage';
-import DeckListViewPage from './components/DeckListViewPage';
+import DeckListViewPage from './components/CollectionViewPage';
 import SearchResultsPage from './components/SearchResultsPage';
 import ProfilePage from './components/ProfilePage';
 
@@ -66,10 +66,10 @@ function App() {
           <Route exact={true} path="/decks/:deckId/shuffled-study">
             <ShuffleStudyDeckPage />
           </Route>
-          <Route path="/new-deck-list">
-            <NewDeckListPage />
+          <Route path="/new-collection">
+            <NewCollectionPage />
           </Route>
-          <Route exact={true} path="/decklists/:decklistId">
+          <Route exact={true} path="/collections/:collectionId">
             <DeckListViewPage />
           </Route>
           <Route exact={true} path="/decklists/:decklistId/study">

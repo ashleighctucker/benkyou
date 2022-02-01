@@ -1,14 +1,14 @@
 import React from 'react';
 import SideBar from '../SideBar';
-import NewDecklistForm from './NewDeckListForm';
+import NewCollectionForm from './NewCollectionForm';
 
-const NewDeckListPage = () => {
+const NewCollectionPage = () => {
   return (
     <div className="main-grid main-page-grid-container">
       <SideBar className="side" />
-      <NewDecklistForm className="main" />
+      <NewCollectionForm className="main" />
     </div>
   );
 };
 
-export default NewDeckListPage;
+export default NewCollectionPage;
