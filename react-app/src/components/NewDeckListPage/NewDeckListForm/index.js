@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { addNewCollection } from '../../../store/collections';
+
 import { setImage } from '../../../utils/images';
-import { addNewDeckList } from '../../../store/collections';
 import AddImageCheck from '../../../utils/addCheck';
 import ImageInput from '../../../utils/imageInput';
 
-const NewDecklistForm = () => {
+const NewCollectionForm = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
-  // deck states
+  // collection states
   const [title, setTitle] = useState('');
   const [cover_photo_url, setCoverPhotoUrl] = useState('');
   const [has_image, setHasImage] = useState(false);
@@ -36,7 +37,7 @@ const NewDecklistForm = () => {
     formData.append('cover_photo_url', cover_photo_url);
     formData.append('user_id', sessionUser.id);
     formData.append('has_image', has_image);
-    const data = await dispatch(addNewDeckList(formData));
+    const data = await dispatch(addNewCollection(formData));
     if (data.errors) {
       return setErrors(data.errors);
     }
@@ -57,7 +58,7 @@ const NewDecklistForm = () => {
 
   return (
     <form className="main-form splash-div" onSubmit={handleSubmit}>
-      <h1>Create a New Deck List</h1>
+      <h1>Create a New Collection</h1>
       <div className="form-input-containers">
         <label htmlFor="title">Title</label>
         <input
@@ -74,7 +75,7 @@ const NewDecklistForm = () => {
         addImage={has_image}
         setAddImage={setHasImage}
         errors={errors}
-        item={'deck list'}
+        item={'collection'}
       />
       {has_image ? (
         <ImageInput
@@ -85,12 +86,11 @@ const NewDecklistForm = () => {
       ) : null}
       <div className="form-button-containers">
         <button type="submit" className="form-submit-button">
-          Create Deck List
-          <span className="bg"></span>
+          Create Collection
         </button>
       </div>
     </form>
   );
 };
 
-export default NewDecklistForm;
+export default NewCollectionForm;

@@ -1,5 +1,5 @@
 const LOAD = 'collections/LOAD';
-const ADD_LIST = 'decklists/ADD_LIST';
+const ADD = 'collections/ADD_LIST';
 const EDIT_LIST = 'decklists/EDIT_LIST';
 const REMOVE_LIST = 'decklist/REMOVE_LIST';
 
@@ -8,9 +8,9 @@ const load = (list) => ({
   list,
 });
 
-const add = (decklist) => ({
-  type: ADD_LIST,
-  decklist,
+const add = (collection) => ({
+  type: ADD,
+  collection,
 });
 
 const update = (decklist) => ({
@@ -43,15 +43,15 @@ export const getMyCollections = (user_id) => async (dispatch) => {
   }
 };
 
-export const addNewDeckList = (formData) => async (dispatch) => {
-  const response = await fetch('/api/decklists/', {
+export const addNewCollection = (formData) => async (dispatch) => {
+  const response = await fetch('/api/collections/', {
     method: 'POST',
     body: formData,
   });
   if (response.ok) {
-    const decklist = await response.json();
-    dispatch(add(decklist));
-    return +decklist.id;
+    const collection = await response.json();
+    dispatch(add(collection));
+    return +collection.id;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {
@@ -107,8 +107,8 @@ export default function collectionReducer (state = initialState, action) {
       action.list.forEach((list) => (normalCollections[list.id] = list));
       return { ...normalCollections };
     }
-    case ADD_LIST:
-      return { ...state, [action.decklist.id]: action.deck };
+    case ADD:
+      return { ...state, [action.collection.id]: action.collection };
     case EDIT_LIST:
       newState = { ...state };
       newState[action.decklist.id] = action.decklist;
