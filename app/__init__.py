@@ -11,7 +11,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.deck_routes import deck_routes
 from .api.card_routes import card_routes
-from .api.deck_lists import deck_list_routes
+from .api.collection_routes import collection_routes
 from .api.search_routes import search_routes
 from .api.category_routes import category_routes
 
@@ -39,7 +39,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(deck_routes, url_prefix='/api/decks')
 app.register_blueprint(card_routes, url_prefix='/api/cards')
-app.register_blueprint(deck_list_routes, url_prefix='/api/decklists')
+app.register_blueprint(collection_routes, url_prefix='/api/collections')
 app.register_blueprint(search_routes, url_prefix='/api/search')
 app.register_blueprint(category_routes, url_prefix="/api/categories")
 

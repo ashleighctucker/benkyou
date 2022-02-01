@@ -5,19 +5,19 @@ import thunk from 'redux-thunk';
 import session from './session';
 import categoryReducer from './categories';
 import myDeckReducer from './my_decks';
-import myDeckListReducer from './my_deck_lists';
+import collectionReducer from './collections';
 import searchReducer from './search';
 import currentDeckReducer from './current_deck';
-import currentDecklistReducer from './current_list';
+import currentCollectionReducer from './current_collection';
 
 const rootReducer = combineReducers({
   session,
   categories: categoryReducer,
   my_decks: myDeckReducer,
-  my_deck_lists: myDeckListReducer,
+  collections: collectionReducer,
   search_results: searchReducer,
   current_deck: currentDeckReducer,
-  current_list: currentDecklistReducer,
+  current_collection: currentCollectionReducer,
 });
 
 let enhancer;

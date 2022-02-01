@@ -7,6 +7,7 @@ from datetime import datetime
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
+    # db props
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
@@ -18,17 +19,19 @@ class User(db.Model, UserMixin):
                            default=datetime.utcnow)
     updated_on = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
+    # relationships
     decks = db.relationship(
         'Deck', back_populates='creator', cascade="all, delete-orphan")
     cards = db.relationship(
         'Card', back_populates='creator', cascade="all, delete-orphan")
-    deck_lists = db.relationship(
-        'DeckList', back_populates='creator',  cascade="all, delete-orphan")
+    collections = db.relationship(
+        'Collection', back_populates='creator',  cascade="all, delete-orphan")
     completed_decks = db.relationship(
         'Deck', secondary="completed_decks", back_populates='completed_users')
     badges = db.relationship(
         'Badge', secondary="user_badges", back_populates="users")
 
+    
     @property
     def password(self):
         return self.hashed_password
@@ -41,9 +44,9 @@ class User(db.Model, UserMixin):
                  'created_on': deck.created_on, } for deck in self.decks]
 
     @property
-    def lists_list(self):
-        return [{'id': decklist.id,
-                 'title': decklist.title} for decklist in self.deck_lists]
+    def collection_list(self):
+        return [{'id': collection.id,
+                 'title': collection.title} for collection in self.collections]
 
     @property
     def badge_dict(self):
@@ -70,7 +73,7 @@ class User(db.Model, UserMixin):
             'has_image': self.has_image,
             'profile_picture': self.profile_picture,
             'decks': self.decks_list,
-            'lists': self.lists_list,
+            'lists': self.collection_list,
             'completed_decks': self.completed_dict,
             'badges': self.badge_dict
         }
