@@ -18,7 +18,7 @@ import ProfilePage from './components/ProfilePage';
 
 import StudyDeckPage from './components/StudyDeckPage';
 import ShuffleStudyDeckPage from './components/ShuffleStudyPage';
-import StudyDecklistPage from './components/StudyDecklistPage';
+import StudyCollectionPage from './components/StudyCollectionPage';
 import ShuffleStudyDecklistPage from './components/ShuffleStudyDecklistPage';
 // thunks
 import { authenticate } from './store/session';
@@ -72,10 +72,10 @@ function App() {
           <Route exact={true} path="/collections/:collectionId">
             <DeckListViewPage />
           </Route>
-          <Route exact={true} path="/decklists/:decklistId/study">
-            <StudyDecklistPage />
+          <Route exact={true} path="/collections/:collectionId/study">
+            <StudyCollectionPage />
           </Route>
-          <Route exact={true} path="/decklists/:decklistId/shuffled-study">
+          <Route exact={true} path="/collections/:collectionId/shuffled-study">
             <ShuffleStudyDecklistPage />
           </Route>
           <Route path="/">
