@@ -5,10 +5,10 @@ import KeyboardCommandKeyTwoToneIcon from '@mui/icons-material/KeyboardCommandKe
 import KeyboardControlKeyTwoToneIcon from '@mui/icons-material/KeyboardControlKeyTwoTone';
 
 import { searchDecks } from '../../../../../store/search';
-import { addDeckToDeckList } from '../../../../../store/current_collection';
+import { addDeckToCollection} from '../../../../../store/current_collection';
 
 const AddDeckForm = ({ close }) => {
-  const curr_list = useSelector((state) => state.current_list);
+  const curr_list = useSelector((state) => state.current_collection);
   const results = useSelector((state) => state.search_results);
   const curr_decks = curr_list['decks'];
 
@@ -28,7 +28,7 @@ const AddDeckForm = ({ close }) => {
 
   useEffect(() => {
     if (searched && available_decks.length === 0) {
-      setSearchError('All decks matching this search in list.');
+      setSearchError('All decks matching this search already in this collection.');
     }
   }, [available_decks.length, searched]);
 
@@ -39,7 +39,7 @@ const AddDeckForm = ({ close }) => {
     setErrors([]);
     let dispatchErrors = [];
     decks_to_add.forEach(async (deck) => {
-      let data = await dispatch(addDeckToDeckList(curr_list.id, deck));
+      let data = await dispatch(addDeckToCollection(curr_list.id, deck));
       if (data) {
         dispatchErrors.push(data['errors']);
       }
@@ -50,7 +50,8 @@ const AddDeckForm = ({ close }) => {
     window.location.reload();
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault()
     setSearchError('');
     const data = await dispatch(searchDecks(term));
     setSearched(searched ? true : true);
@@ -76,7 +77,9 @@ const AddDeckForm = ({ close }) => {
                 value={term}
                 onChange={(e) => setTerm(e.target.value)}
               />
-              <SearchIcon id="search-nav" onClick={handleSearch} />
+              <button className="hide-button" type="submit" onClick={handleSearch}>
+                <SearchIcon id="search-nav" />
+              </button>
             </div>
             <p className="error-display">{searchError}</p>
           </div>
@@ -85,7 +88,7 @@ const AddDeckForm = ({ close }) => {
       <div>
         <form className="modal-form" onSubmit={handleSubmit}>
           <div className="form-input-containers">
-            <label htmlFor="decks_to_add">Add Decks to List:</label>
+            <label htmlFor="decks_to_add">Add Decks to Collection:</label>
             <select
               name="decks_to_add"
               value={decks_to_add}

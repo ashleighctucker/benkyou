@@ -1,7 +1,7 @@
 const LOAD_COLLECTION = 'collection/LOAD_COLLECTION';
 const LOAD_CARDS = 'collection/LOAD_ALL_CARDS';
-const ADD_DECK = 'decklist/ADD_DECK';
-const REMOVE_DECK = 'decklist/REMOVE_DECK';
+const ADD_DECK = 'collection/ADD_DECK';
+const REMOVE_DECK = 'collection/REMOVE_DECK';
 
 const load = (collection) => ({
   type: LOAD_COLLECTION,
@@ -63,9 +63,9 @@ export const getAllCards = (id) => async (dispatch) => {
   }
 };
 
-export const addDeckToDeckList = (decklist_id, deck_id) => async (dispatch) => {
+export const addDeckToCollection = (collection_id, deck_id) => async (dispatch) => {
   const response = await fetch(
-    `/api/decklists/${decklist_id}/add/${deck_id}/`,
+    `/api/collections/${collection_id}/add/${deck_id}/`,
     {
       method: 'PATCH',
     }
@@ -76,6 +76,7 @@ export const addDeckToDeckList = (decklist_id, deck_id) => async (dispatch) => {
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
+    console.log(data)
     if (data.errors) {
       return data.errors;
     }
@@ -84,10 +85,10 @@ export const addDeckToDeckList = (decklist_id, deck_id) => async (dispatch) => {
   }
 };
 
-export const removeDeckFromList =
-  (decklist_id, deck_id) => async (dispatch) => {
+export const removeDeckFromCollection =
+  (collection_id, deck_id) => async (dispatch) => {
     const response = await fetch(
-      `/api/decklists/${decklist_id}/remove/${deck_id}/`,
+      `/api/collections/${collection_id}/remove/${deck_id}/`,
       {
         method: 'PATCH',
       }

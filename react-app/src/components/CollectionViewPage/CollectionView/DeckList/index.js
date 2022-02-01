@@ -3,10 +3,10 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import RemoveCircleTwoToneIcon from '@mui/icons-material/RemoveCircleTwoTone';
 
-import { removeDeckFromList } from '../../../../store/current_collection';
+import { removeDeckFromCollection } from '../../../../store/current_collection';
 import './DeckList.css';
 
-const DeckList = ({ decklist, decksObj, owner }) => {
+const DeckList = ({ collection, decksObj, owner }) => {
   const dispatch = useDispatch();
    let options = {
      weekday: 'long',
@@ -24,11 +24,11 @@ const DeckList = ({ decklist, decksObj, owner }) => {
             <div className="deck-button-container">
               <button
                 onClick={() =>
-                  dispatch(removeDeckFromList(decklist.id, decksObj[key].id))
+                  dispatch(removeDeckFromCollection(collection.id, decksObj[key].id))
                 }
                 className="deck-view-button"
               >
-                <RemoveCircleTwoToneIcon /> Remove From List
+              <RemoveCircleTwoToneIcon /> Remove
               </button>
             </div>
           )}
@@ -73,7 +73,7 @@ const DeckList = ({ decklist, decksObj, owner }) => {
       {decksObj && Object.keys(decksObj).length > 0 ? (
         <div id="card-count">
           <h1>
-            Decks in {decklist.title} ({Object.keys(decksObj).length})
+            Decks in {collection.title} ({Object.keys(decksObj).length})
           </h1>
         </div>
       ) : null}

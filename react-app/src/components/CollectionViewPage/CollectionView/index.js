@@ -96,7 +96,7 @@ const CollectionView = () => {
       <div id="buffer-main"></div>
       <div className="card-list-container">
         <DeckList
-          decklist={collection}
+          collection={collection}
           decksObj={collection['decks']}
           owner={owner}
         />

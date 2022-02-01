@@ -29,6 +29,11 @@ html, body {
   grid-area: nav;
 }
 
+.hide-button {
+  border: none;
+  background-color: transparent;
+}
+
 /* Give all pages in app this class */
 .main-grid {
   grid-area: main;
