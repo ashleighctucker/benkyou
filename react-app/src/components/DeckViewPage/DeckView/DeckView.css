@@ -98,10 +98,27 @@
 }
 
 .complete-button:hover {
-  background-color: #E08E45;
-  color: #efefef;
+  background-color: #157A6E;
+  color: #E08E45;
 }
 
+/* tooltips for complete deck buttons */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  color: #efefef;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 1%;
+  padding: 1%;
+  background-color: #e08d45e0;
+  border-radius: 5px;
+}
 
 .study-buttons {
   display: flex;

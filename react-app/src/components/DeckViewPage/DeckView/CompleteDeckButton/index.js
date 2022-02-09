@@ -35,10 +35,17 @@ const CompleteDeckButton = () => {
     setCompleted(false);
   };
 
+  let data
+  if (!completed) {
+    data = 'Complete decks to earn badges!'
+  } else {
+    data = 'Need to study this deck more?'
+  }
+
   return (
     <>
       <span>{!completed && 'Feeling Confident?'}</span>
-      <button
+      <button data-tooltip={data}
         onClick={completed ? handleRemove : handleComplete}
         className={`deck-view-button ${completed ? 'complete-button' : null}`}
       >
