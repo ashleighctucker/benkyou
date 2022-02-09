@@ -54,6 +54,7 @@
   font-size: inherit;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 #logout-icon {
